@@ -1,0 +1,1 @@
+lay resulset tu connection va tra ve mot model 
