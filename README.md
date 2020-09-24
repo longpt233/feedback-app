@@ -1,9 +1,8 @@
 ## content
-- simple app manage feed back 
-- full utilities:
-[] show feedback (sort by day... ?)
-[] login as admin (user dont need to login )
-[] receive 
+__full utilities__:
+- [x] show feedback (sort by day... ?)
+- [] login as admin (user dont need to login )
+- [] receive 
 
 ## lib 
 - jdk 13.0.1
