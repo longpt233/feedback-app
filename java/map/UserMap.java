@@ -11,7 +11,7 @@ public class UserMap implements Mapable<User> {
     public User mapRow(ResultSet rs) {
         try{
             User example= new User();
-            example.setName(rs.getString("name"));
+            example.setName(rs.getString("username"));
             return example;
         }catch (SQLException e){
             return null;

@@ -17,4 +17,8 @@ public class ShowUser {
             return false;
         return true;
     }
+
+    public void show(){
+
+    }
 }

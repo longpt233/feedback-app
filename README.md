@@ -15,3 +15,26 @@ __full utilities__:
 
 ## error log 
 - PATH_TO_FX not config global, must in Appearance & Behavior->Path Variables ?
+- k load dc classforname: add connector
+
+## gradle
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls' ]
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
