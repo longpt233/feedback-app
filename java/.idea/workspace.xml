@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d8c00d47-15ba-4c46-8a8c-f765abbdc37b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1iJTz4TA2Sim19HTQoWoEzmXLKv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d8c00d47-15ba-4c46-8a8c-f765abbdc37b" name="Default Changelist" comment="" />
+      <created>1601624953531</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601624953531</updated>
+      <workItem from="1601624955418" duration="2021000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="260" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601625043759">
+      <screen x="74" y="0" width="1462" height="864" />
+    </state>
+    <state x="260" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/74.0.1462.864@74.0.1462.864" timestamp="1601625043759" />
+    <state x="655" y="321" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1601625458037">
+      <screen x="74" y="0" width="1462" height="864" />
+    </state>
+    <state x="655" y="321" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/74.0.1462.864@74.0.1462.864" timestamp="1601625458037" />
+    <state x="314" y="13" key="SettingsEditor" timestamp="1601625624240">
+      <screen x="74" y="0" width="1462" height="864" />
+    </state>
+    <state x="314" y="13" key="SettingsEditor/74.0.1462.864@74.0.1462.864" timestamp="1601625624240" />
+  </component>
+</project>
