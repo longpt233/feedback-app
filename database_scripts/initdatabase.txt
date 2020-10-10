@@ -8,3 +8,15 @@ CREATE TABLE users(
 
 insert into users(username ) values('admin' );
 insert into users(username) values('nguyenvana' );
+
+
+CREATE TABLE letter(
+    id int NOT NULL AUTO_INCREMENT,
+    category varchar(255),
+    status_letter int,
+    PRIMARY KEY (id)
+);
+
+
+insert into letter(category,status_letter ) values('cate1',1 );
+insert into letter(category,status_letter) values('cate2',2);
