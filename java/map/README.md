@@ -1,2 +1,0 @@
-- map tu result set qua model 
-- map data cho phan hien thi 
