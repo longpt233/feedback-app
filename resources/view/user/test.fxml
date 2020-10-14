@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.TestController">
+   <children>
+      <Text layoutX="206.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello to javafx " wrappingWidth="189.7294921875">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <TextField layoutX="193.0" layoutY="207.0" />
+      <Button layoutX="255.0" layoutY="291.0" mnemonicParsing="false" onAction="#show" text="show" />
+   </children>
+</AnchorPane>

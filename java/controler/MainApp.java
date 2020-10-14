@@ -1,8 +1,8 @@
 package controler;
 
 
-import model.User;
-import service.ShowUser;
+import model.UserModel;
+import service.ShowUserService;
 
 public class MainApp  {
 
@@ -11,8 +11,8 @@ public class MainApp  {
     public static void main(String[] args) {
 
         System.out.println("hello project");
-        User admin=new User("admin");
-        ShowUser tmp =new ShowUser(admin);
+        UserModel admin=new UserModel("admin");
+        ShowUserService tmp =new ShowUserService(admin);
         System.out.println(tmp.CheckExist());
     }
 }

@@ -1,18 +1,17 @@
 package service;
 
-import dao.UserQuery;
-import dao.impl.UserQueryIMPL;
-import model.User;
+import dao.impl.UserDaoIMPL;
+import model.UserModel;
 
-public class ShowUser {
-    private User user;
+public class ShowUserService {
+    private UserModel user;
 
-    public ShowUser(User user) {
+    public ShowUserService(UserModel user) {
         this.user = user;
     }
 
     public boolean CheckExist(){
-        UserQueryIMPL tmp=new UserQueryIMPL();
+        UserDaoIMPL tmp=new UserDaoIMPL();
         if (tmp.findUser(user.getName())==null)
             return false;
         return true;

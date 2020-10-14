@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="but1" layoutX="1.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="210.0" text="Tạo Đơn" />
+            <Button fx:id="but2" layoutX="1.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="210.0" text="Xem Đơn" />
+            <Button fx:id="but3" layoutX="1.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="210.0" text="Tìm Kiếm" />
+            <Label alignment="CENTER" layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="190.0" text="Tên Công Dân Ở Đây" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="258.0" layoutY="32.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Pane fx:id="pan3" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f00;">
+               <children>
+                  <Pane fx:id="pan1" layoutX="-65.0" layoutY="-11.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #0F0;">
+                     <children>
+                        <TextField alignment="CENTER" layoutX="428.0" layoutY="14.0" promptText="Tên Cơ Quan Cấp Trên" />
+                        <TextField alignment="CENTER" layoutX="428.0" layoutY="52.0" promptText="Cơ Quan Xử Lí Đơn" />
+                        <TextField alignment="CENTER" layoutX="603.0" layoutY="52.0" prefHeight="25.0" prefWidth="183.0" promptText="Thủ Trưởng Cơ Quan Xử Lí Đơn" />
+                        <TableView layoutY="341.0" prefHeight="161.0" prefWidth="800.0">
+                          <columns>
+                            <TableColumn prefWidth="53.60002136230469" text="Stt" />
+                            <TableColumn prefWidth="96.79998779296875" text="Ngày Tiếp" />
+                              <TableColumn prefWidth="115.20001220703125" text="Loại Đơn" />
+                              <TableColumn prefWidth="93.5999755859375" text="Ngày Viết Đơn" />
+                              <TableColumn prefWidth="110.5999755859375" text="Họ Tên" />
+                              <TableColumn prefWidth="142.40008544921875" text="Địa Chỉ" />
+                              <TableColumn prefWidth="184.79986572265625" text="Nội Dung" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="14.0" layoutY="27.0" promptText="Loại Đơn" />
+                        <TextField layoutX="15.0" layoutY="106.0" prefHeight="25.0" prefWidth="149.0" promptText="Họ Tên Người Viết" />
+                        <TextField layoutX="14.0" layoutY="65.0" promptText="Ngày Viết" />
+                        <Line endX="664.6000366210938" endY="8.79998779296875" layoutX="126.0" layoutY="83.0" startX="287.29998779296875" startY="8.79998779296875" />
+                        <CheckBox layoutX="22.0" layoutY="145.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" text="Nam" />
+                        <CheckBox layoutX="90.0" layoutY="145.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="50.0" text="Nữ" />
+                        <TextField layoutX="16.0" layoutY="170.0" promptText="Địa Chỉ" />
+                        <TextField layoutX="16.0" layoutY="201.0" promptText="Người Kí" />
+                        <TextArea layoutX="208.0" layoutY="27.0" prefHeight="152.0" prefWidth="183.0" promptText="Nội Dung" />
+                        <TextField alignment="CENTER" layoutX="603.0" layoutY="14.0" prefHeight="25.0" prefWidth="183.0" promptText="Thủ Trưởng Cơ Quan Cấp Trên" />
+                        <Line endX="74.79998779296875" endY="245.4000244140625" layoutX="339.0" layoutY="60.0" startX="74.79998779296875" startY="-42.600006103515625" />
+                        <TextField layoutX="436.0" layoutY="136.0" promptText="Ngày Tiếp" />
+                        <TextField layoutX="436.0" layoutY="170.0" promptText="Yêu Cầu - Kiến Nghị" />
+                        <TextField layoutX="436.0" layoutY="201.0" promptText="Tình Trạng" />
+                        <TextField layoutX="436.0" layoutY="240.0" promptText="Người Giải Quyết" />
+                        <TextField layoutX="436.0" layoutY="271.0" promptText="Ngày Giải Quyết" />
+                        <Line endX="14.29998779296875" layoutX="400.0" layoutY="240.0" startX="-400.0" />
+                        <Button layoutX="61.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Tạo Đơn" />
+                        <Button layoutX="163.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Cập Nhật" />
+                        <Button layoutX="268.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Xóa Đơn" />
+                        <Button layoutX="615.0" layoutY="133.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Tải Flie Đơn Lên" />
+                        <CheckBox layoutX="602.0" layoutY="187.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="190.0" text="Thuộc Thẩm Quyền Giải Quyết" />
+                        <CheckBox layoutX="602.0" layoutY="218.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="232.0" text="Không Thuộc Thẩm Quyền " />
+                        <CheckBox layoutX="603.0" layoutY="244.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="136.0" text=" Xem Xét Thêm" />
+                        <TextField layoutX="208.0" layoutY="201.0" promptText="Mã Đơn" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pan2" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #00F;">
+                     <children>
+                        <Label layoutX="322.0" layoutY="14.0" text="Tìm Kiếm Đơn " textFill="#c5d611">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="89.0" layoutY="59.0" text="Chọn Loại Đơn" textFill="#cee826">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <CheckBox layoutX="52.0" layoutY="93.0" mnemonicParsing="false" text="Tố Cáo" textFill="#bcf513">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox layoutX="145.0" layoutY="93.0" mnemonicParsing="false" text="Khiếu Nại" textFill="#dae515">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox layoutX="52.0" layoutY="119.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="183.0" text="Kiến Nghị Phản Ánh" textFill="#cbdf13">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <TextField layoutX="337.0" layoutY="102.0" prefHeight="25.0" prefWidth="127.0" />
+                        <TextField layoutX="564.0" layoutY="102.0" />
+                        <TextField layoutX="71.0" layoutY="175.0" />
+                        <TextField layoutX="337.0" layoutY="175.0" />
+                        <TextField layoutX="564.0" layoutY="175.0" />
+                        <Label layoutX="338.0" layoutY="69.0" text="Mã Số Đơn" textFill="#c8da29">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="564.0" layoutY="71.0" prefHeight="25.0" prefWidth="165.0" text="Tên Người Viết - Xử Lí" textFill="#c1d511">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="71.0" layoutY="150.0" prefHeight="25.0" prefWidth="127.0" text="Ngày Chính Xác" textFill="#ccdd19">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="337.0" layoutY="150.0" text="Từ Ngày" textFill="#e6f02e">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="564.0" layoutY="150.0" text="Đến Ngày" textFill="#e6f02e">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Line endX="541.0" endY="-7.62939453125E-6" layoutX="229.0" layoutY="49.0" startX="-208.39996337890625" startY="-7.62939453125E-6" />
+                        <Line endX="59.4000244140625" endY="175.5" layoutX="213.0" layoutY="49.0" startX="59.4000244140625" startY="0.49999237060546875" />
+                        <Line endX="387.5999755859375" layoutX="388.0" layoutY="143.0" startX="-365.79998779296875" />
+                        <Line endX="546.7999267578125" layoutX="232.0" layoutY="225.0" startX="-209.0" />
+                        <Button layoutX="128.0" layoutY="237.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #F0F;" text="Tìm" />
+                        <Button layoutX="349.0" layoutY="237.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #F0F;" text="Xem Đơn" />
+                        <Button layoutX="560.0" layoutY="237.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #F0F;" text="Xuất Đơn" />
+                        <TableView layoutY="286.0" prefHeight="214.0" prefWidth="800.0">
+                           <columns>
+                              <TableColumn prefWidth="53.60002136230469" text="Stt" />
+                              <TableColumn prefWidth="96.79998779296875" text="Ngày Tiếp" />
+                              <TableColumn prefWidth="115.20001220703125" text="Loại Đơn" />
+                              <TableColumn prefWidth="93.5999755859375" text="Ngày Viết Đơn" />
+                              <TableColumn prefWidth="110.5999755859375" text="Họ Tên" />
+                              <TableColumn prefWidth="142.40008544921875" text="Địa Chỉ" />
+                              <TableColumn prefWidth="184.79986572265625" text="Nội Dung" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
