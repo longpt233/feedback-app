@@ -18,6 +18,7 @@ __full utilities__:
 - k load dc classforname: add connector
 
 ## gradle
+'''
 plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.8'
