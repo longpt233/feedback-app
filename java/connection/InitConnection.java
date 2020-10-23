@@ -8,6 +8,7 @@ public class InitConnection {
     private Connection connection;
 
     public void testDriver() throws ClassNotFoundException{
+        // để test driver
         try {
             Class.forName(AppConfig.DRIVER);
         } catch (ClassNotFoundException ex){
@@ -17,13 +18,14 @@ public class InitConnection {
     }
 
     public Connection getConnect() throws ClassNotFoundException {
-        // đã chuyển ra package constance
+        // thông số đã chuyển ra package constance
         String dbName = "testse";
         String connectionURL = AppConfig.URL_DATABASE + dbName;
 
         if(connection == null){
             testDriver();
             try {
+                // connect
                 connection = DriverManager.getConnection(connectionURL, AppConfig.USERNAME, AppConfig.PASSWORD);
                 System.out.println("connected to database");
             } catch (Exception ex) {
@@ -39,6 +41,8 @@ public class InitConnection {
         try{
             System.out.println(">> " + sql);
             return connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            //ResultSet.TYPE_SCROLL_SENSITIVE: cho phép con trỏ resultSet chạy từ bản ghi đầu đến cuối.
+            //ResultSet.CONCUR_UPDATABLE: tạo ra một đuối tượng resultSet có thể được cập nhập.
         } catch (SQLException ex){
             System.out.println("can't query");
             ex.printStackTrace();
@@ -46,7 +50,7 @@ public class InitConnection {
         }
     }
 
-    // dùng cho update để lấy id
+    // riêng cho update, insert để lấy id của đói tượng đã thao tác
     public PreparedStatement prepareUpdate(String sql){
         try{
             System.out.println(">> " + sql);
@@ -65,6 +69,5 @@ public class InitConnection {
             connection.close();
         }
     }
-
 
 }
