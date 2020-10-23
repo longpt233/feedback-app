@@ -1,21 +1,54 @@
 package model;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class UserModel {
+    private int idApplicant;
+    private int idCard;
+    private String password;
     private String name;
 
-    public UserModel(ResultSet rs) {
-        try{
-            name=rs.getString("username");
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+    public UserModel() {
     }
 
-    public UserModel(String name) {
-        this.name = name;
+    public UserModel(ResultSet resultSet) {
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "idApplicant=" + idApplicant +
+                ", idCard=" + idCard +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+
+
+    public int getIdApplicant() {
+        return idApplicant;
+    }
+
+    public void setIdApplicant(int idApplicant) {
+        this.idApplicant = idApplicant;
+    }
+
+    public int getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(int idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -25,4 +58,6 @@ public class UserModel {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

@@ -1,6 +1,6 @@
 package dao.impl;
 
-import connection.InitConn;
+import connection.InitConnection;
 import dao.UserDao;
 import model.UserModel;
 
@@ -23,15 +23,15 @@ public class UserDaoIMPL  implements UserDao {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            InitConn initConn=new InitConn();
-            connection = initConn.getConn();
+            InitConnection initConnection =new InitConnection();
+            connection = initConnection.getConnect();
             statement = connection.prepareStatement(sql);
             statement.setString(1,user);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 results.add(new UserModel(resultSet));
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             return null;
         } finally {
             try {
