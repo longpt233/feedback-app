@@ -1,4 +1,4 @@
-package controler;
+package controler.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class Test extends Application {
     @Override
     public void start(Stage primaryStage) {
         try{
-            Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("view/user/test.fxml"));
+            Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("view/quanlidon/ShowLetter.fxml"));
             Scene scene=new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

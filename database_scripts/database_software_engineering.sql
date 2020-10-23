@@ -7,7 +7,7 @@ CREATE TABLE Letter (
     apply_date date,
     status_letter int,
     deleted boolean,
-    FOREIGN KEY (id_applicant) REFERENCES Applicant(id_applicant)
+    FOREIGN KEY (id_applicant) REFERENCES Applicant(id)
 );
 
 CREATE TABLE Applicant (

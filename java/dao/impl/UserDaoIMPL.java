@@ -13,8 +13,6 @@ import java.util.List;
 
 public class UserDaoIMPL  implements UserDao {
 
-
-    @Override
     public UserModel findUser(String user) {
         String sql= "SELECT * FROM users AS u WHERE username = ? ";
         // mot query can co sql mau + maper+ cac tham so truyen vao query

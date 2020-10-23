@@ -7,6 +7,7 @@ import model.LetterModel;
 import service.LetterService;
 import service.impl.LetterServiceIMPL;
 
+import javax.swing.text.TabableView;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,6 +18,9 @@ public class LetterController {
 
     @FXML
     private TextField text;
+
+    @FXML
+    private TabableView tabableView;
 
     public void showAll() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
