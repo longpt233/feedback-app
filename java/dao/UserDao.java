@@ -1,6 +1,6 @@
 package dao;
 
-import model.UserModel;
+import model.User;
 
-public interface UserDao extends BaseDao<UserModel> {
+public interface UserDao extends BaseDao<User> {
 }

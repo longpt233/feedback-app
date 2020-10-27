@@ -1,12 +1,12 @@
 package service;
 
 import dao.impl.UserDaoIMPL;
-import model.UserModel;
+import model.User;
 
 public class ShowUserService {
-    private UserModel user;
+    private User user;
 
-    public ShowUserService(UserModel user) {
+    public ShowUserService(User user) {
         this.user = user;
     }
 

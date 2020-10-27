@@ -2,7 +2,7 @@ package dao.impl;
 
 import connection.InitConnection;
 import dao.UserDao;
-import model.UserModel;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,10 +13,10 @@ import java.util.List;
 
 public class UserDaoIMPL  implements UserDao {
 
-    public UserModel findUser(String user) {
+    public User findUser(String user) {
         String sql= "SELECT * FROM users AS u WHERE username = ? ";
         // mot query can co sql mau + maper+ cac tham so truyen vao query
-        List<UserModel> results = new ArrayList<>();
+        List<User> results = new ArrayList<>();
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -27,7 +27,7 @@ public class UserDaoIMPL  implements UserDao {
             statement.setString(1,user);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                results.add(new UserModel(resultSet));
+                results.add(new User(resultSet));
             }
         } catch (SQLException | ClassNotFoundException e) {
             return null;
@@ -51,22 +51,22 @@ public class UserDaoIMPL  implements UserDao {
     }
 
     @Override
-    public List<UserModel> findAll() throws SQLException {
+    public List<User> findAll() throws SQLException {
         return null;
     }
 
     @Override
-    public UserModel findById(int id) throws SQLException {
+    public User findById(int id) throws SQLException {
         return null;
     }
 
     @Override
-    public UserModel insert(UserModel user) throws SQLException {
+    public User insert(User user) throws SQLException {
         return null;
     }
 
     @Override
-    public boolean update(UserModel user) throws SQLException {
+    public boolean update(User user) throws SQLException {
         return false;
     }
 

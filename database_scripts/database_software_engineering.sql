@@ -47,3 +47,6 @@ CREATE TABLE User(
     deleted boolean,
     FOREIGN KEY (id_applicant) REFERENCES Applicant(id),
 );
+
+INSERT INTO Applicant VALUES(1,"1234","long user not admin","1234567879","2000-3-23",1,"ha noi",1);
+INSERT INTO Letter VALUES (1,"kiennghi1",1,"contetn1","the loai1","2000-1-1",1,false);

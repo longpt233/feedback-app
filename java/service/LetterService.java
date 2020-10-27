@@ -1,6 +1,6 @@
 package service;
 
-import model.LetterModel;
+import model.Letter;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,9 +9,9 @@ public interface LetterService {
     // có các chức năng mình cần
     // Xét quyền ở đây ( tại các hàm thì có kiểm tra điều kiện đầu vào để tiến hành vào DB hay k)
 
-    List<LetterModel> findAll() throws SQLException;
-    LetterModel findById(int id) throws SQLException;
-    boolean insert(LetterModel leter) throws SQLException, ClassNotFoundException;
-    boolean update(LetterModel letter) throws SQLException;
+    List<Letter> findAll() throws SQLException;
+    Letter findById(int id) throws SQLException;
+    boolean insert(Letter leter) throws SQLException, ClassNotFoundException;
+    boolean update(Letter letter) throws SQLException;
     boolean delete(int id) throws SQLException;
 }

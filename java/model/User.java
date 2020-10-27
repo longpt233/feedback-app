@@ -2,16 +2,16 @@ package model;
 
 import java.sql.ResultSet;
 
-public class UserModel {
+public class User {
     private int idApplicant;
     private int idCard;
     private String password;
     private String name;
 
-    public UserModel() {
+    public User() {
     }
 
-    public UserModel(ResultSet resultSet) {
+    public User(ResultSet resultSet) {
     }
 
 

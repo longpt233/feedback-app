@@ -4,18 +4,28 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LetterModel {
+public class Letter {
     private int id;
     private String title;
     private String content;
     private int idApplicant;
     private Date applyDate;
     private boolean deleted;
+    private String category;
+    private int statusLetter;
 
-    public LetterModel(){
+    public Letter(){
     }
 
-    public LetterModel(ResultSet resultSet) {
+    public Letter(int id, String title, String content, int idApplicant, Date applyDate, boolean deleted, String category, int statusLetter) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.idApplicant = idApplicant;
+        this.applyDate = applyDate;
+        this.deleted = deleted;
+        this.category = category;
+        this.statusLetter = statusLetter;
     }
 
     @Override
@@ -96,8 +106,7 @@ public class LetterModel {
         this.statusLetter = statusLetter;
     }
 
-    private String category;
-    private int statusLetter;
+
 
 
 }

@@ -2,9 +2,9 @@ package dao.impl;
 
 import connection.InitConnection;
 import dao.LetterDao;
-import model.LetterModel;
+import model.Letter;
 
-import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,27 +15,36 @@ public class LetterDaoIMPL implements LetterDao {
     private InitConnection initConnection = new InitConnection();
 
     @Override
-    public List<LetterModel> findAll() throws SQLException {
-        String sql= "SELECT * FROM letter WHERE deleted=false";
+    public List<Letter> findAll() throws SQLException {
+        String sql= "SELECT * FROM Letter WHERE deleted=false";
 
-        List<LetterModel> results = new ArrayList<>();
+        List<Letter> results = new ArrayList<>();
         try {
             PreparedStatement statement = initConnection.prepareSQL(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                results.add(new LetterModel(resultSet));
+                System.out.println("find!");
+                int id= resultSet.getInt("id");
+                String title=resultSet.getString("title");
+                String content=resultSet.getString("content");
+                int idApplicant= resultSet.getInt("id_applicant");
+                Date applyDate=resultSet.getDate("apply_date");
+                boolean deleted=resultSet.getBoolean("deleted");
+                String category=resultSet.getString("category");
+                int statusLetter=resultSet.getInt("status_letter");
+                results.add(new Letter(id,title,content,idApplicant,applyDate,deleted,category,statusLetter));
             }
         } catch (SQLException e) {
             return null;
         }
-
+        System.out.println(results.get(0).toString());
         return results.isEmpty() ? null : results;
     }
 
     @Override
-    public LetterModel findById(int id) throws SQLException {
+    public Letter findById(int id) throws SQLException {
         String sql= "SELECT * FROM letter WHERE deleted=false and id=?";
-        List<LetterModel> results = new ArrayList<>();
+        List<Letter> results = new ArrayList<>();
 
         try {
             PreparedStatement statement = initConnection.prepareSQL(sql);
@@ -43,7 +52,7 @@ public class LetterDaoIMPL implements LetterDao {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                results.add(new LetterModel(resultSet));
+                results.add(new Letter());
             }
         } catch (SQLException e) {
             return null;
@@ -53,9 +62,9 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public LetterModel insert(LetterModel letter) throws SQLException {
+    public Letter insert(Letter letter) throws SQLException {
         // trả về letter đã insert
-        LetterModel returnLetter = null;
+        Letter returnLetter = null;
 
         String sql = "INSERT INTO letter (title, content, id_applicant, applyDate, deleted) value (?,?,?,?,?)";
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
@@ -76,7 +85,7 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public boolean update(LetterModel letter) throws SQLException {
+    public boolean update(Letter letter) throws SQLException {
         String sql = "UPDATE letter set title=? set content=? set id_applicant=? set apply_date=? set deleted=? WHERE id=?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
@@ -103,7 +112,7 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public List<LetterModel> sortById(int id) throws SQLException {
+    public List<Letter> sortById(int id) throws SQLException {
         return null;
     }
 }

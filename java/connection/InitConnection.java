@@ -5,6 +5,7 @@ import constance.AppConfig;
 import java.sql.*;
 
 public class InitConnection {
+
     private Connection connection;
 
     public void testDriver() throws ClassNotFoundException{
@@ -19,7 +20,7 @@ public class InitConnection {
 
     public Connection getConnect() throws ClassNotFoundException {
         // thông số đã chuyển ra package constance
-        String dbName = "testse";
+        String dbName = "db_se";
         String connectionURL = AppConfig.URL_DATABASE + dbName;
 
         if(connection == null){
@@ -40,10 +41,10 @@ public class InitConnection {
     public PreparedStatement prepareSQL(String sql){
         try{
             System.out.println(">> " + sql);
-            return connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            return this.getConnect().prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             //ResultSet.TYPE_SCROLL_SENSITIVE: cho phép con trỏ resultSet chạy từ bản ghi đầu đến cuối.
             //ResultSet.CONCUR_UPDATABLE: tạo ra một đuối tượng resultSet có thể được cập nhập.
-        } catch (SQLException ex){
+        } catch (SQLException | ClassNotFoundException ex){
             System.out.println("can't query");
             ex.printStackTrace();
             return null;
