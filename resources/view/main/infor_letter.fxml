@@ -1,22 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;">
+      <Pane fx:id="pan1" layoutX="1.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f7f93f;">
          <children>
-            <Label layoutX="90.0" layoutY="65.0" prefHeight="62.0" prefWidth="200.0" text="Label">
+            <TextField alignment="CENTER" layoutX="488.0" layoutY="34.0" prefHeight="25.0" prefWidth="294.0" promptText="Cơ Quan Xử Lí Đơn">
                <font>
-                  <Font size="22.0" />
+                  <Font size="17.0" />
                </font>
-            </Label>
-         </children></Pane>
-      <TextArea fx:id="textFieldToString" layoutX="91.0" layoutY="139.0" prefHeight="200.0" prefWidth="343.0" />
+            </TextField>
+            <TextField layoutX="63.0" layoutY="105.0" prefHeight="37.0" prefWidth="199.0" promptText="Họ Tên Người Viết">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="63.0" layoutY="62.0" promptText="Ngày Viết">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Line endX="664.6000366210938" endY="8.79998779296875" layoutX="126.0" layoutY="83.0" startX="201.30715942382812" startY="8.799980163574219" />
+            <CheckBox layoutX="66.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Nam">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="196.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Nữ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <TextField layoutX="64.0" layoutY="175.0" promptText="Địa Chỉ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextArea fx:id="textFieldToString" layoutX="64.0" layoutY="334.0" prefHeight="152.0" prefWidth="661.0" promptText="Nội Dung">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextArea>
+            <Line endX="58.600006103515625" endY="259.20001220703125" layoutX="268.0" layoutY="65.0" startX="58.60003662109375" startY="-39.999996185302734" />
+            <TextField layoutX="353.0" layoutY="124.0" prefHeight="37.0" prefWidth="167.0" promptText="Ngày Tiếp">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="353.0" layoutY="171.0" prefHeight="37.0" prefWidth="167.0" promptText="Yêu Cầu - Kiến Nghị">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="353.0" layoutY="220.0" prefHeight="37.0" prefWidth="167.0" promptText="Tình Trạng">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="353.0" layoutY="268.0" prefHeight="37.0" prefWidth="167.0" promptText="Ngày Giải Quyết">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button layoutX="66.0" layoutY="268.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Sửa">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <CheckBox layoutX="558.0" layoutY="179.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="224.0" text="Thuộc Thẩm Quyền Giải Quyết">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="558.0" layoutY="216.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="224.0" text="Không Thuộc Thẩm Quyền ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="559.0" layoutY="253.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="224.0" text=" Xem Xét Thêm">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <TextField layoutX="347.0" layoutY="35.0" prefHeight="37.0" prefWidth="105.0" promptText="Mã Đơn">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <ComboBox layoutX="64.0" layoutY="16.0" prefHeight="37.0" prefWidth="199.0" promptText="Loại Đơn" />
+            <Button layoutX="180.0" layoutY="268.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Xóa">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

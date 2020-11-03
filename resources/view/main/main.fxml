@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MainController">
    <children>
       <AnchorPane layoutX="212.0" layoutY="-1.0" prefHeight="492.0" prefWidth="800.0" AnchorPane.leftAnchor="212.0">
          <children>
@@ -48,15 +38,27 @@
       </AnchorPane>
       <AnchorPane layoutX="11.0" prefHeight="500.0" prefWidth="200.0">
          <children>
-            <Button fx:id="butTaoDon" layoutX="11.0" layoutY="177.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Tạo Đơn" />
-            <Button fx:id="butThongKe" layoutX="11.0" layoutY="233.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Thống Kê Đơn" />
-            <Button fx:id="butTimKiem" layoutX="11.0" layoutY="292.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Tìm Kiếm" />
+            <Button fx:id="butTaoDon" layoutX="11.0" layoutY="177.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Tạo Đơn">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="butThongKe" layoutX="11.0" layoutY="233.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Thống Kê Đơn">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="butTimKiem" layoutX="11.0" layoutY="292.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Tìm Kiếm">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
             <Label alignment="CENTER" layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="190.0" text="hello admin" underline="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="butXemChiTiet" layoutX="11.0" layoutY="119.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Chi tiet" />
+            <Button fx:id="butXemChiTiet" layoutX="11.0" layoutY="119.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Chi tiet">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>
