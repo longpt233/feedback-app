@@ -22,7 +22,7 @@ public class LoginController implements Initializable {
                 Stage preStage = (Stage) submit.getScene().getWindow();
                 preStage.close();
 
-                Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("scene/app.fxml"));
+                Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("scene/main.fxml"));
                 Scene app = new Scene(root);
                 Stage stage = new Stage();
                 //code lấy tt đăng nhập set cho trang mới

@@ -37,7 +37,6 @@ public class LetterDaoIMPL implements LetterDao {
         } catch (SQLException e) {
             return null;
         }
-        System.out.println(results.get(0).toString());
         return results.isEmpty() ? null : results;
     }
 

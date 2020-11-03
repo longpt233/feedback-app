@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;">
+         <children>
+            <Label layoutX="90.0" layoutY="65.0" prefHeight="62.0" prefWidth="200.0" text="Label">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <TextArea fx:id="textFieldToString" layoutX="91.0" layoutY="139.0" prefHeight="200.0" prefWidth="343.0" />
+   </children>
+</AnchorPane>

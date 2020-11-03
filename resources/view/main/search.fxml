@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.SearchController">
+   <children>
+      <Pane fx:id="pan3" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f7f93f;">
+         <children>
+            <Label layoutX="322.0" layoutY="14.0" text="Tìm Kiếm Đơn " textFill="#2112cfe8">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="89.0" layoutY="69.0" prefHeight="35.0" prefWidth="127.0" text="Chọn Loại Đơn" textFill="#2112cf">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <CheckBox layoutX="43.0" layoutY="124.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="79.0" text="Tố Cáo" textFill="#2112cf">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="128.0" layoutY="124.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="105.0" text="Khiếu Nại" textFill="#2112cf">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="43.0" layoutY="165.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="190.0" text="Kiến Nghị Phản Ánh" textFill="#2112cf">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <TextField layoutX="337.0" layoutY="102.0" prefHeight="25.0" prefWidth="127.0" />
+            <TextField layoutX="564.0" layoutY="102.0" />
+            <TextField layoutX="337.0" layoutY="175.0" />
+            <TextField layoutX="564.0" layoutY="175.0" />
+            <Label layoutX="338.0" layoutY="69.0" text="Mã Số Đơn" textFill="#2112cf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="564.0" layoutY="71.0" prefHeight="25.0" prefWidth="165.0" text="Tên Người Viết - Xử Lí" textFill="#2112cf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="337.0" layoutY="150.0" text="Từ Ngày" textFill="#2112cf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="564.0" layoutY="150.0" text="Đến Ngày" textFill="#2112cf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Line endX="541.0" endY="-7.62939453125E-6" layoutX="229.0" layoutY="49.0" startX="-208.39996337890625" startY="-7.62939453125E-6" />
+            <Line endX="59.4000244140625" endY="175.5" layoutX="213.0" layoutY="49.0" startX="59.4000244140625" startY="0.49999237060546875" />
+            <Line endX="387.5999755859375" layoutX="388.0" layoutY="143.0" startX="-115.0999755859375" startY="-1.52587890625E-5" />
+            <Line endX="546.7999267578125" layoutX="232.0" layoutY="225.0" startX="-209.0" />
+            <Button layoutX="43.0" layoutY="235.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: ed0000;" text="Tìm" textFill="#260909">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="337.0" layoutY="235.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: ed0000;" text="Xem Thống Kê">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <TableView layoutY="286.0" prefHeight="214.0" prefWidth="800.0">
+               <columns>
+                  <TableColumn prefWidth="53.60002136230469" text="Stt" />
+                  <TableColumn prefWidth="127.20004272460938" text="Loại Đơn" />
+                  <TableColumn prefWidth="94.39996337890625" text="Ngày Viết Đơn" />
+                  <TableColumn prefWidth="158.4000244140625" text="Họ Tên" />
+                  <TableColumn prefWidth="170.39996337890625" text="Địa Chỉ" />
+                  <TableColumn prefWidth="194.39996337890625" text="Nội Dung" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
