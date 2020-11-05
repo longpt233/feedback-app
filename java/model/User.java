@@ -4,28 +4,32 @@ import java.sql.ResultSet;
 
 public class User {
     private int idApplicant;
-    private int idCard;
+    private String idCard;
     private String password;
-    private String name;
+    private boolean deleted;
 
     public User() {
     }
 
-    public User(ResultSet resultSet) {
+    public User(int resultSet) {
     }
 
+    public User(int idApplicant, String idCard, String password, boolean deleted) {
+        this.idApplicant = idApplicant;
+        this.idCard = idCard;
+        this.password = password;
+        this.deleted = deleted;
+    }
 
     @Override
     public String toString() {
-        return "UserModel{" +
+        return "User{" +
                 "idApplicant=" + idApplicant +
-                ", idCard=" + idCard +
+                ", idCard='" + idCard + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
+                ", deleted=" + deleted +
                 '}';
     }
-
-
 
     public int getIdApplicant() {
         return idApplicant;
@@ -35,11 +39,11 @@ public class User {
         this.idApplicant = idApplicant;
     }
 
-    public int getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
@@ -51,13 +55,11 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public boolean isDeleted() {
+        return deleted;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
-
-
 }

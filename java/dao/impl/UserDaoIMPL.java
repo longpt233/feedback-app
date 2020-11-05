@@ -2,6 +2,8 @@ package dao.impl;
 
 import connection.InitConnection;
 import dao.UserDao;
+import model.Applicant;
+import model.Letter;
 import model.User;
 
 import java.sql.Connection;
@@ -12,57 +14,68 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoIMPL  implements UserDao {
-
-    public User findUser(String user) {
-        String sql= "SELECT * FROM users AS u WHERE username = ? ";
-        // mot query can co sql mau + maper+ cac tham so truyen vao query
-        List<User> results = new ArrayList<>();
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try {
-            InitConnection initConnection =new InitConnection();
-            connection = initConnection.getConnect();
-            statement = connection.prepareStatement(sql);
-            statement.setString(1,user);
-            resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                results.add(new User(resultSet));
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            return null;
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException e) {
-                return null;
-            }
-        }
-
-        return results.isEmpty() ? null : results.get(0);
-    }
+    private InitConnection initConnection = new InitConnection();
 
     @Override
     public List<User> findAll() throws SQLException {
-        return null;
+        List<User> results = new ArrayList<>();
+        String sql = "SELECT * FROM user";
+
+        try {
+            PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                results.add(new User(resultSet.getInt("id_applicant"),
+                        resultSet.getString("id_card"),
+                        resultSet.getString("password"),
+                        resultSet.getBoolean("deleted")));
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+        return results.isEmpty() ? null : results;
     }
 
     @Override
     public User findById(int id) throws SQLException {
-        return null;
+        List<User> results = new ArrayList<>();
+        String sql = "SELECT *FROM user WHERE id_applicant=?";
+
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setInt(1,id);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(new User());
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+
+        return results.isEmpty() ? null : results.get(0);
+
     }
 
     @Override
     public User insert(User user) throws SQLException {
-        return null;
+        User user1 = new User();
+
+        String sql = "INSERT INTO applicant (id_applicant, id_card, name, password) value (?,?,?,?)";
+        PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
+        preparedStatement.setInt(1, user.getIdApplicant());
+        preparedStatement.setString(2, user.getIdCard());
+        preparedStatement.setString(3, user.getPassword());
+        preparedStatement.setBoolean(4, user.isDeleted());
+
+        int isDone = preparedStatement.executeUpdate(); //  > 0 khi insert thành công
+        if (isDone > 0){
+            ResultSet resultSet = preparedStatement.getGeneratedKeys(); // lấy ra id của bản ghi đã thêm vào
+            user1 = findById((int) resultSet.getLong(1)); // tìm kiếm lại dderr kiểm tra
+        }
+
+        return user1;
     }
 
     @Override

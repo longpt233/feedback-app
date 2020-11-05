@@ -1,0 +1,1 @@
+tat ca chuc nang phai co trong pack nay

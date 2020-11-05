@@ -85,7 +85,7 @@ public class LetterDaoIMPL implements LetterDao {
 
     @Override
     public boolean update(Letter letter) throws SQLException {
-        String sql = "UPDATE letter set title=? set content=? set id_applicant=? set apply_date=? set deleted=? WHERE id=?";
+        String sql = "UPDATE letter set title=?, content=?, id_applicant=?, apply_date=?, deleted=? WHERE id=?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         statement.setString(1, letter.getTitle());

@@ -20,7 +20,7 @@ public class InitConnection {
 
     public Connection getConnect() throws ClassNotFoundException {
         // thông số đã chuyển ra package constance
-        String dbName = "db_se";
+        String dbName = "software_engineering";
         String connectionURL = AppConfig.URL_DATABASE + dbName;
 
         if(connection == null){

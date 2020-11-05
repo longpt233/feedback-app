@@ -1,49 +1,49 @@
 package service.impl;
 
-import dao.LetterDao;
-import dao.impl.LetterDaoIMPL;
-import model.Letter;
-import service.LetterService;
+import dao.UserDao;
+import dao.impl.UserDaoIMPL;
+import model.User;
+import service.UserService;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class LetterServiceIMPL implements LetterService {
-    private LetterDao letterDao = new LetterDaoIMPL();
+public class UserServiceIMPL implements UserService {
+    private UserDao userDao = new UserDaoIMPL();
 
     @Override
-    public List<Letter> findAll() throws SQLException {
+    public List<User> findAll() throws SQLException {
         // trả về toàn bộ danh sách
-        return letterDao.findAll();
+        return userDao.findAll();
     }
 
     @Override
-    public Letter findById(int id) throws SQLException {
+    public User findById(int id) throws SQLException {
         // trả về đối tượng đã tìm kiếm
         if (id>0){
-            return letterDao.findById(id);
+            return userDao.findById(id);
         }
         System.out.println("notification");
         return null;
     }
 
     @Override
-    public boolean insert(Letter letter) throws SQLException {
+    public boolean insert(User user) throws SQLException {
         // trả về true nếu insert thành công
-        if(letterDao.insert(letter) != null) return true;
+        if(userDao.insert(user) != null) return true;
         return false;
     }
 
     @Override
-    public boolean update(Letter letter) throws SQLException {
+    public boolean update(User user) throws SQLException {
         // trả về true nếu cập nhật thành công
         // xu li logic xem co dang dang nhap la admin khong thi moi cho xoa
-        return letterDao.update(letter);
+        return userDao.update(user);
     }
 
     @Override
     public boolean delete(int id) throws SQLException {
         // trả về true nếu xóa thành công
-        return (id > 0) ? letterDao.delete(id) : false;
+        return (id > 0) ? userDao.delete(id) : false;
     }
 }

@@ -10,12 +10,12 @@ public class ShowUserService {
         this.user = user;
     }
 
-    public boolean CheckExist(){
-        UserDaoIMPL tmp=new UserDaoIMPL();
-        if (tmp.findUser(user.getName())==null)
-            return false;
-        return true;
-    }
+//    public boolean CheckExist(){
+//        UserDaoIMPL tmp=new UserDaoIMPL();
+//        if (tmp.findUser(user.getName())==null)
+//            return false;
+//        return true;
+//    }
 
     public void show(){
 

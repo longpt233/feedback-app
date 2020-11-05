@@ -11,7 +11,7 @@ public interface LetterService {
 
     List<Letter> findAll() throws SQLException;
     Letter findById(int id) throws SQLException;
-    boolean insert(Letter leter) throws SQLException, ClassNotFoundException;
+    boolean insert(Letter letter) throws SQLException, ClassNotFoundException;
     boolean update(Letter letter) throws SQLException;
     boolean delete(int id) throws SQLException;
 }

@@ -12,6 +12,20 @@ public class Applicant {
     private String address;
     private int role;
 
+    public Applicant() {
+    }
+
+    public Applicant(int id, String identityCard, String name, String phone, Date birth, int gender, String address, int role) {
+        this.id = id;
+        this.identityCard = identityCard;
+        this.name = name;
+        this.phone = phone;
+        this.birth = birth;
+        this.gender = gender;
+        this.address = address;
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "Applicant{" +
