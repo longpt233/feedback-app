@@ -51,7 +51,15 @@ public class LetterDaoIMPL implements LetterDao {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                results.add(new Letter());
+                int id2= resultSet.getInt("id");
+                String title=resultSet.getString("title");
+                String content=resultSet.getString("content");
+                int idApplicant= resultSet.getInt("id_applicant");
+                Date applyDate=resultSet.getDate("apply_date");
+                boolean deleted=resultSet.getBoolean("deleted");
+                String category=resultSet.getString("category");
+                int statusLetter=resultSet.getInt("status_letter");
+                results.add(new Letter(id2,title,content,idApplicant,applyDate,deleted,category,statusLetter));
             }
         } catch (SQLException e) {
             return null;
@@ -63,9 +71,9 @@ public class LetterDaoIMPL implements LetterDao {
     @Override
     public Letter insert(Letter letter) throws SQLException {
         // trả về letter đã insert
-        Letter returnLetter = null;
+//        Letter returnLetter = null;
 
-        String sql = "INSERT INTO letter (title, content, id_applicant, applyDate, deleted) value (?,?,?,?,?)";
+        String sql = "INSERT INTO letter (title, content, id_applicant, apply_date, deleted, category) value (?,?,?,?,?,?)";
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         statement.setString(1, letter.getTitle());
@@ -73,14 +81,18 @@ public class LetterDaoIMPL implements LetterDao {
         statement.setInt(3, letter.getIdApplicant());
         statement.setDate(4, letter.getApplyDate());
         statement.setBoolean(5, letter.getDeleted());
+        statement.setString(6, letter.getCategory());
 
         int isDone = statement.executeUpdate(); //  > 0 khi insert thành công
+        System.out.println("isDone"+isDone);
         if (isDone > 0){
-            ResultSet resultSet = statement.getGeneratedKeys(); // lấy ra id của bản ghi đã thêm vào
-            returnLetter = findById((int) resultSet.getLong(1)); // tìm kiếm lại dderr kiểm tra
+            return  letter;
+//            ResultSet resultSet = statement.getGeneratedKeys(); // lấy ra id của bản ghi đã thêm vào
+//            returnLetter = findById((int) resultSet.getLong(1)); // tìm kiếm lại dderr kiểm tra
+        }else{
+            return  null;
         }
 
-        return returnLetter;
     }
 
     @Override

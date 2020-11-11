@@ -55,9 +55,9 @@ public class InitConnection {
     public PreparedStatement prepareUpdate(String sql){
         try{
             System.out.println(">> " + sql);
-            return connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            return this.getConnect().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             //Statement.RETURN_GENERATED_KEYS trả về id của bản ghi vừa insert thành công
-        } catch (SQLException ex){
+        } catch (SQLException | ClassNotFoundException ex){
             System.out.println("can't update");
             ex.printStackTrace();
             return null;

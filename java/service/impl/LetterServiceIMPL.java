@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class LetterServiceIMPL implements LetterService {
+    public LetterServiceIMPL(){
+
+    }
     private LetterDao letterDao = new LetterDaoIMPL();
 
     @Override
@@ -21,6 +24,8 @@ public class LetterServiceIMPL implements LetterService {
     public Letter findById(int id) throws SQLException {
         // trả về đối tượng đã tìm kiếm
         if (id>0){
+            System.out.println("vao tim kiem tim "+id);
+            System.out.println("tìm id 1 và ra id là "+letterDao.findById(id).toString());
             return letterDao.findById(id);
         }
         System.out.println("notification");
@@ -30,6 +35,7 @@ public class LetterServiceIMPL implements LetterService {
     @Override
     public boolean insert(Letter letter) throws SQLException {
         // trả về true nếu insert thành công
+        System.out.println("service recv"+letter.toString());
         if(letterDao.insert(letter) != null) return true;
         return false;
     }

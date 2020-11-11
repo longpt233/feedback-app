@@ -39,7 +39,7 @@ public class MainController implements Initializable {
     private Button butTaoDon, butThongKe, butTimKiem, butXemChiTiet;
 
     private LetterService letterService = new LetterServiceIMPL();
-    ;
+
 
     private ObservableList<Letter> lettersObservableList;
 
@@ -94,7 +94,7 @@ public class MainController implements Initializable {
                     loader.setLocation(getClass().getResource("/view/main/infor_letter.fxml"));
 
                     // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    InforLetterControler controllerChiTietDon=new InforLetterControler();
+                    InforLetterControler controllerChiTietDon =new InforLetterControler();
                     //-------------------------
                     // neu dao vi tri 2 dong nay cho nhau se bi loi
                     controllerChiTietDon.setLetter(lettersSelected.get(0));
@@ -110,6 +110,7 @@ public class MainController implements Initializable {
                     stageChinhSua.setScene(scene);
                     stageChinhSua.initModality(Modality.WINDOW_MODAL);
                     stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+
                      stageChinhSua.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -136,6 +137,7 @@ public class MainController implements Initializable {
 
 
     public void refreshTable() throws SQLException {
+        System.out.println("init table");
         letters.removeAll(letters);
         letters.addAll(letterService.findAll());
         lettersObservableList = FXCollections.observableList(letters);
