@@ -106,7 +106,7 @@ public class InforLetterControler implements Initializable {
 
     }
     public int statusLetter=1;
-    ObservableList<String> list = FXCollections.observableArrayList("the loai1", "Đơn loại 2", "Đơn loại 3");
+    ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
 
 
     @Override

@@ -20,7 +20,7 @@
                <font>
                   <Font size="17.0" />
                </font></TextField>
-            <TextField fx:id="applicantName" layoutX="558.0" layoutY="116.0" prefHeight="37.0" prefWidth="211.0" promptText="Họ Tên Người Viết">
+            <TextField fx:id="applicantName" layoutX="560.0" layoutY="178.0" prefHeight="37.0" prefWidth="211.0" promptText="Họ Tên Người Viết">
                <font>
                   <Font size="16.0" />
                </font></TextField>
@@ -46,7 +46,7 @@
                   <Font size="16.0" />
                </font></TextField>
             <ComboBox fx:id="category" layoutX="558.0" layoutY="35.0" prefHeight="37.0" prefWidth="211.0" promptText="Loại Đơn" />
-            <TextField fx:id="applicantID" layoutX="560.0" layoutY="178.0" prefHeight="37.0" prefWidth="211.0" promptText="CMND/CCCD">
+            <TextField fx:id="applicantID" layoutX="560.0" layoutY="116.0" prefHeight="37.0" prefWidth="211.0" promptText="CMND/CCCD">
                <font>
                   <Font size="16.0" />
                </font>

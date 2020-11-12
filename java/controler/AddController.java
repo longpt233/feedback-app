@@ -1,5 +1,6 @@
 package controler;
 
+import com.sun.source.tree.WhileLoopTree;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,12 +11,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.Applicant;
 import model.Letter;
+import service.ApplicantService;
+import service.impl.ApplicantServiceIMPL;
 import service.impl.LetterServiceIMPL;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -38,13 +43,24 @@ public class AddController implements Initializable {
     @FXML
     private ComboBox<String> category;
 
-
+    private ApplicantService applicantService = new ApplicantServiceIMPL();
     private int statusLetter=0;
-    ObservableList<String> list = FXCollections.observableArrayList("the loai1", "Đơn loại 2", "Đơn loại 3");
+    ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        applicantID.textProperty().addListener((observable, oldVal, newVal) -> {
+
+            try{
+                Applicant thisapplicant = applicantService.findById(Integer.valueOf(newVal));
+                address.setText(thisapplicant.getAddress());
+                applicantName.setText(thisapplicant.getName());
+            }
+            catch (SQLException e){
+
+            }
+        });
         category.setItems(list);
         addLetter.setOnAction(actionEvent -> {
             try {
