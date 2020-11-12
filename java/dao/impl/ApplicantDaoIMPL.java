@@ -50,7 +50,15 @@ public class ApplicantDaoIMPL implements ApplicantDao {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                results.add(new Applicant());
+                int id1 = resultSet.getInt("id");
+                String identityCard = resultSet.getString("identity_card");
+                String name = resultSet.getString("name");
+                String phone = resultSet.getString("phone");
+                Date birth = resultSet.getDate("birth");
+                int gender = resultSet.getInt("gender");
+                String address = resultSet.getString("address");
+                int role = resultSet.getInt("role");
+                results.add(new Applicant(id1, identityCard, name, phone, birth, gender, address, role));
             }
         } catch (SQLException e) {
             return null;

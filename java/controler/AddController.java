@@ -24,50 +24,28 @@ public class AddController implements Initializable {
     private TextField organizationName;
 
     @FXML
-    private DatePicker processedDate;
+    private Button addLetter;
 
     @FXML
-    private Button addLetter;
-//
-    @FXML
     private TextField letterID, applicantID, applicantName, address, title;
+
     @FXML
     private TextArea content;
+
     @FXML
     private DatePicker applyDate;
- //
 
     @FXML
     private ComboBox<String> category;
 
-    @FXML
-    private RadioButton fermaleRB,maleRB;
 
-    @FXML
-    private RadioButton canRB, cannotRB, waitRB;
-
-    @FXML
-    private ToggleGroup genderGroup;
-
-    @FXML
-    private ToggleGroup statusGroup;
-
-    public int statusLetter=1;
+    private int statusLetter=0;
     ObservableList<String> list = FXCollections.observableArrayList("the loai1", "Đơn loại 2", "Đơn loại 3");
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(canRB.isSelected()){
-            statusLetter=1;
-        }
-        if(cannotRB.isSelected()){
-            statusLetter=2;
-        }
-        if(waitRB.isSelected()){
-            statusLetter=3;
-        }
-        category.setItems(list);
 
+        category.setItems(list);
         addLetter.setOnAction(actionEvent -> {
             try {
                 if (letterID.getText().isEmpty()){
@@ -84,7 +62,7 @@ public class AddController implements Initializable {
                     String cate= category.getValue();
 
 
-                    Letter newLetter = new Letter(ID, tit,ct, aID, date, false, cate, 1);
+                    Letter newLetter = new Letter(ID, tit,ct, aID, date, false, cate, statusLetter);
                     LetterServiceIMPL letterServiceIMPL=new LetterServiceIMPL();
                     System.out.println("them thanh cong? "+letterServiceIMPL.insert(newLetter));
 

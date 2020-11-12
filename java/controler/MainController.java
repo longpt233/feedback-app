@@ -126,7 +126,7 @@ public class MainController implements Initializable {
         tableColumnLoaiDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("category"));
         tableColumnNgayVietDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("applyDate"));
         tableColumnNoiDung.setCellValueFactory(new PropertyValueFactory<Letter, String>("content"));
-        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("id"));
+        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusLetter"));
 
         try {
             refreshTable();

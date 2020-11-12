@@ -90,11 +90,20 @@ public class InforLetterControler implements Initializable {
  //
     private ApplicantService applicantService = new ApplicantServiceIMPL();
     private Letter letter;
+    private Applicant applicant;
 
 
     public void setLetter(Letter letter){
         System.out.println("call set");
         this.letter=letter;
+        try{
+            this.applicant=applicantService.findById(letter.getIdApplicant());
+            System.out.println("Nguoi nay la "+applicant.getName());
+        }
+        catch (SQLException e){
+
+        }
+
     }
     public int statusLetter=1;
     ObservableList<String> list = FXCollections.observableArrayList("the loai1", "Đơn loại 2", "Đơn loại 3");
@@ -104,6 +113,16 @@ public class InforLetterControler implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         letterID1.setText(String.valueOf(letter.getId()));
+// Vẫn chưa tìm được applicant
+        applicantID.setText(String.valueOf(applicant.getId()));
+        applicantName.setText(applicant.getName());
+        address.setText(applicant.getAddress());
+        if(applicant.getGender()==1){
+            maleRB.setSelected(true);
+        }
+        if(applicant.getGender()==0){
+            fermaleRB.setSelected(true);
+        }
 
         String date = new SimpleDateFormat("yyyy-MM-dd").format(letter.getApplyDate());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -114,7 +133,8 @@ public class InforLetterControler implements Initializable {
         content.setText(letter.getContent());
         category.setValue(letter.getCategory());
         if(letter.getStatusLetter()==1) canRB.setSelected(true);
-
+        if(letter.getStatusLetter()==2) cannotRB.setSelected(true);
+        if(letter.getStatusLetter()==3) waitRB.setSelected(true);
         System.out.println("hello"+letter.toString());
 //        content.setText(letter.toString());
 //

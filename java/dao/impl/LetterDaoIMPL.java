@@ -23,7 +23,6 @@ public class LetterDaoIMPL implements LetterDao {
             PreparedStatement statement = initConnection.prepareSQL(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                System.out.println("find!");
                 int id= resultSet.getInt("id");
                 String title=resultSet.getString("title");
                 String content=resultSet.getString("content");

@@ -121,7 +121,7 @@ public class SearchController implements Initializable {
     public void refreshTable() throws SQLException {
         System.out.println("init table");
         letters.removeAll(letters);
-        letters.addAll(letterService.findAll());
+        letters.add(letterService.findById(Integer.valueOf(letterID.getText())));
         lettersObservableList = FXCollections.observableList(letters);
         tableViewLetter.setItems(lettersObservableList);
     }
