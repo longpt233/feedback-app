@@ -1,3 +1,14 @@
+CREATE TABLE Applicant (
+	id int auto_increment NOT NULL primary key,
+    identity_card char(12),
+    name varchar(150),
+    phone char(10),
+    birth date,
+    gender int,
+    address varchar(250),
+    role int
+);
+
 CREATE TABLE Letter (
 	id int auto_increment NOT NULL primary key,
     title varchar(100),
@@ -10,16 +21,6 @@ CREATE TABLE Letter (
     FOREIGN KEY (id_applicant) REFERENCES Applicant(id)
 );
 
-CREATE TABLE Applicant (
-	id int auto_increment NOT NULL primary key,
-    identity_card char(12),
-    name varchar(150),
-    phone char(10),
-    birth date,
-    gender int,
-    address varchar(250),
-    role int
-);
 
 CREATE TABLE History (
 	id_applicant int,
@@ -45,7 +46,7 @@ CREATE TABLE User(
     id_card char(12),
     password varchar(20),
     deleted boolean,
-    FOREIGN KEY (id_applicant) REFERENCES Applicant(id),
+    FOREIGN KEY (id_applicant) REFERENCES Applicant(id)
 );
 
 INSERT INTO Applicant VALUES(1,"1234","long user not admin","1234567879","2000-3-23",1,"ha noi",1);

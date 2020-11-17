@@ -41,7 +41,7 @@ public class LetterDaoIMPL implements LetterDao {
 
     @Override
     public Letter findById(int id) throws SQLException {
-        String sql= "SELECT * FROM letter WHERE deleted=false and id=?";
+        String sql= "SELECT * FROM Letter WHERE deleted=false and id=?";
         List<Letter> results = new ArrayList<>();
 
         try {
@@ -72,7 +72,7 @@ public class LetterDaoIMPL implements LetterDao {
         // trả về letter đã insert
 //        Letter returnLetter = null;
 
-        String sql = "INSERT INTO letter (title, content, id_applicant, apply_date, deleted, category) value (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Letter (title, content, id_applicant, apply_date, deleted, category) value (?,?,?,?,?,?)";
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         statement.setString(1, letter.getTitle());
@@ -96,7 +96,7 @@ public class LetterDaoIMPL implements LetterDao {
 
     @Override
     public boolean update(Letter letter) throws SQLException {
-        String sql = "UPDATE letter set title=?, content=?, id_applicant=?, apply_date=?, deleted=? WHERE id=?";
+        String sql = "UPDATE Letter set title=?, content=?, id_applicant=?, apply_date=?, deleted=? WHERE id=?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         statement.setString(1, letter.getTitle());
@@ -113,7 +113,7 @@ public class LetterDaoIMPL implements LetterDao {
 
     @Override
     public boolean delete(int id) throws SQLException {
-        String sql = "update letter set deleted = true where id = ?";
+        String sql = "update Letter set deleted = true where id = ?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         statement.setInt(1, id);
         int isDone = statement.executeUpdate();

@@ -56,13 +56,28 @@ public class MainController implements Initializable {
     private void initBut() {
         // tat man hinh hien tai de hien thi man hinh tao don
         butTaoDon.setOnAction(actionEvent -> {
+//            try {
+//                Parent blad = FXMLLoader.load(getClass().getResource("/view/main/add.fxml"));
+//                Scene scene = new Scene(blad);
+//                Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//                appStage.setTitle("Tao Don");
+//                appStage.setScene(scene);
+//                appStage.show();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
             try {
-                Parent blad = FXMLLoader.load(getClass().getResource("/view/main/add.fxml"));
-                Scene scene = new Scene(blad);
-                Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                appStage.setTitle("Tao Don");
-                appStage.setScene(scene);
-                appStage.show();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/view/main/add.fxml"));
+                Parent parent=loader.load();
+                Scene scene = new Scene(parent);
+                Stage stageAdd = new Stage();
+                stageAdd.setTitle("Add new letter");
+                stageAdd.setScene(scene);
+                stageAdd.initModality(Modality.WINDOW_MODAL);
+                stageAdd.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+
+                stageAdd.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -91,10 +106,10 @@ public class MainController implements Initializable {
             if (lettersSelected.get(0) != null) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/main/infor_letter.fxml"));
+                    loader.setLocation(getClass().getResource("/view/main/show.fxml"));
 
                     // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    InforLetterControler controllerChiTietDon =new InforLetterControler();
+                    ShowControler controllerChiTietDon =new ShowControler();
                     //-------------------------
                     // neu dao vi tri 2 dong nay cho nhau se bi loi
                     controllerChiTietDon.setLetter(lettersSelected.get(0));

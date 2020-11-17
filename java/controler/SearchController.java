@@ -72,10 +72,11 @@ public class SearchController implements Initializable {
             if (lettersSelected.get(0) != null) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/main/infor_letter.fxml"));
+                    loader.setLocation(getClass().getResource("/view/main/show" +
+                            ".fxml"));
 
                     // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    InforLetterControler controllerChiTietDon =new InforLetterControler();
+                    ShowControler controllerChiTietDon =new ShowControler();
                     //-------------------------
                     // neu dao vi tri 2 dong nay cho nhau se bi loi
                     controllerChiTietDon.setLetter(lettersSelected.get(0));
@@ -139,7 +140,7 @@ public class SearchController implements Initializable {
 //            System.out.print(e.getMessage());
 //        }
 //        try{
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main/infor_letter.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main/show.fxml"));
 //            InforLetterControler controller = loader.getController();
 //            controller.setLetter(resultByID);
 //

@@ -1,6 +1,5 @@
 package controler;
 
-import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,8 +22,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-public class InforLetterControler implements Initializable {
-    InforLetterControler(){
+public class ShowControler implements Initializable {
+    ShowControler(){
     }
 
     @FXML
