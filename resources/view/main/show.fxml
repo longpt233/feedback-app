@@ -17,15 +17,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pan1" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f7f93f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="pan1" prefHeight="705.0" prefWidth="800.0" style="-fx-background-color: #f7f93f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Line endX="600.0" endY="40.79998779296875" layoutX="126.0" layoutY="83.0" startX="-100.0" startY="40.79998016357422" />
-      <TextArea fx:id="content" layoutX="27.0" layoutY="237.0" prefHeight="133.0" prefWidth="747.0" promptText="Nội Dung">
+      <TextArea fx:id="content" layoutX="27.0" layoutY="341.0" prefHeight="133.0" prefWidth="747.0" promptText="Nội Dung">
          <font>
             <Font size="20.0" />
          </font>
       </TextArea>
-      <Button fx:id="update" layoutX="441.0" layoutY="409.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Sửa">
+      <Button fx:id="update" layoutX="161.0" layoutY="624.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Sửa">
          <font>
             <Font size="16.0" />
          </font>
@@ -35,7 +35,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button fx:id="delete" layoutX="617.0" layoutY="409.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Xóa">
+      <Button fx:id="delete" layoutX="475.0" layoutY="624.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Xóa">
          <font>
             <Font size="16.0" />
          </font>
@@ -45,7 +45,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="201.0" prefHeight="21.0" prefWidth="83.0" text="Ngày Viết">
+      <Label layoutX="22.0" layoutY="289.0" prefHeight="21.0" prefWidth="83.0" text="Ngày Viết">
          <font>
             <Font size="15.0" />
          </font>
@@ -65,7 +65,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="category" layoutX="345.0" layoutY="138.0" prefHeight="37.0" prefWidth="192.0" promptText="Loại Đơn" />
+      <ComboBox fx:id="category" layoutX="270.0" layoutY="139.0" prefHeight="37.0" prefWidth="192.0" promptText="category" />
       <RadioButton fx:id="fermaleRB" layoutX="691.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" text="Nữ">
          <font>
             <Font size="16.0" />
@@ -81,18 +81,18 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="applyDate" layoutX="122.0" layoutY="191.0" prefHeight="38.0" prefWidth="199.0" promptText="Ngày Viết Đơn" />
-      <TextField fx:id="organizationName1" alignment="CENTER" layoutX="345.0" layoutY="191.0" prefHeight="38.0" prefWidth="192.0" promptText="Cơ Quan Xử Lí Đơn">
+      <DatePicker fx:id="applyDate" layoutX="123.0" layoutY="280.0" prefHeight="38.0" prefWidth="199.0" promptText="Ngày Viết Đơn" />
+      <TextField fx:id="organizationName1" alignment="CENTER" layoutX="345.0" layoutY="281.0" prefHeight="38.0" prefWidth="192.0" promptText="Cơ Quan Xử Lí Đơn">
          <font>
             <Font size="17.0" />
          </font>
       </TextField>
-      <TextField fx:id="title" layoutX="568.0" layoutY="138.0" prefHeight="38.0" prefWidth="199.0" promptText="Yêu Cầu - Kiến Nghị">
+      <TextField fx:id="title" layoutX="552.0" layoutY="210.0" prefHeight="38.0" prefWidth="199.0" promptText="Yêu Cầu - Kiến Nghị">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <RadioButton fx:id="canRB" layoutX="510.0" layoutY="466.0" mnemonicParsing="false" text="Thuộc Thẩm Quyền Giải Quyết">
+      <RadioButton fx:id="canRB" layoutX="510.0" layoutY="579.0" mnemonicParsing="false" text="Thuộc Thẩm Quyền Giải Quyết">
          <font>
             <Font size="15.0" />
          </font>
@@ -100,24 +100,30 @@
             <ToggleGroup fx:id="statusLT" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="cannotRB" layoutX="244.0" layoutY="466.0" mnemonicParsing="false" text="Không Thuộc Thẩm Quyền " toggleGroup="$statusLT">
+      <RadioButton fx:id="cannotRB" layoutX="251.0" layoutY="579.0" mnemonicParsing="false" text="Không Thuộc Thẩm Quyền " toggleGroup="$statusLT">
          <font>
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="waitRB" layoutX="18.0" layoutY="466.0" mnemonicParsing="false" text=" Xem Xét Thêm" toggleGroup="$statusLT">
+      <RadioButton fx:id="waitRB" layoutX="18.0" layoutY="579.0" mnemonicParsing="false" text=" Xem Xét Thêm" toggleGroup="$statusLT">
          <font>
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <DatePicker fx:id="processedDate" layoutX="119.0" layoutY="418.0" prefHeight="37.0" prefWidth="167.0" promptText="Ngày Giải Quyết" />
+      <DatePicker fx:id="processedDate" layoutX="568.0" layoutY="511.0" prefHeight="37.0" prefWidth="167.0" promptText="Ngày Giải Quyết" />
       <Label layoutX="21.0" layoutY="143.0" prefHeight="21.0" prefWidth="83.0" text="Ma don">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Line endX="600.6000366210938" endY="300.0" layoutX="136.0" layoutY="93.0" startX="-100.0" startY="300.0" />
-      <Label layoutX="15.0" layoutY="426.0" prefHeight="21.0" prefWidth="83.0" text="giai quyet">
+      <Line endX="600.6000366210938" endY="400.0" layoutX="136.0" layoutY="93.0" startX="-100.0" startY="400.0" />
+      <Label layoutX="36.0" layoutY="519.0" prefHeight="21.0" prefWidth="373.0" text="giai quyetcai nay chi hien thi khong sua duoc">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="category1" layoutX="110.0" layoutY="210.0" prefHeight="37.0" prefWidth="192.0" promptText="title" />
+      <Label layoutX="335.0" layoutY="218.0" prefHeight="21.0" prefWidth="143.0" text="or create new">
          <font>
             <Font size="15.0" />
          </font>
