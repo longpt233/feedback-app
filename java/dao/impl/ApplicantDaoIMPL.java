@@ -16,7 +16,7 @@ public class ApplicantDaoIMPL implements ApplicantDao {
 
     @Override
     public List<Applicant> findAll() throws SQLException {
-        String sql = "SELECT * FROM applicant";
+        String sql = "SELECT * FROM Applicant";
         List<Applicant> results = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
@@ -41,7 +41,7 @@ public class ApplicantDaoIMPL implements ApplicantDao {
 
     @Override
     public Applicant findById(int id) throws SQLException {
-        String sql= "SELECT * FROM applicant WHERE id=?";
+        String sql= "SELECT * FROM Applicant WHERE id=?";
         List<Applicant> results = new ArrayList<>();
 
         try {
@@ -71,7 +71,7 @@ public class ApplicantDaoIMPL implements ApplicantDao {
     public Applicant insert(Applicant applicant) throws SQLException {
         Applicant applicant1 = new Applicant();
 
-        String sql = "INSERT INTO applicant (identity_card, name, phone, birth, gender, address, role) value (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Applicant (identity_card, name, phone, birth, gender, address, role) value (?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
         preparedStatement.setString(1, applicant.getIdentityCard());
         preparedStatement.setString(2, applicant.getName());
@@ -92,7 +92,7 @@ public class ApplicantDaoIMPL implements ApplicantDao {
 
     @Override
     public boolean update(Applicant applicant) throws SQLException {
-        String sql = "UPDATE applicant SET identity_card=?, name=?, phone=?, birth=?, gender=?, address=?, role=? WHERE id=?";
+        String sql = "UPDATE Applicant SET identity_card=?, name=?, phone=?, birth=?, gender=?, address=?, role=? WHERE id=?";
         PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
         preparedStatement.setString(1, applicant.getIdentityCard());
         preparedStatement.setString(2, applicant.getName());

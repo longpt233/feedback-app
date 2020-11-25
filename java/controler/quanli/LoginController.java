@@ -1,4 +1,4 @@
-package controler;
+package controler.quanli;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class LoginController implements Initializable {
                 Stage preStage = (Stage) submit.getScene().getWindow();
                 preStage.close();
 
-                Parent root= FXMLLoader.load(getClass().getClassLoader().getResource("scene/main.fxml"));
+                Parent root= FXMLLoader.load(getClass().getClassLoader().getResource(""));
                 Scene app = new Scene(root);
                 Stage stage = new Stage();
                 //code lấy tt đăng nhập set cho trang mới

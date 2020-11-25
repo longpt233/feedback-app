@@ -1,4 +1,4 @@
-package controler;
+package controler.quanli;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -72,7 +72,7 @@ public class SearchController implements Initializable {
             if (lettersSelected.get(0) != null) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/main/show" +
+                    loader.setLocation(getClass().getResource("/view/home/quanli/show" +
                             ".fxml"));
 
                     // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)

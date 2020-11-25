@@ -1,4 +1,4 @@
-package controler;
+package controler.quanli;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -96,6 +96,7 @@ public class ShowControler implements Initializable {
         System.out.println("call set");
         this.letter=letter;
         try{
+            System.out.println("id="+letter.getIdApplicant());
             this.applicant=applicantService.findById(letter.getIdApplicant());
             System.out.println("Nguoi nay la "+applicant.getName());
         }

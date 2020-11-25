@@ -1,4 +1,4 @@
-package controler;
+package controler.quanli;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

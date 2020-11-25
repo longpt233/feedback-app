@@ -1,4 +1,4 @@
-package controler;
+package controler.quanli;
 
 public class ResponseConntroller {
 }

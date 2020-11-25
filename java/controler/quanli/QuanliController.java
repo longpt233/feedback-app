@@ -1,4 +1,4 @@
-package controler;
+package controler.quanli;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class QuanliController implements Initializable {
 
     public TableView tableViewLetter;
     public TableColumn tableColumnSTT;
@@ -36,7 +36,7 @@ public class MainController implements Initializable {
 
 
     @FXML
-    private Button butTaoDon, butThongKe, butTimKiem, butXemChiTiet;
+    private Button butTaoDon,  butTimKiem, butXemChiTiet;
 
     private LetterService letterService = new LetterServiceIMPL();
 
@@ -68,7 +68,7 @@ public class MainController implements Initializable {
 //            }
             try {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/view/main/add.fxml"));
+                loader.setLocation(getClass().getResource("/view/home/quanli/add.fxml"));
                 Parent parent=loader.load();
                 Scene scene = new Scene(parent);
                 Stage stageAdd = new Stage();
@@ -82,12 +82,9 @@ public class MainController implements Initializable {
                 e.printStackTrace();
             }
         });
-        butThongKe.setOnAction(actionEvent -> {
-
-        });
         butTimKiem.setOnAction(actionEvent -> {
             try {
-                Parent blad = FXMLLoader.load(getClass().getResource("/view/main/search.fxml"));
+                Parent blad = FXMLLoader.load(getClass().getResource("/view/home/quanli/search.fxml"));
                 Scene scene = new Scene(blad);
                 Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 appStage.setTitle("Tim Kiem");
@@ -106,7 +103,7 @@ public class MainController implements Initializable {
             if (lettersSelected.get(0) != null) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/main/show.fxml"));
+                    loader.setLocation(getClass().getResource("/view/home/quanli/show.fxml"));
 
                     // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
                     ShowControler controllerChiTietDon =new ShowControler();
