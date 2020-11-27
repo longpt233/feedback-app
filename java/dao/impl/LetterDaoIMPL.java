@@ -31,7 +31,8 @@ public class LetterDaoIMPL implements LetterDao {
                 boolean deleted=resultSet.getBoolean("deleted");
                 String category=resultSet.getString("category");
                 int statusLetter=resultSet.getInt("status_letter");
-                results.add(new Letter(id,title,content,idApplicant,applyDate,deleted,category,statusLetter));
+                String problem=resultSet.getString("problem");
+                results.add(new Letter(id,title,content,problem,idApplicant,applyDate,deleted,category,statusLetter));
             }
         } catch (SQLException e) {
             return null;
@@ -58,7 +59,8 @@ public class LetterDaoIMPL implements LetterDao {
                 boolean deleted=resultSet.getBoolean("deleted");
                 String category=resultSet.getString("category");
                 int statusLetter=resultSet.getInt("status_letter");
-                results.add(new Letter(id2,title,content,idApplicant,applyDate,deleted,category,statusLetter));
+                String problem=resultSet.getString("problem");
+                results.add(new Letter(id2,title,content,problem,idApplicant,applyDate,deleted,category,statusLetter));
             }
         } catch (SQLException e) {
             return null;

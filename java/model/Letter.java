@@ -8,6 +8,7 @@ public class Letter {
     private int id;
     private String title;
     private String content;
+    private String problem;
     private int idApplicant;
     private Date applyDate;
     private boolean deleted;
@@ -17,10 +18,11 @@ public class Letter {
     public Letter(){
     }
 
-    public Letter(int id, String title, String content, int idApplicant, Date applyDate, boolean deleted, String category, int statusLetter) {
+    public Letter(int id, String title, String content, String problem, int idApplicant, Date applyDate, boolean deleted, String category, int statusLetter) {
         this.id = id;
         this.title = title;
         this.content = content;
+        this.problem = problem;
         this.idApplicant = idApplicant;
         this.applyDate = applyDate;
         this.deleted = deleted;
@@ -34,12 +36,25 @@ public class Letter {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
+                ", problem='" + problem + '\'' +
                 ", idApplicant=" + idApplicant +
                 ", applyDate=" + applyDate +
                 ", category='" + category + '\'' +
                 ", statusLetter=" + statusLetter +
                 ", deleted=" + deleted +
                 '}';
+    }
+
+    public String getProblem() {
+        return problem;
+    }
+
+    public void setProblem(String problem) {
+        this.problem = problem;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
     }
 
     public boolean getDeleted() {
