@@ -33,6 +33,10 @@ public class QuanliController implements Initializable {
     public TableColumn tableColumnNgayVietDon;
     public TableColumn tableColumnNoiDung;
     public TableColumn tableColumnTrangThai;
+    public Button butCapnhatTrangthai;
+    public Button btnReset;
+    public Button butChinhsua;
+    public Button butXoa;
 
 
     @FXML
@@ -54,8 +58,14 @@ public class QuanliController implements Initializable {
     }
 
     private void initBut() {
-        // tat man hinh hien tai de hien thi man hinh tao don
+
+        btnReset.setOnAction(actionEvent -> {
+            // cai nay chua test
+            initTable();
+        });
+
         butTaoDon.setOnAction(actionEvent -> {
+// tat man hinh hien tai de hien thi man hinh tao don
 //            try {
 //                Parent blad = FXMLLoader.load(getClass().getResource("/view/main/add.fxml"));
 //                Scene scene = new Scene(blad);
@@ -84,12 +94,17 @@ public class QuanliController implements Initializable {
         });
         butTimKiem.setOnAction(actionEvent -> {
             try {
-                Parent blad = FXMLLoader.load(getClass().getResource("/view/home/quanli/search.fxml"));
-                Scene scene = new Scene(blad);
-                Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                appStage.setTitle("Tim Kiem");
-                appStage.setScene(scene);
-                appStage.show();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/view/home/quanli/search.fxml"));
+                Parent parent=loader.load();
+                Scene scene = new Scene(parent);
+                Stage stageAdd = new Stage();
+                stageAdd.setTitle("Add new letter");
+                stageAdd.setScene(scene);
+                stageAdd.initModality(Modality.WINDOW_MODAL);
+                stageAdd.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+
+                stageAdd.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -130,6 +145,58 @@ public class QuanliController implements Initializable {
             }
         });
 
+
+        butCapnhatTrangthai.setOnAction(actionEvent -> {
+            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
+            if (lettersSelected.get(0) != null) {
+                try {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/view/home/quanli/response.fxml"));
+                    ResponseControler controller =new ResponseControler();
+                    controller.setLetter(lettersSelected.get(0));
+                    Parent parent=loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage stageChinhSua = new Stage();
+                    stageChinhSua.setTitle("Chi tiet don ");
+                    stageChinhSua.setScene(scene);
+                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+
+                    stageChinhSua.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        butChinhsua.setOnAction(actionEvent -> {
+            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
+            if (lettersSelected.get(0) != null) {
+                try {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/view/home/quanli/edit.fxml"));
+                    EditControler controller =new EditControler();
+                    controller.setLetter(lettersSelected.get(0));
+                    loader.setController(controller);
+                    Parent parent=loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage stageChinhSua = new Stage();
+                    stageChinhSua.setTitle("Chi tiet don ");
+                    stageChinhSua.setScene(scene);
+                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+
+                    stageChinhSua.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        butXoa.setOnAction(actionEvent -> {
+            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
+            if (lettersSelected.get(0) != null) {
+                // del xong hien thi thon bao cho nguoi duing
+            }
+        });
     }
 
     private void initTable() {

@@ -67,38 +67,38 @@ public class SearchController implements Initializable {
 
         });
 
-        view.setOnAction(actionEvent -> {
-            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (lettersSelected.get(0) != null) {
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli/show" +
-                            ".fxml"));
-
-                    // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    ShowControler controllerChiTietDon =new ShowControler();
-                    //-------------------------
-                    // neu dao vi tri 2 dong nay cho nhau se bi loi
-                    controllerChiTietDon.setLetter(lettersSelected.get(0));
-//                    controllerChiTietDon =loader.getController();
-                    loader.setController(controllerChiTietDon);
-                    //------------------------
-
-                    // phai load cai parent nay sau khi new controler neu khong no se goi ham init ma khong co du lieu
-                    Parent parent=loader.load();
-                    Scene scene = new Scene(parent);
-                    Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("Chi tiet don ");
-                    stageChinhSua.setScene(scene);
-                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-
-                    stageChinhSua.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        view.setOnAction(actionEvent -> {
+//            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
+//            if (lettersSelected.get(0) != null) {
+//                try {
+//                    FXMLLoader loader = new FXMLLoader();
+//                    loader.setLocation(getClass().getResource("/view/home/quanli/show" +
+//                            ".fxml"));
+//
+//                    // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
+//                    ShowControler controllerChiTietDon =new ShowControler();
+//                    //-------------------------
+//                    // neu dao vi tri 2 dong nay cho nhau se bi loi
+//                    controllerChiTietDon.setLetter(lettersSelected.get(0));
+////                    controllerChiTietDon =loader.getController();
+//                    loader.setController(controllerChiTietDon);
+//                    //------------------------
+//
+//                    // phai load cai parent nay sau khi new controler neu khong no se goi ham init ma khong co du lieu
+//                    Parent parent=loader.load();
+//                    Scene scene = new Scene(parent);
+//                    Stage stageChinhSua = new Stage();
+//                    stageChinhSua.setTitle("Chi tiet don ");
+//                    stageChinhSua.setScene(scene);
+//                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
+//                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+//
+//                    stageChinhSua.show();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
 
     }

@@ -15,15 +15,13 @@ import service.impl.LetterServiceIMPL;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.ResourceBundle;
 
-public class ShowControler implements Initializable {
-    ShowControler(){
+public class EditControler implements Initializable {
+    EditControler(){
     }
 
     @FXML
@@ -132,17 +130,89 @@ public class ShowControler implements Initializable {
         title.setText(letter.getTitle());
         content.setText(letter.getContent());
         category.setValue(letter.getCategory());
-        if(letter.getStatusLetter()==1) canRB.setSelected(true);
-        if(letter.getStatusLetter()==2) cannotRB.setSelected(true);
-        if(letter.getStatusLetter()==3) waitRB.setSelected(true);
+//        if(letter.getStatusLetter()==1) canRB.setSelected(true);
+//        if(letter.getStatusLetter()==2) cannotRB.setSelected(true);
+//        if(letter.getStatusLetter()==3) waitRB.setSelected(true);
         System.out.println("hello"+letter.toString());
+//        content.setText(letter.toString());
+//
+//        try {
+////            Applicant applicant = applicantService.findById(letter.getIdApplicant());
+//            System.out.println("hello" + applicant.toString());
+//            content.setText(letter.toString() + "\n" + applicant.toString());
+//            // chinh cac thong tin co the xem dc o day
+//        } catch (SQLException e) {
+//            System.out.println("can't find");
+//            e.printStackTrace();
+//        }
+
+//        category.setItems(list);
+//        if(canRB.isSelected()){
+//        statusLetter=1;
+//    }
+//        if(cannotRB.isSelected()){
+//        statusLetter=2;
+//    }
+//        if(waitRB.isSelected()){
+//        statusLetter=3;
+//    }
+//
+//        update.setOnAction(actionEvent -> {
+//        try {
+//            LetterServiceIMPL udateData = new LetterServiceIMPL();
+//            udateData.update(getData());
+//
+//        }
+//        catch (Exception e) {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Thiếu Thông Tin");
+//            alert.setContentText("Thiếu Thông Tin!");
+//            alert.showAndWait();
+//
+//            e.printStackTrace();
+//        }
+//
+//    });
+//
+//        delete.setOnAction(actionEvent -> {
+//        try {
+//            LetterServiceIMPL deleteData = new LetterServiceIMPL();
+//            deleteData.delete(getData().getId());
+//
+//
+//        }
+//        catch (Exception e) {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Thiếu Thông Tin");
+//            alert.setContentText("Thiếu Thông Tin!");
+//            alert.showAndWait();
+//
+//            e.printStackTrace();
+//        }
+//
+//    });
+
+}
 
 
 
+    private Letter getData(){
+        int ID=Integer.valueOf(letterID1.getText());
+        String tit=title.getText();
+        String ct= content.getText();
+        int aID= Integer.valueOf(applicantID.getText());
+        Date date= Date.valueOf(applyDate.getValue());
+        String cate= category.getValue();
 
+
+        Letter dataFXML = new Letter(ID, tit,ct, aID, date, false, cate, statusLetter);
+                    System.out.println(dataFXML.getId());
+                    System.out.println(dataFXML.getApplyDate());
+                    System.out.println(dataFXML.getTitle());
+                    System.out.println(dataFXML.getCategory());
+
+        return dataFXML;
     }
-
-
 
 
 }

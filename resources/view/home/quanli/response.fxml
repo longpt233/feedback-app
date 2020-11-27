@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="419.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.quanli.ResponseConntroller">
+<AnchorPane prefHeight="419.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <Pane fx:id="pan1" layoutX="10.0" layoutY="10.0" prefHeight="404.0" prefWidth="598.0" style="-fx-background-color: #f7f93f;">
          <children>
