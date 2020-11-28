@@ -21,7 +21,7 @@
                   <TableColumn fx:id="tableColumnSTT" prefWidth="57.59997636079788" text="STT" />
                   <TableColumn fx:id="tableColumnLoaiDon" minWidth="0.0" prefWidth="81.0" text="category" />
                   <TableColumn fx:id="tableColumnNgayVietDon" prefWidth="100.0" text="ngay" />
-                  <TableColumn fx:id="tableColumnNoiDung" minWidth="0.0" prefWidth="172.0" text="title" />
+                  <TableColumn fx:id="tableColumnNoiDung" minWidth="0.0" prefWidth="172.0" text="problem" />
                   <TableColumn fx:id="tableColumnTrangThai" minWidth="0.0" prefWidth="162.0" text="Trạng Thái" />
                </columns>
             </TableView>

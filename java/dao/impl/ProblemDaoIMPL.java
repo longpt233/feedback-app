@@ -65,11 +65,12 @@ public class ProblemDaoIMPL implements ProblemDao {
 
         int isDone = preparedStatement.executeUpdate(); //  > 0 khi insert thành công
         if (isDone > 0){
-            ResultSet resultSet = preparedStatement.getGeneratedKeys(); // lấy ra id của bản ghi đã thêm vào
-            problem1 = findById((int) resultSet.getLong(1)); // tìm kiếm lại dderr kiểm tra
+            return problem;
+//            ResultSet resultSet = preparedStatement.getGeneratedKeys(); // lấy ra id của bản ghi đã thêm vào
+//            problem1 = findById((int) resultSet.getLong(1)); // tìm kiếm lại dderr kiểm tra
         }
 
-        return problem1;
+        return null;
     }
 
     @Override
