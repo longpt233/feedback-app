@@ -16,13 +16,13 @@ public class ProblemDaoIMPL implements ProblemDao {
     @Override
     public List<Problem> findAll() throws SQLException {
         List<Problem> results = new ArrayList<>();
-        String sql = "SELECT * FROM problem";
+        String sql = "SELECT * FROM Problem";
 
         try {
             PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
-                results.add(new Problem(resultSet.getString("id"),
+                results.add(new Problem(resultSet.getInt("id"),
                         resultSet.getString("name")));
             }
         } catch (Exception ex){
@@ -35,7 +35,7 @@ public class ProblemDaoIMPL implements ProblemDao {
     @Override
     public Problem findById(int id) throws SQLException {
         List<Problem> results = new ArrayList<>();
-        String sql = "SELECT *FROM problem WHERE id_applicant=?";
+        String sql = "SELECT *FROM Problem WHERE id=?";
 
         try {
             PreparedStatement statement = initConnection.prepareSQL(sql);
@@ -43,7 +43,7 @@ public class ProblemDaoIMPL implements ProblemDao {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                results.add(new Problem(resultSet.getString("id"),
+                results.add(new Problem(resultSet.getInt("id"),
                         resultSet.getString("name")));
             }
         } catch (SQLException e) {
@@ -57,10 +57,9 @@ public class ProblemDaoIMPL implements ProblemDao {
     public Problem insert(Problem problem) throws SQLException {
         Problem problem1 = new Problem();
 
-        String sql = "INSERT INTO applicant (id_applicant, id_card, name, password) value (?,?,?,?)";
+        String sql = "INSERT INTO Problem (name) value (?)";
         PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
-        preparedStatement.setString(1, problem.getId());
-        preparedStatement.setString(2, problem.getName());
+        preparedStatement.setString(1, problem.getName());
 
         int isDone = preparedStatement.executeUpdate(); //  > 0 khi insert thành công
         if (isDone > 0){
@@ -73,6 +72,13 @@ public class ProblemDaoIMPL implements ProblemDao {
 
     @Override
     public boolean update(Problem problem) throws SQLException {
+        String sql = "UPDATE Problem SET name=? WHERE id=?";
+        PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
+        preparedStatement.setString(1, problem.getName());
+        preparedStatement.setInt(2, problem.getId());
+
+        int isDone = preparedStatement.executeUpdate(); //  > 0 khi insert thành công
+        if (isDone > 0) return true;
         return false;
     }
 

@@ -129,7 +129,7 @@ public class ShowControler implements Initializable {
         LocalDate localDate = LocalDate.parse(date , formatter);
         applyDate.setValue(localDate);
 
-        title.setText(letter.getTitle());
+        title.setText(letter.getProblem());
         content.setText(letter.getContent());
         category.setValue(letter.getCategory());
         if(letter.getStatusLetter()==1) canRB.setSelected(true);

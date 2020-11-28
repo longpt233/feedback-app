@@ -9,12 +9,17 @@ CREATE TABLE Applicant (
     role int
 );
 
+CREATE TABLE Problem (
+    id int auto_increment NOT NULL primary key,
+    name varchar(100)
+);
+
 CREATE TABLE Letter (
-	id int auto_increment NOT NULL primary key,
-    title varchar(100),
+	id char(10) NOT NULL primary key,
+	category varchar(150),
+    problem varchar(100),
     id_applicant int,
     content varchar(200),
-    category varchar(150),
     apply_date date,
     status_letter int,
     deleted boolean,
@@ -24,7 +29,7 @@ CREATE TABLE Letter (
 
 CREATE TABLE History (
 	id_applicant int,
-    id_letter int,
+    id_letter char(10),
     created_date date,
     processed_date date,
     status_log int,
@@ -50,4 +55,10 @@ CREATE TABLE User(
 );
 
 INSERT INTO Applicant VALUES(1,"1234","long user not admin","1234567879","2000-3-23",1,"ha noi",1);
-INSERT INTO Letter VALUES (1,"kiennghi1",1,"contetn1","the loai1","2000-1-1",1,false);
+INSERT INTO Applicant VALUES(2,"3154","truong user not admin","1234567879","2000-3-23",1,"nam dinh",1);
+
+INSERT INTO Problem VALUES (1,"tainan");
+INSERT INTO Problem VALUES (2,"vacham");
+
+INSERT INTO Letter VALUES ("ND1564","kiennghi","tainan",1,"contetn1","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("HN15612","phananh","vacham",2,"contetn2","2000-1-1",1,false);

@@ -127,7 +127,7 @@ public class EditControler implements Initializable {
         LocalDate localDate = LocalDate.parse(date , formatter);
         applyDate.setValue(localDate);
 
-        title.setText(letter.getTitle());
+        title.setText(letter.getProblem());
         content.setText(letter.getContent());
         category.setValue(letter.getCategory());
 //        if(letter.getStatusLetter()==1) canRB.setSelected(true);
@@ -197,7 +197,7 @@ public class EditControler implements Initializable {
 
 
     private Letter getData(){
-        int ID=Integer.valueOf(letterID1.getText());
+        String ID=String.valueOf(letterID1.getText());
         String tit=title.getText();
         String ct= content.getText();
         int aID= Integer.valueOf(applicantID.getText());
@@ -205,10 +205,10 @@ public class EditControler implements Initializable {
         String cate= category.getValue();
 
 
-        Letter dataFXML = new Letter(ID, tit,ct, aID, date, false, cate, statusLetter);
+        Letter dataFXML = new Letter(ID,cate, tit, aID, ct, date, statusLetter, false);
                     System.out.println(dataFXML.getId());
                     System.out.println(dataFXML.getApplyDate());
-                    System.out.println(dataFXML.getTitle());
+                    System.out.println(dataFXML.getProblem());
                     System.out.println(dataFXML.getCategory());
 
         return dataFXML;

@@ -69,7 +69,7 @@ public class AddController implements Initializable {
                     alert.setContentText("Thiếu mã đơn!");
                     alert.showAndWait();
                 } else{
-                    int ID=Integer.valueOf(letterID.getText());
+                    String ID=String.valueOf(letterID.getText());
                     String tit=title.getText();
                     String ct= content.getText();
                     int aID= Integer.valueOf(applicantID.getText());
@@ -77,7 +77,7 @@ public class AddController implements Initializable {
                     String cate= category.getValue();
 
 
-                    Letter newLetter = new Letter(ID, tit,ct, aID, date, false, cate, statusLetter);
+                    Letter newLetter = new Letter(ID,cate, tit, aID, ct, date, statusLetter, false);
                     LetterServiceIMPL letterServiceIMPL=new LetterServiceIMPL();
                     System.out.println("them thanh cong? "+letterServiceIMPL.insert(newLetter));
 

@@ -22,14 +22,16 @@ public class LetterServiceIMPL implements LetterService {
 
     @Override
     public Letter findById(int id) throws SQLException {
-        // trả về đối tượng đã tìm kiếm
-        if (id>0){
-            System.out.println("vao tim kiem tim "+id);
-            System.out.println("tìm id 1 và ra id là "+letterDao.findById(id).toString());
-            return letterDao.findById(id);
-        }
-        System.out.println("notification");
         return null;
+    }
+
+    @Override
+    public Letter findById(String id) throws SQLException {
+        // trả về đối tượng đã tìm kiếm
+
+        System.out.println("vao tim kiem tim "+id);
+        System.out.println("tìm id 1 và ra id là "+letterDao.findById(id).toString());
+        return letterDao.findById(id);
     }
 
     @Override

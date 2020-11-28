@@ -5,36 +5,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Letter {
-    private int id;
-    private String title;
-    private String content;
+    private String id;
+    private String category;
     private String problem;
     private int idApplicant;
+    private String content;
     private Date applyDate;
-    private boolean deleted;
-    private String category;
     private int statusLetter;
+    private boolean deleted;
 
     public Letter(){
     }
 
-    public Letter(int id, String title, String content, String problem, int idApplicant, Date applyDate, boolean deleted, String category, int statusLetter) {
+    public Letter(String id, String category, String problem, int idApplicant, String content, Date applyDate, int statusLetter, boolean deleted) {
         this.id = id;
-        this.title = title;
-        this.content = content;
+        this.category = category;
         this.problem = problem;
         this.idApplicant = idApplicant;
+        this.content = content;
         this.applyDate = applyDate;
-        this.deleted = deleted;
-        this.category = category;
         this.statusLetter = statusLetter;
+        this.deleted = deleted;
     }
 
     @Override
     public String toString() {
         return "LetterModel{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", problem='" + problem + '\'' +
                 ", idApplicant=" + idApplicant +
@@ -65,20 +62,12 @@ public class Letter {
         this.deleted = deleted;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {
@@ -120,8 +109,6 @@ public class Letter {
     public void setStatusLetter(int statusLetter) {
         this.statusLetter = statusLetter;
     }
-
-
 
 
 }
