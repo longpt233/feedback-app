@@ -77,15 +77,18 @@ public class LetterDaoIMPL implements LetterDao {
         // trả về letter đã insert
 //        Letter returnLetter = null;
 
-        String sql = "INSERT INTO Letter (problem, content, id_applicant, apply_date, deleted, category) value (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Letter (id, category, problem, id_applicant, content, apply_date, status_letter, deleted) " +
+                "value (?,?,?,?,?,?,?,?)";
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         PreparedStatement statement = initConnection.prepareUpdate(sql);
-        statement.setString(1, letter.getProblem());
-        statement.setString(2, letter.getContent());
-        statement.setInt(3, letter.getIdApplicant());
-        statement.setDate(4, letter.getApplyDate());
-        statement.setBoolean(5, letter.getDeleted());
-        statement.setString(6, letter.getCategory());
+        statement.setString(1, letter.getId());
+        statement.setString(2, letter.getCategory());
+        statement.setString(3, letter.getProblem());
+        statement.setInt(4, letter.getIdApplicant());
+        statement.setString(5, letter.getContent());
+        statement.setDate(6, letter.getApplyDate());
+        statement.setInt(6, letter.getStatusLetter());
+        statement.setBoolean(6, letter.getDeleted());
 
         int isDone = statement.executeUpdate(); //  > 0 khi insert thành công
         System.out.println("isDone"+isDone);

@@ -57,8 +57,9 @@ public class ProblemDaoIMPL implements ProblemDao {
     public Problem insert(Problem problem) throws SQLException {
         Problem problem1 = new Problem();
 
-        String sql = "INSERT INTO Problem (name) value (?)";
+        String sql = "INSERT INTO Problem (id,name) value (?,?)";
         PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
+        preparedStatement.setInt(1, problem.getId());
         preparedStatement.setString(1, problem.getName());
 
         int isDone = preparedStatement.executeUpdate(); //  > 0 khi insert thành công
