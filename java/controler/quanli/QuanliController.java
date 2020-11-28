@@ -47,6 +47,8 @@ public class QuanliController implements Initializable {
 
     private ObservableList<Letter> lettersObservableList;
 
+    private ObservableList<Letter> lettersObservableListSearch;
+
     private List<Letter> letters = new ArrayList<>();
 
 
@@ -61,6 +63,7 @@ public class QuanliController implements Initializable {
 
         btnReset.setOnAction(actionEvent -> {
             // cai nay chua test
+            lettersObservableListSearch=null;
             initTable();
         });
 
@@ -94,17 +97,23 @@ public class QuanliController implements Initializable {
         });
         butTimKiem.setOnAction(actionEvent -> {
             try {
+                lettersObservableListSearch=null;
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/view/home/quanli/search.fxml"));
+                SearchController controller =new SearchController();
+                loader.setController(controller);
                 Parent parent=loader.load();
                 Scene scene = new Scene(parent);
-                Stage stageAdd = new Stage();
-                stageAdd.setTitle("Add new letter");
-                stageAdd.setScene(scene);
-                stageAdd.initModality(Modality.WINDOW_MODAL);
-                stageAdd.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+                Stage stageSearch = new Stage();
+                stageSearch.setTitle("find letter ");
+                stageSearch.setScene(scene);
+                stageSearch.initModality(Modality.WINDOW_MODAL);
+                stageSearch.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
-                stageAdd.show();
+                stageSearch.showAndWait();
+                lettersObservableListSearch=controller.getList();
+                System.out.println("tra ve list "+lettersObservableListSearch.toString());
+                initTable();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -157,7 +166,7 @@ public class QuanliController implements Initializable {
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("Chi tiet don ");
+                    stageChinhSua.setTitle("cap nhat trong thai don  ");
                     stageChinhSua.setScene(scene);
                     stageChinhSua.initModality(Modality.WINDOW_MODAL);
                     stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -180,7 +189,7 @@ public class QuanliController implements Initializable {
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("Chi tiet don ");
+                    stageChinhSua.setTitle("chinh sua don ");
                     stageChinhSua.setScene(scene);
                     stageChinhSua.initModality(Modality.WINDOW_MODAL);
                     stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -216,11 +225,17 @@ public class QuanliController implements Initializable {
 
 
     public void refreshTable() throws SQLException {
-        System.out.println("init table");
-        letters.removeAll(letters);
-        letters.addAll(letterService.findAll());
-        lettersObservableList = FXCollections.observableList(letters);
-        tableViewLetter.setItems(lettersObservableList);
+        System.out.println("refresh table");
+
+        if(lettersObservableListSearch!=null&&!lettersObservableListSearch.isEmpty()){
+            tableViewLetter.setItems(lettersObservableListSearch);
+
+        }else {
+            letters.removeAll(letters);
+            letters.addAll(letterService.findAll());
+            lettersObservableList = FXCollections.observableList(letters);
+            tableViewLetter.setItems(lettersObservableList);
+        }
     }
 
 
