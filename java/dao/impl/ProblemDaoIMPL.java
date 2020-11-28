@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProblemDaoIMPL implements ProblemDao {
     private InitConnection initConnection = new InitConnection();
-    
+
     @Override
     public List<Problem> findAll() throws SQLException {
         List<Problem> results = new ArrayList<>();
@@ -57,9 +57,10 @@ public class ProblemDaoIMPL implements ProblemDao {
     public Problem insert(Problem problem) throws SQLException {
         Problem problem1 = new Problem();
 
-        String sql = "INSERT INTO Problem (id,name) value (?,?)";
+        String sql = "INSERT INTO Problem (name) value (?)";
         PreparedStatement preparedStatement = initConnection.prepareSQL(sql);
-        preparedStatement.setInt(1, problem.getId());
+//        preparedStatement.setInt(1, problem.getId());
+//        preparedStatement.setString(2, problem.getName());
         preparedStatement.setString(1, problem.getName());
 
         int isDone = preparedStatement.executeUpdate(); //  > 0 khi insert thành công
@@ -86,5 +87,26 @@ public class ProblemDaoIMPL implements ProblemDao {
     @Override
     public boolean delete(int id) throws SQLException {
         return false;
+    }
+
+    @Override
+    public Problem findByName(String name) throws SQLException {
+        List<Problem> results = new ArrayList<>();
+        String sql = "SELECT *FROM Problem WHERE name=?";
+
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setString(1,name);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(new Problem(resultSet.getInt("id"),
+                        resultSet.getString("name")));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+
+        return results.isEmpty() ? null : results.get(0);
     }
 }

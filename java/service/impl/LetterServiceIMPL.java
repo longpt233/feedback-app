@@ -1,8 +1,11 @@
 package service.impl;
 
 import dao.LetterDao;
+import dao.ProblemDao;
 import dao.impl.LetterDaoIMPL;
+import dao.impl.ProblemDaoIMPL;
 import model.Letter;
+import model.Problem;
 import service.LetterService;
 
 import java.sql.SQLException;
@@ -10,9 +13,10 @@ import java.util.List;
 
 public class LetterServiceIMPL implements LetterService {
     public LetterServiceIMPL(){
-
     }
+
     private LetterDao letterDao = new LetterDaoIMPL();
+    private ProblemDao problemDao = new ProblemDaoIMPL();
 
     @Override
     public List<Letter> findAll() throws SQLException {
@@ -38,6 +42,11 @@ public class LetterServiceIMPL implements LetterService {
     public boolean insert(Letter letter) throws SQLException {
         // trả về true nếu insert thành công
         System.out.println("service recv"+letter.toString());
+        if (problemDao.findByName(letter.getProblem()) == null){
+            Problem p = new Problem();
+            p.setName(letter.getProblem());
+            problemDao.insert(p);
+        }
         if(letterDao.insert(letter) != null) return true;
         return false;
     }
@@ -55,3 +64,7 @@ public class LetterServiceIMPL implements LetterService {
         return (id > 0) ? letterDao.delete(id) : false;
     }
 }
+
+
+
+
