@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.control.CheckBox;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +16,16 @@ public class Letter {
     private int statusLetter;
     private boolean deleted;
 
+    // phai co cai nay moi dc check box
+    private CheckBox checkBox;
+
+    public CheckBox getCheckBox(){
+        return  checkBox;
+    }
+    public void setCheckBox(CheckBox checkbox){
+        this.checkBox=checkbox;
+    }
+
     public Letter(){
     }
 
@@ -26,6 +38,7 @@ public class Letter {
         this.applyDate = applyDate;
         this.statusLetter = statusLetter;
         this.deleted = deleted;
+        checkBox=new CheckBox();
     }
 
     @Override

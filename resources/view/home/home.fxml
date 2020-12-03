@@ -13,11 +13,6 @@
          <left>
             <Pane prefHeight="661.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="190.0" text="hello admin" underline="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
                   <Label alignment="CENTER" layoutY="426.0" prefHeight="27.0" prefWidth="190.0" text="statistic" underline="true">
                      <font>
                         <Font size="18.0" />
@@ -33,7 +28,12 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bntQuanli" layoutX="18.0" layoutY="321.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="quan li don ">
+                  <Button fx:id="bntQuanli" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="quan li don ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="bntQuanliNhomdon" layoutX="18.0" layoutY="376.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="quan li nhom don">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -27,10 +27,9 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
 
     public TextField applicantName;
+    public TextField letterID;
     public ComboBox leterCategory;
     public AnchorPane anchorPane;
-    @FXML
-    private TextField letterID;
 
     @FXML
     private Button find;
@@ -55,7 +54,8 @@ public class SearchController implements Initializable {
             leterCategory.setItems(list);
 
             String cate = (String) leterCategory.getValue();
-            int ID = Integer.valueOf(letterID.getText());
+//            int ID = Integer.valueOf(letterID.getText());
+            String idFind = (String) letterID.getText();
 
 
             List<Letter> letters = new ArrayList<>();
@@ -63,7 +63,7 @@ public class SearchController implements Initializable {
             letters.removeAll(letters);
             try {
 
-                letters.add(letterService.findById("HN15612"));
+                letters.add(letterService.findById(idFind));
                 lettersObservableList = FXCollections.observableList(letters);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

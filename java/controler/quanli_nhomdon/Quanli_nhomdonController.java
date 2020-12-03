@@ -1,5 +1,6 @@
-package controler.quanli;
+package controler.quanli_nhomdon;
 
+import controler.quanli.SearchController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class QuanliController implements Initializable {
+public class Quanli_nhomdonController implements Initializable {
 
     public TableView tableViewLetter;
     public TableColumn tableColumnSTT;
@@ -34,13 +34,10 @@ public class QuanliController implements Initializable {
     public TableColumn tableColumnNgayVietDon;
     public TableColumn tableColumnNoiDung;
     public TableColumn tableColumnTrangThai;
+    public Button butCapnhatTrangthai;
     public Button btnReset;
     public Button butChinhsua;
     public Button butXoa;
-    public Button butGopNhom;
-    public TableColumn tableColumnAction;
-
-
 
 
     @FXML
@@ -134,7 +131,7 @@ public class QuanliController implements Initializable {
                     loader.setLocation(getClass().getResource("/view/home/quanli/show.fxml"));
 
                     // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    ShowControler controllerChiTietDon =new ShowControler();
+                    Show_nhomdonControler controllerChiTietDon =new Show_nhomdonControler();
                     //-------------------------
                     // neu dao vi tri 2 dong nay cho nhau se bi loi
                     controllerChiTietDon.setLetter(lettersSelected.get(0));
@@ -159,55 +156,18 @@ public class QuanliController implements Initializable {
         });
 
 
-        butGopNhom.setOnAction(actionEvent -> {
-            // phai xu li lay ra mot list
-
-            ObservableList<Letter> lettersSelected = FXCollections.observableArrayList();
-
-            for(Letter iter: lettersObservableList){
-                if (iter.getCheckBox().isSelected()){
-                    lettersSelected.add(iter);
-                }
-            }
-//            for(Letter iter: lettersObservableListSearch){
-//
-//            }
-
-            System.out.println("tick vao ");
-            lettersSelected.stream().forEach(s-> System.out.println(s));
-
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli/collect.fxml"));
-                    CollectLetterControler controller =new CollectLetterControler();
-                    controller.setLetter(lettersSelected.get(0));
-                    Parent parent=loader.load();
-                    Scene scene = new Scene(parent);
-                    Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("gop nhom");
-                    stageChinhSua.setScene(scene);
-                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-
-                    stageChinhSua.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-        });
-        butChinhsua.setOnAction(actionEvent -> {
+        butCapnhatTrangthai.setOnAction(actionEvent -> {
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli/edit.fxml"));
-                    EditControler controller =new EditControler();
+                    loader.setLocation(getClass().getResource("/view/home/quanli/collect.fxml"));
+                    Response_nhomdonControler controller =new Response_nhomdonControler();
                     controller.setLetter(lettersSelected.get(0));
-                    loader.setController(controller);
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("chinh sua don ");
+                    stageChinhSua.setTitle("cap nhat trong thai don  ");
                     stageChinhSua.setScene(scene);
                     stageChinhSua.initModality(Modality.WINDOW_MODAL);
                     stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -218,6 +178,7 @@ public class QuanliController implements Initializable {
                 }
             }
         });
+
         butXoa.setOnAction(actionEvent -> {
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
@@ -228,13 +189,11 @@ public class QuanliController implements Initializable {
 
     private void initTable() {
 
-        // nhung truong nay bat buoc phai tuong ung thuoc tinh cua model thi moi hien thi dc
         tableColumnSTT.setCellValueFactory(new PropertyValueFactory<Letter, String>("id"));
         tableColumnLoaiDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("category"));
         tableColumnNgayVietDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("applyDate"));
         tableColumnNoiDung.setCellValueFactory(new PropertyValueFactory<Letter, String>("content"));
         tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusLetter"));
-        tableColumnAction.setCellValueFactory(new PropertyValueFactory<Letter,String>("checkBox"));
 
         try {
             refreshTable();

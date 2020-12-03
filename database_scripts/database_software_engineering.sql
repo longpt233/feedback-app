@@ -14,8 +14,22 @@ CREATE TABLE Problem (
     name varchar(100)
 );
 
+CREATE TABLE GroupLetter  (
+    id int auto_increment NOT NULL primary key,
+    name varchar(100)
+);
+
+CREATE TABLE GroupHasLetter(
+    id int auto_increment NOT NULL primary key,
+    id_letter char(20) ,
+    id_group int,
+    FOREIGN KEY (id_letter) REFERENCES Letter(id),
+    FOREIGN KEY (id_group) REFERENCES GroupLetter(id)
+
+);
+
 CREATE TABLE Letter (
-	id char(10) NOT NULL primary key,
+	id char(20) NOT NULL primary key,
 	category varchar(150),
     problem varchar(100),
     id_applicant int,
@@ -38,13 +52,7 @@ CREATE TABLE History (
     FOREIGN KEY (id_letter) REFERENCES Letter(id)
 );
 
-CREATE TABLE Organization(
-	id_organization int auto_increment NOT NULL primary key,
-    name varchar(250),
-    funtion varchar(250),
-    level int,
-    deleted boolean
-);
+
 
 CREATE TABLE User(
 	id_applicant int auto_increment NOT NULL primary key,

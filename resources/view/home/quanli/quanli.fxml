@@ -16,13 +16,14 @@
    <children>
       <Pane layoutX="2.0" layoutY="4.0" prefHeight="764.0" prefWidth="813.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="4.0">
          <children>
-            <TableView fx:id="tableViewLetter" layoutX="14.0" layoutY="112.0" prefHeight="609.0" prefWidth="573.0">
+            <TableView fx:id="tableViewLetter" layoutX="14.0" layoutY="112.0" prefHeight="609.0" prefWidth="584.0">
                <columns>
                   <TableColumn fx:id="tableColumnSTT" prefWidth="57.59997636079788" text="STT" />
                   <TableColumn fx:id="tableColumnLoaiDon" minWidth="0.0" prefWidth="81.0" text="category" />
                   <TableColumn fx:id="tableColumnNgayVietDon" prefWidth="100.0" text="ngay" />
-                  <TableColumn fx:id="tableColumnNoiDung" minWidth="0.0" prefWidth="172.0" text="problem" />
-                  <TableColumn fx:id="tableColumnTrangThai" minWidth="0.0" prefWidth="162.0" text="Trạng Thái" />
+                  <TableColumn fx:id="tableColumnNoiDung" minWidth="0.0" prefWidth="133.0" text="problem" />
+                  <TableColumn fx:id="tableColumnTrangThai" minWidth="0.0" prefWidth="104.0" text="Trạng Thái" />
+                  <TableColumn fx:id="tableColumnAction" minWidth="0.0" prefWidth="107.0" text="action" />
                </columns>
             </TableView>
             <Button fx:id="butXemChiTiet" layoutX="624.0" layoutY="190.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Chi tiet">
@@ -30,7 +31,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="butCapnhatTrangthai" layoutX="624.0" layoutY="251.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="cap nhat trang thai">
+            <Button fx:id="butGopNhom" layoutX="624.0" layoutY="487.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="gop nhom">
                <font>
                   <Font size="14.0" />
                </font>
@@ -50,12 +51,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="butChinhsua" layoutX="624.0" layoutY="313.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="chinh sua ">
+            <Button fx:id="butChinhsua" layoutX="624.0" layoutY="242.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="chinh sua ">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="butXoa" layoutX="624.0" layoutY="373.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="delete">
+            <Button fx:id="butXoa" layoutX="624.0" layoutY="301.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="delete">
                <font>
                   <Font size="14.0" />
                </font>

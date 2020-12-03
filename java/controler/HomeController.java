@@ -15,6 +15,7 @@ public class HomeController implements Initializable {
     public Button bntQuanli;
     public BorderPane borderPane;
     public Button bntThongke;
+    public Button bntQuanliNhomdon;
 
 
     @Override
@@ -29,6 +30,22 @@ public class HomeController implements Initializable {
             try {
                 Pane quanLiPane = FXMLLoader.load(getClass().getResource("/view/home/quanli/quanli.fxml"));
                 borderPane.setCenter(quanLiPane);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
+        bntQuanliNhomdon.setOnAction(actionEvent -> {
+            try {
+                Pane quanLiNhomdonPane = FXMLLoader.load(getClass().getResource("/view/home/quanli_nhomdon/quanli_nhomdon.fxml"));
+                borderPane.setCenter(quanLiNhomdonPane);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
+        bntThongke.setOnAction(actionEvent -> {
+            try {
+                Pane thongke = FXMLLoader.load(getClass().getResource("/view/home/thongke/thongke.fxml"));
+                borderPane.setCenter(thongke);
             }catch (Exception e){
                 e.printStackTrace();
             }

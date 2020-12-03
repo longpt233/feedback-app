@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class ResponseControler implements Initializable {
+public class CollectLetterControler implements Initializable {
 
 
 

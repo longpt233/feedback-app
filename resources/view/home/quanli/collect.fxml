@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="419.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="pan1" layoutX="10.0" layoutY="10.0" prefHeight="404.0" prefWidth="598.0" style="-fx-background-color: #f7f93f;">
+         <children>
+            <Button fx:id="update" layoutX="92.0" layoutY="331.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: ed0000;" text="gop don ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="delete" layoutX="389.0" layoutY="331.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="huy ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <TextField layoutX="86.0" layoutY="147.0" prefHeight="38.0" prefWidth="304.0" text="nhap ten nhom don vao day " />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
