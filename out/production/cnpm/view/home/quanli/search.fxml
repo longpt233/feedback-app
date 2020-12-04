@@ -16,68 +16,49 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="314.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.quanli.SearchController">
+<AnchorPane fx:id="anchorPane" prefHeight="516.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="pan3" layoutX="-1.0" layoutY="-1.0" prefHeight="313.0" prefWidth="784.0" style="-fx-background-color: #f7f93f;">
+      <Pane fx:id="pan3" layoutX="-1.0" layoutY="-1.0" prefHeight="516.0" prefWidth="784.0" style="-fx-background-color: #f7f93f;">
          <children>
-            <Label layoutX="322.0" layoutY="14.0" text="Tìm Kiếm Đơn " textFill="#2112cfe8">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="89.0" layoutY="69.0" prefHeight="35.0" prefWidth="127.0" text="Chọn Loại Đơn" textFill="#2112cf">
+            <Label layoutX="306.0" layoutY="68.0" prefHeight="35.0" prefWidth="454.0" text="tieu chi nao tim kiem ra nhieu don thi de ben day" textFill="#2112cf">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <CheckBox layoutX="43.0" layoutY="124.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="79.0" text="Tố Cáo" textFill="#2112cf">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="128.0" layoutY="124.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="105.0" text="Khiếu Nại" textFill="#2112cf">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="43.0" layoutY="165.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="190.0" text="Kiến Nghị Phản Ánh" textFill="#2112cf">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </CheckBox>
-            <TextField fx:id="letterID" layoutX="337.0" layoutY="102.0" prefHeight="25.0" prefWidth="127.0" />
-            <TextField fx:id="applicantName" layoutX="564.0" layoutY="102.0" />
-            <TextField layoutX="337.0" layoutY="175.0" />
-            <TextField layoutX="564.0" layoutY="175.0" />
-            <Label layoutX="338.0" layoutY="69.0" text="Mã Số Đơn" textFill="#2112cf">
+            <TextField fx:id="letterID" layoutX="40.0" layoutY="125.0" prefHeight="25.0" prefWidth="127.0" />
+            <TextField fx:id="applicantName" layoutX="318.0" layoutY="312.0" />
+            <TextField layoutX="318.0" layoutY="384.0" />
+            <TextField layoutX="545.0" layoutY="384.0" />
+            <Label layoutX="40.0" layoutY="76.0" text="Mã Số Đơn" textFill="#2112cf">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="564.0" layoutY="71.0" prefHeight="25.0" prefWidth="165.0" text="Tên Người Viết - Xử Lí" textFill="#2112cf">
+            <Label layoutX="318.0" layoutY="276.0" prefHeight="25.0" prefWidth="219.0" text="Tên Người Viết" textFill="#2112cf">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="337.0" layoutY="150.0" text="Từ Ngày" textFill="#2112cf">
+            <Label layoutX="318.0" layoutY="349.0" text="Từ Ngày" textFill="#2112cf">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="564.0" layoutY="150.0" text="Đến Ngày" textFill="#2112cf">
+            <Label layoutX="564.0" layoutY="349.0" text="Đến Ngày" textFill="#2112cf">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <Line endX="541.0" endY="-7.62939453125E-6" layoutX="229.0" layoutY="49.0" startX="-208.39996337890625" startY="-7.62939453125E-6" />
-            <Line endX="59.4000244140625" endY="175.5" layoutX="213.0" layoutY="49.0" startX="59.4000244140625" startY="0.49999237060546875" />
-            <Line endX="387.5999755859375" layoutX="388.0" layoutY="143.0" startX="-115.0999755859375" startY="-1.52587890625E-5" />
-            <Line endX="546.7999267578125" layoutX="232.0" layoutY="225.0" startX="-209.0" />
-            <Button fx:id="find" layoutX="167.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: ed0000;" text="Tìm" textFill="#260909">
+            <Line endX="59.4000244140625" endY="380.0" layoutX="213.0" layoutY="49.0" startX="59.4000244140625" startY="0.49999237060546875" />
+            <Line endX="546.0" endY="210.0" layoutX="232.0" layoutY="225.0" startX="-209.0" startY="210.0" />
+            <Button fx:id="find" layoutX="342.0" layoutY="459.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: ed0000;" text="Tìm" textFill="#260909">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
+            <ComboBox fx:id="leterCategory" layoutX="306.0" layoutY="125.0" prefHeight="37.0" prefWidth="188.0" promptText="Loại Đơn(category )" />
+            <ComboBox fx:id="leterCategory1" layoutX="306.0" layoutY="185.0" prefHeight="37.0" prefWidth="188.0" promptText="problem" />
          </children>
       </Pane>
    </children>

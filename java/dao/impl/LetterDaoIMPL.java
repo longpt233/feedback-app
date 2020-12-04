@@ -8,11 +8,25 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LetterDaoIMPL implements LetterDao {
     private InitConnection initConnection = new InitConnection();
+
+    public Letter getLetter(ResultSet resultSet) throws SQLException {
+        String id= resultSet.getString("id");
+        String content=resultSet.getString("content");
+        int idApplicant= resultSet.getInt("id_applicant");
+        Date applyDate=resultSet.getDate("apply_date");
+        boolean deleted=resultSet.getBoolean("deleted");
+        String category=resultSet.getString("category");
+        int statusLetter=resultSet.getInt("status_letter");
+        String problem=resultSet.getString("problem");
+
+        return new Letter(id,category,problem,idApplicant,content,applyDate,statusLetter,deleted);
+    }
 
     @Override
     public List<Letter> findAll() throws SQLException {
@@ -23,15 +37,7 @@ public class LetterDaoIMPL implements LetterDao {
             PreparedStatement statement = initConnection.prepareSQL(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                String id= resultSet.getString("id");
-                String content=resultSet.getString("content");
-                int idApplicant= resultSet.getInt("id_applicant");
-                Date applyDate=resultSet.getDate("apply_date");
-                boolean deleted=resultSet.getBoolean("deleted");
-                String category=resultSet.getString("category");
-                int statusLetter=resultSet.getInt("status_letter");
-                String problem=resultSet.getString("problem");
-                results.add(new Letter(id,category,problem,idApplicant,content,applyDate,statusLetter,deleted));
+                results.add(getLetter(resultSet));
             }
         } catch (SQLException e) {
             return null;
@@ -55,15 +61,103 @@ public class LetterDaoIMPL implements LetterDao {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                String id2= resultSet.getString("id");
-                String content=resultSet.getString("content");
-                int idApplicant= resultSet.getInt("id_applicant");
-                Date applyDate=resultSet.getDate("apply_date");
-                boolean deleted=resultSet.getBoolean("deleted");
-                String category=resultSet.getString("category");
-                int statusLetter=resultSet.getInt("status_letter");
-                String problem=resultSet.getString("problem");
-                results.add(new Letter(id2,category,problem,idApplicant,content,applyDate,statusLetter,deleted));
+                results.add(getLetter(resultSet));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    @Override
+    public Letter findByCategory(String category) throws SQLException {
+        String sql= "SELECT * FROM Letter WHERE deleted=false and category=?";
+        List<Letter> results = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setString(1,category);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(getLetter(resultSet));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+
+    @Override
+    public Letter findByProblem(String problem) throws SQLException {
+        String sql= "SELECT * FROM Letter WHERE deleted=false and problem=?";
+        List<Letter> results = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setString(1,problem);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(getLetter(resultSet));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    @Override
+    public Letter findByIDApplicant(int id) throws SQLException {
+        String sql= "SELECT * FROM Letter WHERE deleted=false and id_applicant=?";
+        List<Letter> results = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setInt(1,id);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(getLetter(resultSet));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    @Override
+    public Letter findByApplyDate(java.util.Date date) throws SQLException {
+        java.util.Date dNow = new java.util.Date( );
+        SimpleDateFormat ft =
+                new SimpleDateFormat ("yyyy-MM-dd");
+
+        System.out.println("Current Date: " + ft.format(dNow));
+        return null;
+    }
+
+    @Override
+    public Letter findWithApplyDate(java.util.Date date) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Letter findByStatus(int status) throws SQLException {
+        String sql= "SELECT * FROM Letter WHERE deleted=false and status=?";
+        List<Letter> results = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setInt(1,status);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(getLetter(resultSet));
             }
         } catch (SQLException e) {
             return null;
@@ -87,8 +181,8 @@ public class LetterDaoIMPL implements LetterDao {
         statement.setInt(4, letter.getIdApplicant());
         statement.setString(5, letter.getContent());
         statement.setDate(6, letter.getApplyDate());
-        statement.setInt(7, letter.getStatusLetter());
-        statement.setBoolean(8, letter.getDeleted());
+        statement.setInt(6, letter.getStatusLetter());
+        statement.setBoolean(6, letter.getDeleted());
 
         int isDone = statement.executeUpdate(); //  > 0 khi insert thành công
         System.out.println("isDone"+isDone);
@@ -129,8 +223,4 @@ public class LetterDaoIMPL implements LetterDao {
         return false;
     }
 
-    @Override
-    public List<Letter> sortById(int id) throws SQLException {
-        return null;
-    }
 }

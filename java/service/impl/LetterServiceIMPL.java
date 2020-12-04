@@ -9,6 +9,7 @@ import model.Problem;
 import service.LetterService;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 public class LetterServiceIMPL implements LetterService {
@@ -36,6 +37,32 @@ public class LetterServiceIMPL implements LetterService {
         System.out.println("vao tim kiem tim "+id);
         System.out.println("tìm id 1 và ra id là "+letterDao.findById(id).toString());
         return letterDao.findById(id);
+    }
+
+    @Override
+    public Letter findByCategory(String category) throws SQLException {
+        return null;
+    }
+
+
+    @Override
+    public Letter findByProblem(String problem) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Letter findByIDApplicant(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Letter findByApplyDate(Date date) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Letter findByStatus(int status) throws SQLException {
+        return null;
     }
 
     @Override

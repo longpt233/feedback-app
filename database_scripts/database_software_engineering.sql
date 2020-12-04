@@ -16,7 +16,9 @@ CREATE TABLE Problem (
 
 CREATE TABLE GroupLetter  (
     id int auto_increment NOT NULL primary key,
-    name varchar(100)
+    name varchar(100),
+    status int,
+    quantity int
 );
 
 CREATE TABLE GroupHasLetter(

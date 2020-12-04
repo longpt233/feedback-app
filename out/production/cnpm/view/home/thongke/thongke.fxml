@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="776.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="2.0" layoutY="4.0" prefHeight="764.0" prefWidth="813.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="4.0">
+         <children>
+            <TableView fx:id="tableViewLetter" layoutX="14.0" layoutY="112.0" prefHeight="609.0" prefWidth="573.0">
+               <columns>
+                  <TableColumn fx:id="tableColumnSTT" prefWidth="57.59997636079788" text="STT" />
+                  <TableColumn fx:id="tableColumnLoaiDon" minWidth="0.0" prefWidth="219.0" text="ten nhom" />
+                  <TableColumn fx:id="tableColumnTrangThai" minWidth="0.0" prefWidth="295.0" text="Trạng Thái" />
+               </columns>
+            </TableView>
+            <Button fx:id="butXemChiTiet" layoutX="624.0" layoutY="190.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Chi tiet">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="butCapnhatTrangthai" layoutX="624.0" layoutY="251.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="caapj nhat trang thai">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReset" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" text="reset">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="butXoa" layoutX="624.0" layoutY="319.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="xoa nhom ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="204.0" layoutY="48.0" text="day la trang thong ke">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
