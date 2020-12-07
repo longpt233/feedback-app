@@ -22,9 +22,9 @@ CREATE TABLE GroupLetter  (
 );
 
 CREATE TABLE GroupHasLetter(
-    id int auto_increment NOT NULL primary key,
     id_letter char(20) ,
     id_group int,
+    primary key(id_letter, id_group)
     FOREIGN KEY (id_letter) REFERENCES Letter(id),
     FOREIGN KEY (id_group) REFERENCES GroupLetter(id)
 
