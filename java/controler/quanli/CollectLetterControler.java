@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Applicant;
 import model.Letter;
 import service.ApplicantService;
@@ -69,6 +70,15 @@ public class CollectLetterControler implements Initializable {
             catch (SQLException e){
 
             }
+        });
+        butCancel.setOnAction(actionEvent -> {
+            try {
+                Stage thisStage = (Stage) butCancel.getScene().getWindow();
+                thisStage.close();
+            }
+            catch (Exception e) {
+            }
+
         });
 
     }
