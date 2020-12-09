@@ -7,34 +7,34 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="776.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="776.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.quanli_nhomdon.Quanli_nhomdonController">
    <children>
       <Pane layoutX="2.0" layoutY="4.0" prefHeight="764.0" prefWidth="813.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="4.0">
          <children>
             <TableView fx:id="tableViewLetter" layoutX="14.0" layoutY="112.0" prefHeight="609.0" prefWidth="573.0">
                <columns>
                   <TableColumn fx:id="tableColumnSTT" prefWidth="57.59997636079788" text="STT" />
-                  <TableColumn fx:id="tableColumnLoaiDon" minWidth="0.0" prefWidth="196.0" text="Tên Nhóm" />
-                  <TableColumn prefWidth="75.0" text="Số Lượng" />
+                  <TableColumn fx:id="tableColumnTenNhom" minWidth="0.0" prefWidth="196.0" text="Tên Nhóm" />
+                  <TableColumn fx:id="tableColumnSoLuong" prefWidth="75.0" text="Số Lượng" />
                   <TableColumn fx:id="tableColumnTrangThai" minWidth="0.0" prefWidth="243.4000244140625" text="Trạng Thái" />
                </columns>
             </TableView>
-            <Button fx:id="butXemChiTiet" layoutX="614.0" layoutY="190.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" text="Chi Tiết">
+            <Button fx:id="butXemChiTietNhom" layoutX="614.0" layoutY="190.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" text="Chi Tiết">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="butCapnhatTrangthai" layoutX="614.0" layoutY="251.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" text="Cập Nhật Lại Trạng Thái">
+            <Button fx:id="butCapnhatTrangThaiNhom" layoutX="614.0" layoutY="251.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" text="Cập Nhật Lại Trạng Thái">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnReset" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="133.0" text="Làm Mới Lại Bảng">
+            <Button fx:id="btnResetNhom" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="133.0" text="Làm Mới Lại Bảng">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="butXoa" layoutX="614.0" layoutY="319.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" text="Xóa Nhóm">
+            <Button fx:id="butXoaNhom" layoutX="614.0" layoutY="319.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" text="Xóa Nhóm">
                <font>
                   <Font size="14.0" />
                </font>

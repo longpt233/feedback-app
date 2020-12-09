@@ -36,14 +36,11 @@ public class Quanli_nhomdonController implements Initializable {
     public TableColumn tableColumnTenNhom;
     public TableColumn tableColumnSoLuong;
     public TableColumn tableColumnTrangThai;
-    public Button butCapnhatTrangthai;
-    public Button btnReset;
-    public Button butChinhsua;
-    public Button butXoa;
+    public Button butCapnhatTrangthai, butXoa;
 
 
     @FXML
-    private Button butTaoDon,  butTimKiem, butXemChiTiet;
+    private Button butXemChiTietNhom,butCapnhatTrangThaiNhom, butXoaNhom, btnResetNhom;
 
     private LetterService letterService = new LetterServiceIMPL();
 
@@ -71,14 +68,14 @@ public class Quanli_nhomdonController implements Initializable {
 
     private void initBut() {
 
-        btnReset.setOnAction(actionEvent -> {
+        btnResetNhom.setOnAction(actionEvent -> {
             // cai nay chua test
             groupLettersObservableListSearch=null;
             initTable();
         });
 
 
-        butXemChiTiet.setOnAction(actionEvent -> {  //chưa sửa sang group
+        butXemChiTietNhom.setOnAction(actionEvent -> {  //chưa sửa sang group
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 try {
@@ -111,7 +108,7 @@ public class Quanli_nhomdonController implements Initializable {
         });
 
 
-        butCapnhatTrangthai.setOnAction(actionEvent -> {   //chưa sửa sang group
+        butCapnhatTrangThaiNhom.setOnAction(actionEvent -> {   //chưa sửa sang group
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 try {
@@ -134,7 +131,7 @@ public class Quanli_nhomdonController implements Initializable {
             }
         });
 
-        butXoa.setOnAction(actionEvent -> {  // chưa sửa sang group
+        butXoaNhom.setOnAction(actionEvent -> {  // chưa sửa sang group
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 // del xong hien thi thon bao cho nguoi duing
