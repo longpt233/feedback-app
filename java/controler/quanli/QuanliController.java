@@ -9,7 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -227,6 +227,8 @@ public class QuanliController implements Initializable {
     }
 
     private void initTable() {
+        //chon duoc nhieu dong
+        tableViewLetter.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // nhung truong nay bat buoc phai tuong ung thuoc tinh cua model thi moi hien thi dc
         tableColumnSTT.setCellValueFactory(new PropertyValueFactory<Letter, String>("id"));
@@ -235,6 +237,7 @@ public class QuanliController implements Initializable {
         tableColumnNoiDung.setCellValueFactory(new PropertyValueFactory<Letter, String>("content"));
         tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusLetter"));
         tableColumnAction.setCellValueFactory(new PropertyValueFactory<Letter,String>("checkBox"));
+
 
         try {
             refreshTable();
@@ -249,6 +252,7 @@ public class QuanliController implements Initializable {
 
         if(lettersObservableListSearch!=null&&!lettersObservableListSearch.isEmpty()){
             tableViewLetter.setItems(lettersObservableListSearch);
+
 
         }else {
             letters.removeAll(letters);

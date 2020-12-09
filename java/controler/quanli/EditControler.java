@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import model.Applicant;
 import model.Letter;
 import service.ApplicantService;
@@ -34,7 +35,7 @@ public class EditControler implements Initializable {
     private TextArea content ;
 
     @FXML
-    private Button update;
+    private Button update, butCancel;
 
     @FXML
     private TextField letterID1;
@@ -157,40 +158,33 @@ public class EditControler implements Initializable {
 //        statusLetter=3;
 //    }
 //
-//        update.setOnAction(actionEvent -> {
-//        try {
-//            LetterServiceIMPL udateData = new LetterServiceIMPL();
-//            udateData.update(getData());
-//
-//        }
-//        catch (Exception e) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Thiếu Thông Tin");
-//            alert.setContentText("Thiếu Thông Tin!");
-//            alert.showAndWait();
-//
-//            e.printStackTrace();
-//        }
-//
-//    });
-//
-//        delete.setOnAction(actionEvent -> {
-//        try {
-//            LetterServiceIMPL deleteData = new LetterServiceIMPL();
-//            deleteData.delete(getData().getId());
-//
-//
-//        }
-//        catch (Exception e) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Thiếu Thông Tin");
-//            alert.setContentText("Thiếu Thông Tin!");
-//            alert.showAndWait();
-//
-//            e.printStackTrace();
-//        }
-//
-//    });
+        update.setOnAction(actionEvent -> {
+        try {
+            LetterServiceIMPL udateData = new LetterServiceIMPL();
+            udateData.update(getData());
+
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thiếu Thông Tin");
+            alert.setContentText("Thiếu Thông Tin!");
+            alert.showAndWait();
+
+            e.printStackTrace();
+        }
+
+    });
+
+
+        butCancel.setOnAction(actionEvent -> {
+        try {
+            Stage thisStage = (Stage) butCancel.getScene().getWindow();
+            thisStage.close();
+        }
+        catch (Exception e) {
+        }
+
+    });
 
 }
 

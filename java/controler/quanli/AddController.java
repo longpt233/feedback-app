@@ -1,14 +1,9 @@
 package controler.quanli;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Applicant;
@@ -20,17 +15,20 @@ import service.impl.ApplicantServiceIMPL;
 import service.impl.LetterServiceIMPL;
 import service.impl.ProblemServiceIMPL;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class AddController implements Initializable {
     public ComboBox problem;
     public Button addLetter;
     public Button cancel;
+    public Label checkCMND;
+    public Label newProblem;
     @FXML
     private TextField organizationName;
 
@@ -50,7 +48,7 @@ public class AddController implements Initializable {
     private ProblemService problemService = new ProblemServiceIMPL();
     // cai status letter nay khi moi tao don luon luon bang 1 (chua xu li )
     private int statusLetter=0;
-    private ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
+    private ObservableList<String> list = FXCollections.observableArrayList("Khiếu Nại", "Kiến Nghị Phản Ánh");
 
     private ObservableList<String> listProblem;
 
@@ -58,32 +56,36 @@ public class AddController implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        checkCMND.setVisible(false);
+        newProblem.setVisible(false);
         try {
             List<String> tmp=new ArrayList<>();
             for (Problem iter : problemService.findAll()){
                 tmp.add(iter.getName());
             };
-            tmp.add("other");
+            tmp.add("Khác");
             listProblem=  FXCollections.observableArrayList(tmp);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         problem.setItems(listProblem);
         problem.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
-            if (t1.equals("other")){
+            if (t1.equals("Khác")){
                 Dialog<String> dialog=new TextInputDialog();
-                dialog.setTitle("add new problem");
-                dialog.setHeaderText("Enter new problem");
+                dialog.setTitle("Thêm Vấn Đề Mới");
+                dialog.setHeaderText("Nhập Vấn Đề Mới");
                 Optional<String> input=dialog.showAndWait();
                 // neu co nhap vao
                 if (input.isPresent()){
                     prblemSelected=input.get();
+                    newProblem.setVisible(true);
+                    newProblem.setText("*Vấn đề mới: "+prblemSelected);
                 }
             }else {
+                newProblem.setVisible(false);
                 prblemSelected= (String) t1;
             }
-            System.out.println("ban da chon van de"+prblemSelected);
+            System.out.println("Bạn đã chọn vấn đề: "+prblemSelected);
         });
 
 
@@ -93,11 +95,17 @@ public class AddController implements Initializable {
 
             try{
                   Applicant thisapplicant = applicantService.findById(Integer.valueOf(newVal));
-//                address.setText(thisapplicant.getAddress());
-//                applicantName.setText(thisapplicant.getName());
+                  if(thisapplicant!=null){
+                      checkCMND.setVisible(false);
+                      applicantName.setText(thisapplicant.getName());
+                  }
+                  else {
+                      checkCMND.setVisible(true);
+                      applicantName.setText("");
+                  }
             }
             catch (SQLException e){
-
+                System.out.println("lỗi tìm cmnd");
             }
         });
 
@@ -132,6 +140,15 @@ public class AddController implements Initializable {
                 alert.showAndWait();
 
                 e.printStackTrace();
+            }
+
+        });
+        cancel.setOnAction(actionEvent -> {
+            try {
+                Stage thisStage = (Stage) cancel.getScene().getWindow();
+                thisStage.close();
+            }
+            catch (Exception e) {
             }
 
         });

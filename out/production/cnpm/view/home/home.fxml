@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.HomeController">
    <children>
       <BorderPane fx:id="borderPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="822.0" prefWidth="1068.0">
          <left>
             <Pane prefHeight="661.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" layoutY="426.0" prefHeight="27.0" prefWidth="190.0" text="statistic" underline="true">
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="432.0" prefHeight="27.0" prefWidth="190.0" text="Thống Kê" textFill="#0b0fdf" underline="true">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutY="211.0" prefHeight="27.0" prefWidth="190.0" text="manage" underline="true">
+                  <Label alignment="CENTER" layoutY="233.0" prefHeight="27.0" prefWidth="190.0" text="Quản Lí" textFill="#280be5" underline="true">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="bntThongke" layoutX="18.0" layoutY="500.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Thống Kê Đơn">
+                  <Button fx:id="bntThongke" layoutX="18.0" layoutY="474.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Thống Kê Đơn">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bntQuanli" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="quan li don ">
+                  <Button fx:id="bntQuanli" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Quản Lí Đơn">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bntQuanliNhomdon" layoutX="18.0" layoutY="376.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="quan li nhom don">
+                  <Button fx:id="bntQuanliNhomdon" layoutX="18.0" layoutY="347.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Quản Lí Nhóm Đơn">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
+                  <ImageView fitHeight="172.0" fitWidth="179.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/logo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </left>

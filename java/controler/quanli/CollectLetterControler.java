@@ -1,23 +1,13 @@
 package controler.quanli;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 import model.Applicant;
 import model.Letter;
 import service.ApplicantService;
 import service.impl.ApplicantServiceIMPL;
-import service.impl.LetterServiceIMPL;
 
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class CollectLetterControler implements Initializable {
@@ -43,7 +33,6 @@ public class CollectLetterControler implements Initializable {
         }
 
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

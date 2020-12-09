@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="593.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.quanli.AddController">
+<AnchorPane prefHeight="593.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.quanli.AddController">
    <children>
       <Pane layoutX="-6.0" prefHeight="643.0" prefWidth="800.0" style="-fx-background-color: #f7f93f;">
          <children>
@@ -25,7 +19,7 @@
                <font>
                   <Font size="17.0" />
                </font></TextField>
-            <TextField fx:id="applicantName" layoutX="51.0" layoutY="35.0" prefHeight="37.0" prefWidth="316.0" promptText="Họ Tên Người Viết" text="ho ten (check by cccd)">
+            <TextField fx:id="applicantName" layoutX="51.0" layoutY="35.0" prefHeight="37.0" prefWidth="316.0" promptText="Họ Tên Người Viết">
                <font>
                   <Font size="16.0" />
                </font></TextField>
@@ -38,23 +32,29 @@
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <TextField fx:id="letterID" layoutX="51.0" layoutY="162.0" prefHeight="37.0" prefWidth="188.0" promptText="Mã Đơn" text="ma don ">
+            <TextField fx:id="letterID" layoutX="51.0" layoutY="162.0" prefHeight="37.0" prefWidth="188.0" promptText="Mã Đơn">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <ComboBox fx:id="category" layoutX="314.0" layoutY="162.0" prefHeight="37.0" prefWidth="188.0" promptText="Loại Đơn(category )" />
+            <ComboBox fx:id="category" layoutX="314.0" layoutY="162.0" prefHeight="37.0" prefWidth="188.0" promptText="Loại Đơn (category )" />
             <TextField fx:id="applicantID" layoutX="468.0" layoutY="35.0" prefHeight="37.0" prefWidth="176.0" promptText="CMND/CCCD">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
             <DatePicker fx:id="applyDate" layoutX="445.0" layoutY="285.0" prefHeight="37.0" prefWidth="188.0" promptText="Ngày Viết Đơn" />
-            <Button fx:id="cancel" layoutX="487.0" layoutY="591.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="103.0" style="-fx-background-color: ed0000;" text="Huy" textFill="#121d36">
+            <Button fx:id="cancel" layoutX="487.0" layoutY="591.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="103.0" style="-fx-background-color: ed0000;" text="Hủy" textFill="#121d36">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <ComboBox fx:id="problem" layoutX="51.0" layoutY="224.0" prefHeight="37.0" prefWidth="188.0" promptText="problem" />
+            <ComboBox fx:id="problem" layoutX="51.0" layoutY="224.0" prefHeight="37.0" prefWidth="188.0" promptText="Vấn Đề" />
+            <Label fx:id="checkCMND" layoutX="468.0" layoutY="72.0" prefHeight="17.0" prefWidth="176.0" text="* Người này chưa được quản lí " textFill="#dd0909" textOverrun="CLIP" underline="true" />
+            <Label fx:id="newProblem" layoutX="316.0" layoutY="234.0" prefHeight="29.0" prefWidth="393.0" text="Label" textFill="#090661">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
