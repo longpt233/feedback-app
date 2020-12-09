@@ -180,7 +180,8 @@ public class QuanliController implements Initializable {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/view/home/quanli/collect.fxml"));
                     CollectLetterControler controller =new CollectLetterControler();
-                    controller.setLetter(lettersSelected.get(0));
+                    controller.setListLetter(lettersSelected);
+                    loader.setController(controller);
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();

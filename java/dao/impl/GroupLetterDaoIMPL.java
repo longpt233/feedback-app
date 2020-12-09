@@ -67,7 +67,7 @@ public class GroupLetterDaoIMPL implements GroupLetterDao {
     }
 
     @Override
-    public boolean insert(String name,int status,int quantity) throws SQLException {
+    public boolean insert( String name,int status,int quantity) throws SQLException {
         String sql = "INSERT INTO GroupLetter (name, status, quantity) " +
                 "values (?,?,?)";
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
@@ -113,7 +113,7 @@ public class GroupLetterDaoIMPL implements GroupLetterDao {
         statement.setString(1, groupLetter.getName());
         statement.setInt(2, groupLetter.getStatus());
         statement.setInt(3, groupLetter.getQuantity());
-        statement.setInt(6, groupLetter.getId());
+        statement.setInt(4, groupLetter.getId());
 
         int isDone = statement.executeUpdate(); //  > 0 khi update thành công
         if (isDone > 0) return true;

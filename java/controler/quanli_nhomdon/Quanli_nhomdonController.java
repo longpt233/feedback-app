@@ -15,8 +15,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.GroupLetter;
 import model.Letter;
+import service.GroupLetterService;
 import service.LetterService;
+import service.impl.GroupLetterServiceIMPL;
 import service.impl.LetterServiceIMPL;
 
 import java.io.IOException;
@@ -30,9 +33,8 @@ public class Quanli_nhomdonController implements Initializable {
 
     public TableView tableViewLetter;
     public TableColumn tableColumnSTT;
-    public TableColumn tableColumnLoaiDon;
-    public TableColumn tableColumnNgayVietDon;
-    public TableColumn tableColumnNoiDung;
+    public TableColumn tableColumnTenNhom;
+    public TableColumn tableColumnSoLuong;
     public TableColumn tableColumnTrangThai;
     public Button butCapnhatTrangthai;
     public Button btnReset;
@@ -45,12 +47,19 @@ public class Quanli_nhomdonController implements Initializable {
 
     private LetterService letterService = new LetterServiceIMPL();
 
+    private GroupLetterService groupLetterService = new GroupLetterServiceIMPL();
 
-    private ObservableList<Letter> lettersObservableList;
 
-    private ObservableList<Letter> lettersObservableListSearch;
+//    private ObservableList<Letter> lettersObservableList;
+//
+//    private ObservableList<Letter> lettersObservableListSearch;
 
-    private List<Letter> letters = new ArrayList<>();
+    private ObservableList<Letter> groupLettersObservableList;
+    private ObservableList<Letter> groupLettersObservableListSearch;
+
+//    private List<Letter> letters = new ArrayList<>();
+
+    private List<GroupLetter> groupLetters = new ArrayList<GroupLetter>();
 
 
     @Override
@@ -64,66 +73,12 @@ public class Quanli_nhomdonController implements Initializable {
 
         btnReset.setOnAction(actionEvent -> {
             // cai nay chua test
-            lettersObservableListSearch=null;
+            groupLettersObservableListSearch=null;
             initTable();
         });
 
-        butTaoDon.setOnAction(actionEvent -> {
-// tat man hinh hien tai de hien thi man hinh tao don
-//            try {
-//                Parent blad = FXMLLoader.load(getClass().getResource("/view/main/add.fxml"));
-//                Scene scene = new Scene(blad);
-//                Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//                appStage.setTitle("Tao Don");
-//                appStage.setScene(scene);
-//                appStage.show();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/view/home/quanli/add.fxml"));
-                Parent parent=loader.load();
-                Scene scene = new Scene(parent);
-                Stage stageAdd = new Stage();
-                stageAdd.setTitle("Add new letter");
-                stageAdd.setScene(scene);
-                stageAdd.initModality(Modality.WINDOW_MODAL);
-                stageAdd.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
-                stageAdd.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        butTimKiem.setOnAction(actionEvent -> {
-            try {
-                lettersObservableListSearch=null;
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/view/home/quanli/search.fxml"));
-                SearchController controller =new SearchController();
-                loader.setController(controller);
-                Parent parent=loader.load();
-                Scene scene = new Scene(parent);
-                Stage stageSearch = new Stage();
-                stageSearch.setTitle("find letter ");
-                stageSearch.setScene(scene);
-                stageSearch.initModality(Modality.WINDOW_MODAL);
-                stageSearch.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-
-                stageSearch.showAndWait();
-                lettersObservableListSearch=controller.getList();
-                System.out.println("tra ve list "+lettersObservableListSearch.toString());
-                initTable();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        // khong tat man hinh hien tai
-        // hien thi ca 2 cung luc
-        // khong the thao tac voi cua so cha
-        butXemChiTiet.setOnAction(actionEvent -> {
+        butXemChiTiet.setOnAction(actionEvent -> {  //chưa sửa sang group
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 try {
@@ -156,7 +111,7 @@ public class Quanli_nhomdonController implements Initializable {
         });
 
 
-        butCapnhatTrangthai.setOnAction(actionEvent -> {
+        butCapnhatTrangthai.setOnAction(actionEvent -> {   //chưa sửa sang group
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 try {
@@ -179,7 +134,7 @@ public class Quanli_nhomdonController implements Initializable {
             }
         });
 
-        butXoa.setOnAction(actionEvent -> {
+        butXoa.setOnAction(actionEvent -> {  // chưa sửa sang group
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 // del xong hien thi thon bao cho nguoi duing
@@ -189,11 +144,10 @@ public class Quanli_nhomdonController implements Initializable {
 
     private void initTable() {
 
-        tableColumnSTT.setCellValueFactory(new PropertyValueFactory<Letter, String>("id"));
-        tableColumnLoaiDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("category"));
-        tableColumnNgayVietDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("applyDate"));
-        tableColumnNoiDung.setCellValueFactory(new PropertyValueFactory<Letter, String>("content"));
-        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusLetter"));
+        tableColumnSTT.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("id"));
+        tableColumnTenNhom.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>(""));
+        tableColumnSoLuong.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>(""));
+        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("status"));
 
         try {
             refreshTable();
@@ -206,14 +160,14 @@ public class Quanli_nhomdonController implements Initializable {
     public void refreshTable() throws SQLException {
         System.out.println("refresh table");
 
-        if(lettersObservableListSearch!=null&&!lettersObservableListSearch.isEmpty()){
-            tableViewLetter.setItems(lettersObservableListSearch);
+        if(groupLettersObservableListSearch!=null&&!groupLettersObservableListSearch.isEmpty()){
+            tableViewLetter.setItems(groupLettersObservableListSearch);
 
         }else {
-            letters.removeAll(letters);
-            letters.addAll(letterService.findAll());
-            lettersObservableList = FXCollections.observableList(letters);
-            tableViewLetter.setItems(lettersObservableList);
+            groupLetters.removeAll(groupLetters);
+//            groupLetters.addAll(groupLetterService.findAll());//find all chua co
+//            groupLettersObservableList = FXCollections.observableList(groupLetters);
+            tableViewLetter.setItems(groupLettersObservableList);
         }
     }
 

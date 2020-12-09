@@ -181,8 +181,8 @@ public class LetterDaoIMPL implements LetterDao {
         statement.setInt(4, letter.getIdApplicant());
         statement.setString(5, letter.getContent());
         statement.setDate(6, letter.getApplyDate());
-        statement.setInt(6, letter.getStatusLetter());
-        statement.setBoolean(6, letter.getDeleted());
+        statement.setInt(7, letter.getStatusLetter());
+        statement.setBoolean(8, letter.getDeleted());
 
         int isDone = statement.executeUpdate(); //  > 0 khi insert thành công
         System.out.println("isDone"+isDone);

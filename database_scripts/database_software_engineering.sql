@@ -9,6 +9,18 @@ CREATE TABLE Applicant (
     role int
 );
 
+CREATE TABLE Letter (
+	id char(20) NOT NULL primary key,
+	category varchar(150),
+    problem varchar(100),
+    id_applicant int,
+    content varchar(200),
+    apply_date date,
+    status_letter int,
+    deleted boolean,
+    FOREIGN KEY (id_applicant) REFERENCES Applicant(id)
+);
+
 CREATE TABLE Problem (
     id int auto_increment NOT NULL primary key,
     name varchar(100)
@@ -24,22 +36,10 @@ CREATE TABLE GroupLetter  (
 CREATE TABLE GroupHasLetter(
     id_letter char(20) ,
     id_group int,
-    primary key(id_letter, id_group)
+    primary key(id_letter, id_group),
     FOREIGN KEY (id_letter) REFERENCES Letter(id),
     FOREIGN KEY (id_group) REFERENCES GroupLetter(id)
 
-);
-
-CREATE TABLE Letter (
-	id char(20) NOT NULL primary key,
-	category varchar(150),
-    problem varchar(100),
-    id_applicant int,
-    content varchar(200),
-    apply_date date,
-    status_letter int,
-    deleted boolean,
-    FOREIGN KEY (id_applicant) REFERENCES Applicant(id)
 );
 
 

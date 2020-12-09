@@ -21,13 +21,15 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
     private GroupHasLetterDao groupHasLetterDao = new GroupHasLetterDaoIMPL();
 
     @Override
-    public boolean insertListLetter(ArrayList<String> listId) throws SQLException {
+    public boolean insertListLetter(ArrayList<String> listId, String groupName) throws SQLException {
         int quantity = listId.size();
         int status = letterDao.findById(listId.get(0)).getStatusLetter();
-        int id=0;
-        String name="";
-        GroupLetter groupLetter = new GroupLetter(id, name, status, quantity);
-        groupLetterDao.insert(groupLetter);
+        int id=1;
+//        String name="";
+
+        GroupLetter groupLetter = new GroupLetter(id, groupName, status, quantity);
+        System.out.println(groupLetter);
+        groupLetterDao.insert(groupLetter.getName(), groupLetter.getStatus(), groupLetter.getQuantity());
         for (int i = 0; i < quantity; i++) {
             groupHasLetterDao.insert(new GroupHasLetter(listId.get(i), id));
         }
@@ -63,15 +65,17 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
         try {
             int quantity = listLetter.size();
             int status = letterDao.findById(listLetter.get(0).getId()).getStatusLetter();
-            groupLetterDao.insert(name, status, quantity);
+            groupLetterDao.insert( name, status, quantity);
             GroupLetter groupLetter = groupLetterDao.findByName(name);
             int id_group = groupLetter.getId();
             for (int i = 0; i < quantity; i++) {
-                groupHasLetterDao.insert(new GroupHasLetter(listLetter.get(i).getId(), id_group));
+                GroupHasLetter groupHasLetter =new GroupHasLetter(listLetter.get(i).getId(), id_group);
+                groupHasLetterDao.insert(groupHasLetter);
             }
             return true;
 
         } catch (SQLException e){
+            System.out.println("loi roi");
             e.printStackTrace();
             return false;
         }

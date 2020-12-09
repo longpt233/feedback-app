@@ -47,7 +47,7 @@ public class AddController implements Initializable {
     private ApplicantService applicantService = new ApplicantServiceIMPL();
     private ProblemService problemService = new ProblemServiceIMPL();
     // cai status letter nay khi moi tao don luon luon bang 1 (chua xu li )
-    private int statusLetter=0;
+    private int statusLetter=1;
     private ObservableList<String> list = FXCollections.observableArrayList("Khiếu Nại", "Kiến Nghị Phản Ánh");
 
     private ObservableList<String> listProblem;
@@ -124,7 +124,6 @@ public class AddController implements Initializable {
                     int aID= Integer.valueOf(applicantID.getText());
                     Date date= Date.valueOf(applyDate.getValue());
                     String cate= category.getValue();
-
 
                     Letter newLetter = new Letter(ID,cate, prblemSelected, aID, ct, date, statusLetter, false);
                     LetterServiceIMPL letterServiceIMPL=new LetterServiceIMPL();

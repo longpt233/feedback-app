@@ -98,8 +98,7 @@ public class GroupHasLetterDaoIMPL implements GroupHasLetterDao {
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         statement.setString(1, groupHasLetter.getId_letter());
-        statement.setInt(1, groupHasLetter.getId_group());
-
+        statement.setInt(2, groupHasLetter.getId_group());
         int isDone = statement.executeUpdate(); //  > 0 khi insert thành công
         System.out.println("isDone"+isDone);
         if (isDone > 0){

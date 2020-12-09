@@ -27,7 +27,6 @@ public class HomeController implements Initializable {
         }
         bntQuanli.setOnAction(actionEvent -> {
             try {
-                System.out.println("a");
                 Pane quanLiPane = FXMLLoader.load(getClass().getResource("/view/home/quanli/quanli.fxml"));
                 System.out.println(quanLiPane);
                 borderPane.setCenter(quanLiPane);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface GroupLetterService extends BaseService<GroupLetter>{
     // liên quan đến groupHasLetter
-    boolean insertListLetter(ArrayList<String> listId) throws SQLException;
+    boolean insertListLetter(ArrayList<String> listId, String groupName) throws SQLException;
     boolean deleteListLetter(ArrayList<String> listId);
     
     // --------
