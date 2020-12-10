@@ -93,7 +93,7 @@ public class Show_nhomdonControler implements Initializable {
         this.letter=letter;
         try{
             System.out.println("id="+letter.getIdApplicant());
-            this.applicant=applicantService.findById(letter.getIdApplicant());
+            this.applicant=applicantService.findByIdentityCard(letter.getIdApplicant());
             System.out.println("Nguoi nay la "+applicant.getName());
         }
         catch (SQLException e){

@@ -13,4 +13,5 @@ public interface LetterService extends BaseService<Letter>{
     Letter findByIDApplicant(int id) throws SQLException;
     Letter findByApplyDate(Date date) throws SQLException;
     Letter findByStatus(int status) throws SQLException;
+    public boolean delete(String id) throws SQLException;
 }

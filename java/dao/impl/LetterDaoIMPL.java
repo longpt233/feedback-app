@@ -18,14 +18,15 @@ public class LetterDaoIMPL implements LetterDao {
     public Letter getLetter(ResultSet resultSet) throws SQLException {
         String id= resultSet.getString("id");
         String content=resultSet.getString("content");
-        int idApplicant= resultSet.getInt("id_applicant");
+        String idApplicant= resultSet.getString("id_card_applicant");
         Date applyDate=resultSet.getDate("apply_date");
         boolean deleted=resultSet.getBoolean("deleted");
         String category=resultSet.getString("category");
         int statusLetter=resultSet.getInt("status_letter");
         String problem=resultSet.getString("problem");
+        String organization=resultSet.getString("organization");
 
-        return new Letter(id,category,problem,idApplicant,content,applyDate,statusLetter,deleted);
+        return new Letter(id,category,problem,idApplicant,content,organization,applyDate,statusLetter,deleted);
     }
 
     @Override
@@ -113,7 +114,7 @@ public class LetterDaoIMPL implements LetterDao {
 
     @Override
     public Letter findByIDApplicant(int id) throws SQLException {
-        String sql= "SELECT * FROM Letter WHERE deleted=false and id_applicant=?";
+        String sql= "SELECT * FROM Letter WHERE deleted=false and id_card_applicant=?";
         List<Letter> results = new ArrayList<>();
 
         try {
@@ -167,22 +168,33 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
+    public boolean delete(String id) throws SQLException {
+        String sql = "update Letter set deleted = true where id = ?";
+        PreparedStatement statement = initConnection.prepareUpdate(sql);
+        statement.setString(1, id);
+        int isDone = statement.executeUpdate();
+        if(isDone > 0) return true;
+        return false;
+    }
+
+    @Override
     public Letter insert(Letter letter) throws SQLException {
         // trả về letter đã insert
 //        Letter returnLetter = null;
 
-        String sql = "INSERT INTO Letter (id, category, problem, id_applicant, content, apply_date, status_letter, deleted) " +
-                "value (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Letter (id, category, problem, id_card_applicant, content,organization, apply_date, status_letter, deleted) " +
+                "value (?,?,?,?,?,?,?,?,?)";
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         statement.setString(1, letter.getId());
         statement.setString(2, letter.getCategory());
         statement.setString(3, letter.getProblem());
-        statement.setInt(4, letter.getIdApplicant());
+        statement.setString(4, letter.getIdApplicant());
         statement.setString(5, letter.getContent());
-        statement.setDate(6, letter.getApplyDate());
-        statement.setInt(7, letter.getStatusLetter());
-        statement.setBoolean(8, letter.getDeleted());
+        statement.setString(6, letter.getOrganization());
+        statement.setDate(7, letter.getApplyDate());
+        statement.setInt(8, letter.getStatusLetter());
+        statement.setBoolean(9, letter.getDeleted());
 
         int isDone = statement.executeUpdate(); //  > 0 khi insert thành công
         System.out.println("isDone"+isDone);
@@ -198,15 +210,16 @@ public class LetterDaoIMPL implements LetterDao {
 
     @Override
     public boolean update(Letter letter) throws SQLException {
-        String sql = "UPDATE Letter set problem=?, content=?, id_applicant=?, apply_date=?, deleted=? WHERE id=?";
+        String sql = "UPDATE Letter set problem=?, content=?, id_card_applicant=?,organization=?, apply_date=?, deleted=? WHERE id=?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         statement.setString(1, letter.getProblem());
         statement.setString(2, letter.getContent());
-        statement.setInt(3, letter.getIdApplicant());
-        statement.setDate(4, letter.getApplyDate());
-        statement.setBoolean(5, letter.getDeleted());
-        statement.setString(6, letter.getId());
+        statement.setString(3, letter.getIdApplicant());
+        statement.setString(4, letter.getOrganization());
+        statement.setDate(5, letter.getApplyDate());
+        statement.setBoolean(6, letter.getDeleted());
+        statement.setString(7, letter.getId());
 
         int isDone = statement.executeUpdate(); //  > 0 khi update thành công
         if (isDone > 0) return true;

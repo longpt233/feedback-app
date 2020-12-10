@@ -32,37 +32,33 @@ public class LetterServiceIMPL implements LetterService {
 
     @Override
     public Letter findById(String id) throws SQLException {
-        // trả về đối tượng đã tìm kiếm
-
-        System.out.println("vao tim kiem tim "+id);
-        System.out.println("tìm id 1 và ra id là "+letterDao.findById(id).toString());
         return letterDao.findById(id);
     }
 
     @Override
     public Letter findByCategory(String category) throws SQLException {
-        return null;
+        return letterDao.findByCategory(category);
     }
 
 
     @Override
     public Letter findByProblem(String problem) throws SQLException {
-        return null;
+        return letterDao.findByProblem(problem);
     }
 
     @Override
     public Letter findByIDApplicant(int id) throws SQLException {
-        return null;
+        return letterDao.findByIDApplicant(id);
     }
 
     @Override
     public Letter findByApplyDate(Date date) throws SQLException {
-        return null;
+        return letterDao.findByApplyDate(date);
     }
 
     @Override
     public Letter findByStatus(int status) throws SQLException {
-        return null;
+        return letterDao.findByStatus(status);
     }
 
     @Override
@@ -87,8 +83,15 @@ public class LetterServiceIMPL implements LetterService {
 
     @Override
     public boolean delete(int id) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException {
         // trả về true nếu xóa thành công
-        return (id > 0) ? letterDao.delete(id) : false;
+//        return (id > 0) ?
+// xu li logic cho dau vao
+              return  letterDao.delete(id) ;
     }
 }
 

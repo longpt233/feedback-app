@@ -8,10 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -223,6 +220,24 @@ public class QuanliController implements Initializable {
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (lettersSelected.get(0) != null) {
                 // del xong hien thi thon bao cho nguoi duing
+
+                    try {
+
+                        if(letterService.delete(lettersSelected.get(0).getId())){
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("infor");
+                            alert.setContentText("xoa don thanh cong");
+                            alert.showAndWait();
+                        }
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("infor");
+                        alert.setContentText("xoa don khong thanh cong");
+                        alert.showAndWait();
+                    }
+
+
             }
         });
     }

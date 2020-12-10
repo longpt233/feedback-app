@@ -1,5 +1,6 @@
 package controler.quanli;
 
+import constance.AppConfig;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,7 +49,7 @@ public class AddController implements Initializable {
     private ProblemService problemService = new ProblemServiceIMPL();
     // cai status letter nay khi moi tao don luon luon bang 1 (chua xu li )
     private int statusLetter=1;
-    private ObservableList<String> list = FXCollections.observableArrayList("Khiếu Nại", "Kiến Nghị Phản Ánh");
+    private ObservableList<String> list = FXCollections.observableArrayList(AppConfig.CATE_LIST);
 
     private ObservableList<String> listProblem;
 
@@ -58,6 +59,8 @@ public class AddController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         checkCMND.setVisible(false);
         newProblem.setVisible(false);
+
+        // lay ra list problem
         try {
             List<String> tmp=new ArrayList<>();
             for (Problem iter : problemService.findAll()){
@@ -69,6 +72,7 @@ public class AddController implements Initializable {
             throwables.printStackTrace();
         }
         problem.setItems(listProblem);
+
         problem.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             if (t1.equals("Khác")){
                 Dialog<String> dialog=new TextInputDialog();
@@ -79,33 +83,31 @@ public class AddController implements Initializable {
                 if (input.isPresent()){
                     prblemSelected=input.get();
                     newProblem.setVisible(true);
-                    newProblem.setText("*Vấn đề mới: "+prblemSelected);
+                    newProblem.setText("*ban da chon vấn đề mới: "+prblemSelected);
                 }
             }else {
                 newProblem.setVisible(false);
                 prblemSelected= (String) t1;
             }
-            System.out.println("Bạn đã chọn vấn đề: "+prblemSelected);
         });
-
-
-
-
+        // init su kien cho viec check nguoi
         applicantID.textProperty().addListener((observable, oldVal, newVal) -> {
-
             try{
-                  Applicant thisapplicant = applicantService.findById(Integer.valueOf(newVal));
-                  if(thisapplicant!=null){
-                      checkCMND.setVisible(false);
-                      applicantName.setText(thisapplicant.getName());
-                  }
-                  else {
-                      checkCMND.setVisible(true);
-                      applicantName.setText("");
-                  }
+                Applicant thisapplicant = applicantService.findByIdentityCard(String.valueOf(newVal));
+                // neu tim thay nguoi nay
+                if(thisapplicant!=null){
+                    applicantName.setText(thisapplicant.getName());
+                    checkCMND.setVisible(true);
+                    checkCMND.setText("CCCD hop le");
+                }
+                // neu khong thay
+                else {
+                    checkCMND.setVisible(true);
+                    checkCMND.setText("khong co id nay trong db");
+                }
             }
             catch (SQLException e){
-                System.out.println("lỗi tìm cmnd");
+                e.printStackTrace();
             }
         });
 
@@ -113,31 +115,33 @@ public class AddController implements Initializable {
         category.setItems(list);
         addLetter.setOnAction(actionEvent -> {
             try {
-                if (letterID.getText().isEmpty()){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Lỗi");
-                    alert.setContentText("Thiếu mã đơn!");
-                    alert.showAndWait();
-                } else{
+
+
                     String ID=String.valueOf(letterID.getText());
                     String ct= content.getText();
-                    int aID= Integer.valueOf(applicantID.getText());
+                    String aID= String.valueOf(applicantID.getText());
                     Date date= Date.valueOf(applyDate.getValue());
                     String cate= category.getValue();
+                    String organi=String.valueOf(organizationName.getText());
 
-                    Letter newLetter = new Letter(ID,cate, prblemSelected, aID, ct, date, statusLetter, false);
+                    Letter newLetter = new Letter(ID,cate, prblemSelected, aID, ct,organi, date, statusLetter, false);
                     LetterServiceIMPL letterServiceIMPL=new LetterServiceIMPL();
-                    System.out.println("them thanh cong? "+letterServiceIMPL.insert(newLetter));
-
-                }
+                    // neu them thanh cong
+                    if(letterServiceIMPL.insert(newLetter)){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("infor");
+                        alert.setContentText("them don thanh cong");
+                        alert.showAndWait();
+                    }
+                Stage thisStage = (Stage) addLetter.getScene().getWindow();
+                thisStage.close();
 
             }
             catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Thiếu Thông Tin");
+                alert.setTitle("error");
                 alert.setContentText("Thiếu Thông Tin");
                 alert.showAndWait();
-
                 e.printStackTrace();
             }
 
@@ -149,13 +153,6 @@ public class AddController implements Initializable {
             }
             catch (Exception e) {
             }
-
         });
-
-
     }
-
-
-
-
 }

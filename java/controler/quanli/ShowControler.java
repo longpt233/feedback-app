@@ -10,16 +10,12 @@ import model.Applicant;
 import model.Letter;
 import service.ApplicantService;
 import service.impl.ApplicantServiceIMPL;
-import service.impl.LetterServiceIMPL;
 
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class ShowControler implements Initializable {
@@ -30,7 +26,7 @@ public class ShowControler implements Initializable {
     private Pane pan1;
 
     @FXML
-    private TextField organizationName;
+    private TextField organizationName1;
 
     @FXML
     private TextArea content ;
@@ -50,8 +46,6 @@ public class ShowControler implements Initializable {
     @FXML
     private TextField address;
 
-    @FXML
-    private ComboBox<String> category;
 
     @FXML
     private RadioButton fermaleRB;
@@ -64,6 +58,8 @@ public class ShowControler implements Initializable {
 
     @FXML
     private TextField applicantID;
+    @FXML
+    private TextField category1;
 
     @FXML
     private DatePicker applyDate;
@@ -86,35 +82,29 @@ public class ShowControler implements Initializable {
     @FXML
     private RadioButton waitRB;
 
- //
+
     private ApplicantService applicantService = new ApplicantServiceIMPL();
     private Letter letter;
     private Applicant applicant;
 
 
     public void setLetter(Letter letter){
-        System.out.println("call set");
         this.letter=letter;
         try{
-            System.out.println("id="+letter.getIdApplicant());
-            this.applicant=applicantService.findById(letter.getIdApplicant());
-            System.out.println("Nguoi nay la "+applicant.getName());
+            this.applicant=applicantService.findByIdentityCard(letter.getIdApplicant());
         }
         catch (SQLException e){
-
+            e.printStackTrace();
         }
 
     }
-    public int statusLetter=1;
-    ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         letterID1.setText(String.valueOf(letter.getId()));
-// Vẫn chưa tìm được applicant
-        applicantID.setText(String.valueOf(applicant.getId()));
+        applicantID.setText(String.valueOf(applicant.getIdentityCard()));
         applicantName.setText(applicant.getName());
         address.setText(applicant.getAddress());
         if(applicant.getGender()==1){
@@ -131,11 +121,11 @@ public class ShowControler implements Initializable {
 
         title.setText(letter.getProblem());
         content.setText(letter.getContent());
-        category.setValue(letter.getCategory());
+        category1.setText(letter.getCategory());
+        organizationName1.setText(letter.getOrganization());
         if(letter.getStatusLetter()==1) canRB.setSelected(true);
         if(letter.getStatusLetter()==2) cannotRB.setSelected(true);
         if(letter.getStatusLetter()==3) waitRB.setSelected(true);
-        System.out.println("hello"+letter.toString());
 
 
 

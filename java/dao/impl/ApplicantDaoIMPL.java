@@ -133,7 +133,7 @@ public class ApplicantDaoIMPL implements ApplicantDao {
 
     @Override
     public Applicant findByIdentityCard(String identityCard) throws SQLException {
-        String sql= "SELECT * FROM Applicant WHERE identityCard=?";
+        String sql= "SELECT * FROM Applicant WHERE identity_card=?";
         List<Applicant> results = new ArrayList<>();
 
         try {

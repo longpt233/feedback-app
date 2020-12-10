@@ -1,5 +1,7 @@
 package controler.quanli;
 
+import constance.AppConfig;
+import dao.impl.LetterDaoIMPL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,9 +11,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Applicant;
 import model.Letter;
+import model.Problem;
 import service.ApplicantService;
 import service.impl.ApplicantServiceIMPL;
 import service.impl.LetterServiceIMPL;
+import service.impl.ProblemServiceIMPL;
 
 import java.net.URL;
 import java.sql.Date;
@@ -19,6 +23,9 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EditControler implements Initializable {
@@ -29,7 +36,7 @@ public class EditControler implements Initializable {
     private Pane pan1;
 
     @FXML
-    private TextField organizationName;
+    private TextField organizationName1;
 
     @FXML
     private TextArea content ;
@@ -40,26 +47,20 @@ public class EditControler implements Initializable {
     @FXML
     private TextField letterID1;
 
-    @FXML
-    private Button delete;
 
     @FXML
     private TextField applicantName;
 
-    @FXML
-    private TextField address;
 
     @FXML
     private ComboBox<String> category;
-
     @FXML
-    private RadioButton fermaleRB;
+    private ComboBox<String> problem;
+
 
     @FXML
     private ToggleGroup genderGroup;
 
-    @FXML
-    private RadioButton maleRB;
 
     @FXML
     private TextField applicantID;
@@ -68,100 +69,102 @@ public class EditControler implements Initializable {
     private DatePicker applyDate;
 
     @FXML
-    private TextField title;
+    private TextField problemAddNew;
+
+    @FXML
+    public Label checkCMND;
 
     @FXML
     private DatePicker processedDate;
 
     @FXML
-    private RadioButton canRB;
-
-    @FXML
     private ToggleGroup statusGroup;
 
-    @FXML
-    private RadioButton cannotRB;
 
-    @FXML
-    private RadioButton waitRB;
-
- //
     private ApplicantService applicantService = new ApplicantServiceIMPL();
     private Letter letter;
     private Applicant applicant;
 
 
     public void setLetter(Letter letter){
-        System.out.println("call set");
         this.letter=letter;
         try{
-            System.out.println("id="+letter.getIdApplicant());
-            this.applicant=applicantService.findById(letter.getIdApplicant());
-            System.out.println("Nguoi nay la "+applicant.getName());
+            this.applicant=applicantService.findByIdentityCard(letter.getIdApplicant());
         }
         catch (SQLException e){
-
+            e.printStackTrace();
         }
 
     }
     public int statusLetter=1;
-    ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
+    ObservableList<String> list = FXCollections.observableArrayList(AppConfig.CATE_LIST);
+
+    private ObservableList<String> listProblem;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        checkCMND.setVisible(false);
+
+        // lay ra list problem
+        try {
+            List<String> tmp=new ArrayList<>();
+            ProblemServiceIMPL problemService=new ProblemServiceIMPL();
+            for (Problem iter : problemService.findAll()){
+                tmp.add(iter.getName());
+            };
+            tmp.add("Khác");
+            listProblem=  FXCollections.observableArrayList(tmp);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        problem.setItems(listProblem);
+        problem.setValue(String.valueOf(letter.getProblem()));
+
+
+        // init su kien cho viec check nguoi
+        applicantID.setText(letter.getIdApplicant());
+        applicantID.textProperty().addListener((observable, oldVal, newVal) -> {
+            try{
+                Applicant thisapplicant = applicantService.findByIdentityCard(String.valueOf(newVal));
+                // neu tim thay nguoi nay
+                if(thisapplicant!=null){
+                    applicantName.setText(thisapplicant.getName());
+                    checkCMND.setVisible(true);
+                    checkCMND.setText("CCCD hop le");
+                }
+                // neu khong thay
+                else {
+                    checkCMND.setVisible(true);
+                    checkCMND.setText("khong co id nay trong db");
+                }
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+        });
+        category.setItems(list);
+        category.setValue(String.valueOf(letter.getCategory()));
+
         letterID1.setText(String.valueOf(letter.getId()));
-// Vẫn chưa tìm được applicant
+        //        khong cho sua id vi phuong thuc update khon gho tro
+        letterID1.setEditable(false);
         applicantID.setText(String.valueOf(applicant.getId()));
         applicantName.setText(applicant.getName());
-        address.setText(applicant.getAddress());
-        if(applicant.getGender()==1){
-            maleRB.setSelected(true);
-        }
-        if(applicant.getGender()==0){
-            fermaleRB.setSelected(true);
-        }
+        organizationName1.setText(letter.getOrganization());
 
         String date = new SimpleDateFormat("yyyy-MM-dd").format(letter.getApplyDate());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(date , formatter);
         applyDate.setValue(localDate);
 
-        title.setText(letter.getProblem());
         content.setText(letter.getContent());
-        category.setValue(letter.getCategory());
-//        if(letter.getStatusLetter()==1) canRB.setSelected(true);
-//        if(letter.getStatusLetter()==2) cannotRB.setSelected(true);
-//        if(letter.getStatusLetter()==3) waitRB.setSelected(true);
-        System.out.println("hello"+letter.toString());
-//        content.setText(letter.toString());
-//
-//        try {
-////            Applicant applicant = applicantService.findById(letter.getIdApplicant());
-//            System.out.println("hello" + applicant.toString());
-//            content.setText(letter.toString() + "\n" + applicant.toString());
-//            // chinh cac thong tin co the xem dc o day
-//        } catch (SQLException e) {
-//            System.out.println("can't find");
-//            e.printStackTrace();
-//        }
 
-//        category.setItems(list);
-//        if(canRB.isSelected()){
-//        statusLetter=1;
-//    }
-//        if(cannotRB.isSelected()){
-//        statusLetter=2;
-//    }
-//        if(waitRB.isSelected()){
-//        statusLetter=3;
-//    }
-//
         update.setOnAction(actionEvent -> {
         try {
-            LetterServiceIMPL udateData = new LetterServiceIMPL();
-            udateData.update(getData());
+            LetterServiceIMPL letterServiceIMPL = new LetterServiceIMPL();
+            letterServiceIMPL.update(getLetter());
 
         }
         catch (Exception e) {
@@ -190,16 +193,22 @@ public class EditControler implements Initializable {
 
 
 
-    private Letter getData(){
+    private Letter getLetter(){
+
         String ID=String.valueOf(letterID1.getText());
-        String tit=title.getText();
+
+        String tit=problem.getValue();
+        if(problemAddNew.getText()!=null){
+            tit=problemAddNew.getText();
+        };
         String ct= content.getText();
-        int aID= Integer.valueOf(applicantID.getText());
+        String aID= String.valueOf(applicantID.getText());
         Date date= Date.valueOf(applyDate.getValue());
         String cate= category.getValue();
+        String orga=String.valueOf(organizationName1.getText());
 
 
-        Letter dataFXML = new Letter(ID,cate, tit, aID, ct, date, statusLetter, false);
+        Letter dataFXML = new Letter(ID,cate, tit, aID, ct,orga, date, statusLetter, false);
                     System.out.println(dataFXML.getId());
                     System.out.println(dataFXML.getApplyDate());
                     System.out.println(dataFXML.getProblem());

@@ -49,4 +49,9 @@ public class ApplicantServiceIMPL implements ApplicantService {
         // trả về true nếu xóa thành công
         return (id > 0) ? applicantDao.delete(id) : false;
     }
+
+    @Override
+    public Applicant findByIdentityCard(String identityCard) throws SQLException {
+        return applicantDao.findByIdentityCard(identityCard);
+    }
 }

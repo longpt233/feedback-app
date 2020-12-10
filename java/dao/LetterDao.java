@@ -15,4 +15,5 @@ public interface LetterDao extends BaseDao<Letter> {
     Letter findByApplyDate(Date date) throws SQLException;
     Letter findWithApplyDate(Date date) throws SQLException;
     Letter findByStatus(int status) throws SQLException;
+    public boolean delete(String id) throws SQLException;
 }

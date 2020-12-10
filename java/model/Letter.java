@@ -10,8 +10,9 @@ public class Letter {
     private String id;
     private String category;
     private String problem;
-    private int idApplicant;
+    private String idApplicant;
     private String content;
+    private String organization;
     private Date applyDate;
     private int statusLetter;
     private boolean deleted;
@@ -29,12 +30,21 @@ public class Letter {
     public Letter(){
     }
 
-    public Letter(String id, String category, String problem, int idApplicant, String content, Date applyDate, int statusLetter, boolean deleted) {
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public Letter(String id, String category, String problem, String idApplicant, String content, String organization, Date applyDate, int statusLetter, boolean deleted) {
         this.id = id;
         this.category = category;
         this.problem = problem;
         this.idApplicant = idApplicant;
         this.content = content;
+        this.organization=organization;
         this.applyDate = applyDate;
         this.statusLetter = statusLetter;
         this.deleted = deleted;
@@ -91,11 +101,11 @@ public class Letter {
         this.content = content;
     }
 
-    public int getIdApplicant() {
+    public String getIdApplicant() {
         return idApplicant;
     }
 
-    public void setIdApplicant(int idApplicant) {
+    public void setIdApplicant(String idApplicant) {
         this.idApplicant = idApplicant;
     }
 
