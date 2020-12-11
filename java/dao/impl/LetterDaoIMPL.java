@@ -72,7 +72,7 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public Letter findByCategory(String category) throws SQLException {
+    public List<Letter> findByCategory(String category) throws SQLException {
         String sql= "SELECT * FROM Letter WHERE deleted=false and category=?";
         List<Letter> results = new ArrayList<>();
 
@@ -88,12 +88,12 @@ public class LetterDaoIMPL implements LetterDao {
             return null;
         }
 
-        return results.isEmpty() ? null : results.get(0);
+        return results.isEmpty() ? null : results;
     }
 
 
     @Override
-    public Letter findByProblem(String problem) throws SQLException {
+    public List<Letter> findByProblem(String problem) throws SQLException {
         String sql= "SELECT * FROM Letter WHERE deleted=false and problem=?";
         List<Letter> results = new ArrayList<>();
 
@@ -109,7 +109,7 @@ public class LetterDaoIMPL implements LetterDao {
             return null;
         }
 
-        return results.isEmpty() ? null : results.get(0);
+        return results.isEmpty() ? null : results;
     }
 
     @Override
@@ -133,7 +133,7 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public Letter findByApplyDate(java.util.Date date) throws SQLException {
+    public List<Letter> findByApplyDate(java.util.Date date) throws SQLException {
         java.util.Date dNow = new java.util.Date( );
         SimpleDateFormat ft =
                 new SimpleDateFormat ("yyyy-MM-dd");
@@ -148,7 +148,7 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public Letter findByStatus(int status) throws SQLException {
+    public List<Letter> findByStatus(int status) throws SQLException {
         String sql= "SELECT * FROM Letter WHERE deleted=false and status=?";
         List<Letter> results = new ArrayList<>();
 
@@ -164,7 +164,7 @@ public class LetterDaoIMPL implements LetterDao {
             return null;
         }
 
-        return results.isEmpty() ? null : results.get(0);
+        return results.isEmpty() ? null : results;
     }
 
     @Override

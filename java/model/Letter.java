@@ -65,6 +65,29 @@ public class Letter {
                 '}';
     }
 
+
+    public boolean equals(Letter other) {
+
+        if (other == this)
+            return true;
+        if (this.id.equals(other.id)
+                && this.category.equals(other.category)
+                && this.problem.equals(other.problem)
+                && this.content.equals(other.content)
+                && this.idApplicant.equals(other.idApplicant)
+                && this.organization.equals(other.organization)
+                && this.applyDate.equals(other.applyDate)
+                && this.category.equals(other.category)
+                && this.statusLetter==other.statusLetter
+                && this.deleted==other.deleted
+
+
+            ){
+            return true;
+        }
+        return false;
+    }
+
     public String getProblem() {
         return problem;
     }

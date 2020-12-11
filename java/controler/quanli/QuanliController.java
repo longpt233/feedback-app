@@ -46,7 +46,7 @@ public class QuanliController implements Initializable {
     private LetterService letterService = new LetterServiceIMPL();
 
 
-    private ObservableList<Letter> lettersObservableList;
+    private ObservableList<Letter> lettersObservableList=null;
 
     private ObservableList<Letter> lettersObservableListSearch;
 
@@ -114,6 +114,18 @@ public class QuanliController implements Initializable {
                 stageSearch.showAndWait();
                 lettersObservableListSearch=controller.getList();
                 System.out.println("tra ve list "+lettersObservableListSearch.toString());
+                if(lettersObservableListSearch.get(0)==null){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("infor");
+                    alert.setContentText("khong tim thay don ");
+                    alert.show();
+
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("infor");
+                    alert.setContentText("tim thay don ");
+                    alert.show();
+                }
                 initTable();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -255,11 +267,12 @@ public class QuanliController implements Initializable {
         tableColumnAction.setCellValueFactory(new PropertyValueFactory<Letter,String>("checkBox"));
 
 
-        try {
-            refreshTable();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+            try {
+                refreshTable();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
     }
 
 

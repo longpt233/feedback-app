@@ -36,13 +36,13 @@ public class LetterServiceIMPL implements LetterService {
     }
 
     @Override
-    public Letter findByCategory(String category) throws SQLException {
+    public List<Letter> findByCategory(String category) throws SQLException {
         return letterDao.findByCategory(category);
     }
 
 
     @Override
-    public Letter findByProblem(String problem) throws SQLException {
+    public List<Letter> findByProblem(String problem) throws SQLException {
         return letterDao.findByProblem(problem);
     }
 
@@ -52,12 +52,12 @@ public class LetterServiceIMPL implements LetterService {
     }
 
     @Override
-    public Letter findByApplyDate(Date date) throws SQLException {
+    public List<Letter> findByApplyDate(Date date) throws SQLException {
         return letterDao.findByApplyDate(date);
     }
 
     @Override
-    public Letter findByStatus(int status) throws SQLException {
+    public List<Letter> findByStatus(int status) throws SQLException {
         return letterDao.findByStatus(status);
     }
 

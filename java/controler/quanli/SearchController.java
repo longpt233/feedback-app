@@ -1,5 +1,7 @@
 package controler.quanli;
 
+import constance.AppConfig;
+import dao.impl.LetterDaoIMPL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,8 +16,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Letter;
+import model.Problem;
 import service.LetterService;
 import service.impl.LetterServiceIMPL;
+import service.impl.ProblemServiceIMPL;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +33,7 @@ public class SearchController implements Initializable {
     public TextField applicantName;
     public TextField letterID;
     public ComboBox leterCategory;
+    public ComboBox leterProblem;
     public AnchorPane anchorPane;
 
     @FXML
@@ -40,7 +45,11 @@ public class SearchController implements Initializable {
         return lettersObservableList;
     }
 
-    private List<Letter> letters = new ArrayList<>();
+
+
+    private ObservableList<String> listProblem;
+
+    private ObservableList<String> list = FXCollections.observableArrayList(AppConfig.CATE_LIST);// "" dung khi nguoi dung muon huy
 
     public SearchController(){
 
@@ -48,27 +57,107 @@ public class SearchController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        // lay ra list problem
+
+        try {
+            List<String> tmp=new ArrayList<>();
+            ProblemServiceIMPL problemService = new ProblemServiceIMPL();
+            for (Problem iter : problemService.findAll()){
+                tmp.add(iter.getName());
+            }
+            tmp.add("");
+            listProblem=  FXCollections.observableArrayList(tmp);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        leterProblem.setItems(listProblem);
+        leterProblem.setValue("");
+
+        list.add("");
+        leterCategory.setItems(list);
+        leterCategory.setValue("");
+
+        letterID.setText("");
+
         find.setOnAction(actionEvent -> {
 
-            ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
+            ObservableList<String> list = FXCollections.observableArrayList(AppConfig.CATE_LIST);
             leterCategory.setItems(list);
 
             String cate = (String) leterCategory.getValue();
-//            int ID = Integer.valueOf(letterID.getText());
+            String probl = (String) leterProblem.getValue();
             String idFind = (String) letterID.getText();
 
+            System.out.println(("nguoi dung yeu cau tim "+cate+probl+idFind));
 
-            List<Letter> letters = new ArrayList<>();
 
-            letters.removeAll(letters);
+            List<Letter> lettersRes = new ArrayList<>();
+
+            lettersRes.removeAll(lettersRes);
             try {
+                List<Letter> lettersResByID = new ArrayList<>();
+                List<Letter> lettersResByCate = new ArrayList<>();
+                List<Letter> lettersResByProblem = new ArrayList<>();
+                Letter a=null;
+                List<Letter> b=null,c=null;
+                if(!idFind.equals("")) {
+                    System.out.println("co tim id");
+                    a = letterService.findById(idFind);
+                }
+                if(!cate.equals("")) {
+                    System.out.println("co tim cate");
+                    b = letterService.findByCategory(cate);
+                }
+                if(!probl.equals("")) {
+                    System.out.println("co tim problem");
+                    c = letterService.findByProblem(probl);
+                }
+                List<Letter> lettersTmp = new ArrayList<>();
+                if (a!= null) {
+                    System.out.println("co tim thay id"+a);
+                    lettersResByID.add(a);
+                    lettersTmp.addAll(lettersResByID);
+                }
+                if (b!= null) {
+                    System.out.println("co tim thay cate"+b);
+                    lettersResByCate.addAll(b);
+                    lettersTmp.addAll(lettersResByCate);
+                }
+                if (c!= null) {
+                    System.out.println("co tim thay pro"+c);
+                    lettersResByProblem.addAll(c);
+                    lettersTmp.addAll(lettersResByProblem);
+                }
 
-                letters.add(letterService.findById(idFind));
-                lettersObservableList = FXCollections.observableList(letters);
+
+                System.out.println("hop cua tat ca ket qua "+lettersTmp);
+                for( Letter iter : lettersTmp){
+                    boolean canAddIter=true;
+                    if (!lettersResByID.isEmpty()&&!lettersResByID.contains(iter)){
+                        System.out.println("set false o id");
+                        canAddIter=false;
+                    };
+                    if(!lettersResByCate.isEmpty()&&!lettersResByCate.contains(iter)){
+                        System.out.println("set false o cate"+lettersResByCate.isEmpty()+lettersResByCate.contains(iter));
+                        canAddIter=false;
+                    }
+                    if(!lettersResByProblem.isEmpty()&&!lettersResByProblem.contains(iter)){
+                        System.out.println("set false o pro");
+                        canAddIter=false;
+                    }
+                    if(canAddIter){
+                        lettersRes.add(iter);
+                    }
+                }
+
+                if(lettersRes.isEmpty())
+                    lettersRes.add(null);
+                System.out.println("list truoc khi tra ve"+lettersRes);
+                lettersObservableList = FXCollections.observableList(lettersRes);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-
+//            System.out.println("tim duoc "+lettersObservableList.get(0).toString());
             Stage stage = (Stage) anchorPane.getScene().getWindow();
             stage.close();
         });

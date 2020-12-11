@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="516.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="516.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="pan3" layoutX="-1.0" layoutY="-1.0" prefHeight="516.0" prefWidth="784.0" style="-fx-background-color: #f7f93f;">
          <children>
@@ -50,8 +55,18 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <ComboBox fx:id="leterCategory" layoutX="306.0" layoutY="125.0" prefHeight="37.0" prefWidth="188.0" promptText="Loại Đơn (category )" />
-            <ComboBox fx:id="leterCategory1" layoutX="306.0" layoutY="185.0" prefHeight="37.0" prefWidth="188.0" promptText="Vấn Đề" />
+            <ComboBox fx:id="leterCategory" layoutX="479.0" layoutY="132.0" prefHeight="37.0" prefWidth="188.0" promptText="Category" />
+            <ComboBox fx:id="leterProblem" layoutX="479.0" layoutY="202.0" prefHeight="37.0" prefWidth="188.0" promptText="Vấn Đề" />
+            <Label layoutX="308.0" layoutY="211.0" text="problem" textFill="#2112cf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="308.0" layoutY="141.0" text="category" textFill="#2112cf">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
