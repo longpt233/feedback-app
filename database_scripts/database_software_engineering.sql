@@ -1,6 +1,6 @@
 CREATE TABLE Applicant (
 	id int auto_increment NOT NULL primary key,
-    identity_card char(12),
+    identity_card char(12) UNIQUE,
     name varchar(150),
     phone char(10),
     birth date,
