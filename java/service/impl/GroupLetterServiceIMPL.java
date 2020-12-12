@@ -95,7 +95,7 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
 
     @Override
     public List<GroupLetter> findAll() throws SQLException {
-        return null;
+        return groupLetterDao.findAll();
     }
 
     @Override
