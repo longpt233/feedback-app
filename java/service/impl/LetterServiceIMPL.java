@@ -93,6 +93,19 @@ public class LetterServiceIMPL implements LetterService {
 // xu li logic cho dau vao
               return  letterDao.delete(id) ;
     }
+
+    @Override
+    public List<Letter> searchBy(String id, String category, String problem, int idApplicant, String content, String organization, Date applyDate, int statusLetter) throws SQLException {
+        if (id == null) id = "";
+        if (category == null) category = "";
+        if (problem == null) problem = "";
+        if (content == null) content = "";
+        if (organization == null) organization = "";
+        if (idApplicant < 0) idApplicant = -1;
+        if (statusLetter < 0) statusLetter = -1;
+//        if (applyDate == null) applyDate
+        return letterDao.searchBy(id, category, problem, idApplicant, content, organization, applyDate, statusLetter);
+    }
 }
 
 

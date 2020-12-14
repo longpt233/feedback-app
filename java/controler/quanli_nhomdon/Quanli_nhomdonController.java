@@ -51,7 +51,7 @@ public class Quanli_nhomdonController implements Initializable {
 //
 //    private ObservableList<Letter> lettersObservableListSearch;
 
-    private ObservableList<Letter> groupLettersObservableList;
+    private ObservableList<GroupLetter> groupLettersObservableList= null;
     private ObservableList<Letter> groupLettersObservableListSearch;
 
 //    private List<Letter> letters = new ArrayList<>();
@@ -69,33 +69,32 @@ public class Quanli_nhomdonController implements Initializable {
     private void initBut() {
 
         btnResetNhom.setOnAction(actionEvent -> {
-            // cai nay chua test
             groupLettersObservableListSearch=null;
             initTable();
         });
 
 
         butXemChiTietNhom.setOnAction(actionEvent -> {  //chưa sửa sang group
-            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (lettersSelected.get(0) != null) {
+            ObservableList<GroupLetter> groupLettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
+            if (groupLettersSelected.get(0) != null) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli/show.fxml"));
+                    loader.setLocation(getClass().getResource("/view/home/quanli_nhomdon/show_nhomdon.fxml"));
 
                     // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    Show_nhomdonControler controllerChiTietDon =new Show_nhomdonControler();
+                    Show_nhomdonControler controllerChiTietNhomDon =new Show_nhomdonControler();
                     //-------------------------
                     // neu dao vi tri 2 dong nay cho nhau se bi loi
-                    controllerChiTietDon.setLetter(lettersSelected.get(0));
+                    controllerChiTietNhomDon.setGroupLetter(groupLettersSelected.get(0));
 //                    controllerChiTietDon =loader.getController();
-                    loader.setController(controllerChiTietDon);
+                    loader.setController(controllerChiTietNhomDon);
                     //------------------------
 
                     // phai load cai parent nay sau khi new controler neu khong no se goi ham init ma khong co du lieu
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("Chi tiet don ");
+                    stageChinhSua.setTitle("Chi tiet nhom don ");
                     stageChinhSua.setScene(scene);
                     stageChinhSua.initModality(Modality.WINDOW_MODAL);
                     stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -142,8 +141,8 @@ public class Quanli_nhomdonController implements Initializable {
     private void initTable() {
 
         tableColumnSTT.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("id"));
-        tableColumnTenNhom.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>(""));
-        tableColumnSoLuong.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>(""));
+        tableColumnTenNhom.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("name"));
+        tableColumnSoLuong.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("quantity"));
         tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("status"));
 
         try {
@@ -162,8 +161,8 @@ public class Quanli_nhomdonController implements Initializable {
 
         }else {
             groupLetters.removeAll(groupLetters);
-//            groupLetters.addAll(groupLetterService.findAll());//find all chua co
-//            groupLettersObservableList = FXCollections.observableList(groupLetters);
+            groupLetters.addAll(groupLetterService.findAll());//chua co service
+            groupLettersObservableList = FXCollections.observableList(groupLetters);
             tableViewLetter.setItems(groupLettersObservableList);
         }
     }

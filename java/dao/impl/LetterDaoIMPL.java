@@ -168,6 +168,40 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
+    public List<Letter> searchBy(String id, String category, String problem, int idApplicant, String content,String organization, java.util.Date applyDate, int statusLetter) throws SQLException {
+        String sql = "select * where deleted = false and " +
+                "id like ? and " +
+                "category like ? and " +
+                "problem like ? and " +
+                "content like ? and " +
+                "organization like ? and " +
+                //"(? is null or apply_date == ?) and " +
+                "(? = -1 or status_letter = ?) and " +
+                "(? = -1 or id_applicant = ?)";
+        List<Letter> results = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setString(1,"%"+id+"%");
+            statement.setString(2,"%"+category+"%");
+            statement.setString(3,"%"+problem+"%");
+            statement.setString(4,"%"+content+"%");
+            statement.setString(5,"%"+organization+"%");
+            statement.setInt(6, statusLetter < 0 ? -1 : statusLetter);
+            statement.setInt(7, idApplicant < 0 ? -1 : idApplicant);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(getLetter(resultSet));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return results.isEmpty() ? null : results;
+    }
+
+
+    @Override
     public boolean delete(String id) throws SQLException {
         String sql = "update Letter set deleted = true where id = ?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
