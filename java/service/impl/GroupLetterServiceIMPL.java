@@ -20,6 +20,7 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
     private LetterDao letterDao = new LetterDaoIMPL();
     private GroupHasLetterDao groupHasLetterDao = new GroupHasLetterDaoIMPL();
 
+
     @Override
     public boolean insertListLetter(ArrayList<String> listId, String groupName) throws SQLException {
         int quantity = listId.size();
@@ -75,7 +76,6 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
             return true;
 
         } catch (SQLException e){
-            System.out.println("loi roi");
             e.printStackTrace();
             return false;
         }
