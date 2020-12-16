@@ -212,11 +212,12 @@ public class LetterDaoIMPL implements LetterDao {
                 "problem like ? and " +
                 "content like ? and " +
                 "organization like ? and " +
-                "apply_date between ? and ? " ;
+                "(apply_date between ? and ?) " ;
 //                "(? = -1 or status_letter = ?) and " +
 //                "(? = -1 or id_card_applicant = ?)";
         List<Letter> results = new ArrayList<>();
-
+        System.out.println(applyDate1);
+        System.out.println(applyDate2);
         try {
             PreparedStatement statement = initConnection.prepareSQL(sql);
             statement.setString(1,"%"+id+"%");
@@ -224,8 +225,8 @@ public class LetterDaoIMPL implements LetterDao {
             statement.setString(3,"%"+problem+"%");
             statement.setString(4,"%"+content+"%");
             statement.setString(5,"%"+organization+"%");
-            statement.setDate(6, (Date) applyDate1);
-            statement.setDate(7, (Date) applyDate2);
+            statement.setDate(6, applyDate1 == null ? Date.valueOf("1000-01-01") : applyDate1 );
+            statement.setDate(7, applyDate2 == null ? Date.valueOf("3000-01-01") : applyDate2);
 //            statement.setInt(6, statusLetter < 0 ? -1 : statusLetter);
 //            statement.setInt(7, statusLetter < 0 ? -1 : statusLetter);
 //            statement.setInt(8, idApplicant < 0 ? -1 : idApplicant);

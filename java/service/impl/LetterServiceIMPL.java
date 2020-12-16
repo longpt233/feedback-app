@@ -113,7 +113,9 @@ public class LetterServiceIMPL implements LetterService {
         if (organization == null) organization = "";
         if (idApplicant < 0) idApplicant = -1;
         if (statusLetter < 0) statusLetter = -1;
-//        if (applyDate1 == null) applyDate1 = (Date)(0000-00-00);
+//        if (applyDate1 == null) applyDate1 = java.sql.Date.valueOf("0000-00-00");
+//        System.out.println(" date :"+ applyDate1);
+//        if (applyDate2 == null) applyDate2 = java.sql.Date.valueOf("9999-00-00");
         return letterDao.searchBy(id, category, problem, idApplicant, content, organization, applyDate1, applyDate2, statusLetter);
     }
 }

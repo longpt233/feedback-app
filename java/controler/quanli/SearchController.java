@@ -91,10 +91,19 @@ public class SearchController implements Initializable {
             String cate = (String) leterCategory.getValue();
             String probl = (String) leterProblem.getValue();
             String idFind = (String) letterID.getText();
-//            System.out.println(date1.getValue().toString());
-            Date date_1= Date.valueOf(date1.getValue());
-            Date date_2= Date.valueOf(date2.getValue());
-            System.out.println(date_1);
+            System.out.println(date1.getValue());
+
+//            if (date1.getValue() == null){
+//                Date date_1 = null;}
+//            else{
+//                Date date_1 = Date.valueOf(date1.getValue());}
+//            if (date2.getValue() == null){
+//                Date date_2 = null;}
+//            else{
+//                Date date_2 = Date.valueOf(date2.getValue());}
+
+            Date date_1 =null;
+            Date date_2 =null;
 
 //
 //            String app_name = (String) applicantName.getText();
@@ -199,7 +208,7 @@ public class SearchController implements Initializable {
                 System.out.println(letterServiceIMPL.searchBy(idFind,cate,probl,-1,null,null,date_1,date_2,-1));
 
                 lettersList.addAll(letterServiceIMPL.searchBy(idFind,cate,probl,-1,null,null,date_1, date_2,-1));
-                System.out.println("list truoc khi tra ve"+lettersList);
+                System.out.println("list truoc khi tra ve "+lettersList);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

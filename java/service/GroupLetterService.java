@@ -16,4 +16,5 @@ public interface GroupLetterService extends BaseService<GroupLetter>{
     boolean addNewGroup(ArrayList<Letter> listLetter, String name) throws SQLException;
     boolean updateStatusGroup(GroupLetter groupLetter, int status) throws SQLException;
     ArrayList<Letter> detailGroup(GroupLetter groupLetter) throws SQLException;
+    boolean delete(GroupLetter groupLetter) throws SQLException;
 }

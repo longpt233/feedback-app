@@ -95,6 +95,14 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
     }
 
     @Override
+    public boolean delete(GroupLetter groupLetter) throws SQLException {
+        int id = groupLetter.getId();
+        groupHasLetterDao.delete(id);
+        groupLetterDao.delete(id);
+        return true;
+    }
+
+    @Override
     public List<GroupLetter> findAll() throws SQLException {
         return groupLetterDao.findAll();
     }
