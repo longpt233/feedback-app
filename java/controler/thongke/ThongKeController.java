@@ -46,15 +46,15 @@ public class ThongKeController implements Initializable {
 
         XYChart.Series dataSeries = new XYChart.Series();
         dataSeries.setName("cai gi do");
-//        for (GroupLetter groupLetter : listGroup){
-//            dataSeries.getData().add(new XYChart.Data(groupLetter.getName(), groupLetter.getQuantity()));
-//        }
-        dataSeries.getData().add(new XYChart.Data("2010", 16.01));
-        dataSeries.getData().add(new XYChart.Data("2012", 18.90));
-        dataSeries.getData().add(new XYChart.Data("2014", 17.05));
-        dataSeries.getData().add(new XYChart.Data("2016", 16.06));
-        dataSeries.getData().add(new XYChart.Data("2018", 20.22));
-        dataSeries.getData().add(new XYChart.Data("2020", 23.22));
+        for (GroupLetter groupLetter : listGroup){
+            dataSeries.getData().add(new XYChart.Data(groupLetter.getName(), groupLetter.getQuantity()));
+        }
+//        dataSeries.getData().add(new XYChart.Data("2010", 16.01));
+//        dataSeries.getData().add(new XYChart.Data("2012", 18.90));
+//        dataSeries.getData().add(new XYChart.Data("2014", 17.05));
+//        dataSeries.getData().add(new XYChart.Data("2016", 16.06));
+//        dataSeries.getData().add(new XYChart.Data("2018", 20.22));
+//        dataSeries.getData().add(new XYChart.Data("2020", 23.22));
 
         LineChart chart = new LineChart(xAxis, yAxis);
         chart.setMaxWidth(700);
@@ -63,7 +63,7 @@ public class ThongKeController implements Initializable {
         chart.setPrefHeight(600);
         chart.setStyle("-fx-width: 100px;");
         chart.getData().addAll(dataSeries);
-        chart.setTitle("Top Programming Languages");
+        chart.setTitle("Thống kê nhóm");
 
         chartView.getChildren().add(chart);
         return chart;

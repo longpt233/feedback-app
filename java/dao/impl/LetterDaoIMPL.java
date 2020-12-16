@@ -133,18 +133,55 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public List<Letter> findByApplyDate(java.util.Date date) throws SQLException {
-        java.util.Date dNow = new java.util.Date( );
-        SimpleDateFormat ft =
-                new SimpleDateFormat ("yyyy-MM-dd");
+    public List<Letter> findByApplyDate(java.util.Date date1, java.util.Date date2) throws SQLException {
+//        java.util.Date dNow = new java.util.Date( );
+        String sql= "SELECT * from Letter WHERE deleted=false and apply_date between ? and ?";
+        List<Letter> results = new ArrayList<>();
+//        SimpleDateFormat ft =
+//                new SimpleDateFormat ("yyyy-MM-dd");
+//
+//        System.out.println("Current Date: " + ft.format(dNow));
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setDate(1, (Date) date1);
+            statement.setDate(2, (Date) date2);
 
-        System.out.println("Current Date: " + ft.format(dNow));
-        return null;
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(getLetter(resultSet));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        System.out.println("Tim theo ngay "+results.toString());
+
+        return results.isEmpty() ? null : results;
     }
 
     @Override
     public Letter findWithApplyDate(java.util.Date date) throws SQLException {
         return null;
+    }
+
+    @Override
+    public List<Letter> findByApplicantName(String name) throws SQLException {
+        String sql= "select * from letter, applicant where letter.deleted=false and applicant.identity_card=letter.id_card_applicant and applicant.name like ?";
+        List<Letter> results = new ArrayList<>();
+        try {
+            PreparedStatement statement = initConnection.prepareSQL(sql);
+            statement.setString(1, "%"+name+"%");
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                results.add(getLetter(resultSet));
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        System.out.println("Tim theo ten nguoi nop don "+results.toString());
+
+        return results.isEmpty() ? null : results;
+
     }
 
     @Override
@@ -168,16 +205,16 @@ public class LetterDaoIMPL implements LetterDao {
     }
 
     @Override
-    public List<Letter> searchBy(String id, String category, String problem, int idApplicant, String content,String organization, java.util.Date applyDate, int statusLetter) throws SQLException {
-        String sql = "select * where deleted = false and " +
+    public List<Letter> searchBy(String id, String category, String problem, int idApplicant, String content,String organization, java.sql.Date applyDate1, java.sql.Date applyDate2, int statusLetter) throws SQLException {
+        String sql = "select * from letter where deleted = false and " +
                 "id like ? and " +
                 "category like ? and " +
                 "problem like ? and " +
                 "content like ? and " +
                 "organization like ? and " +
-                //"(? is null or apply_date == ?) and " +
-                "(? = -1 or status_letter = ?) and " +
-                "(? = -1 or id_applicant = ?)";
+                "apply_date between ? and ? " ;
+//                "(? = -1 or status_letter = ?) and " +
+//                "(? = -1 or id_card_applicant = ?)";
         List<Letter> results = new ArrayList<>();
 
         try {
@@ -187,8 +224,12 @@ public class LetterDaoIMPL implements LetterDao {
             statement.setString(3,"%"+problem+"%");
             statement.setString(4,"%"+content+"%");
             statement.setString(5,"%"+organization+"%");
-            statement.setInt(6, statusLetter < 0 ? -1 : statusLetter);
-            statement.setInt(7, idApplicant < 0 ? -1 : idApplicant);
+            statement.setDate(6, (Date) applyDate1);
+            statement.setDate(7, (Date) applyDate2);
+//            statement.setInt(6, statusLetter < 0 ? -1 : statusLetter);
+//            statement.setInt(7, statusLetter < 0 ? -1 : statusLetter);
+//            statement.setInt(8, idApplicant < 0 ? -1 : idApplicant);
+//            statement.setInt(9, idApplicant < 0 ? -1 : idApplicant);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {

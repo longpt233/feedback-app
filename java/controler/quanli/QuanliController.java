@@ -112,7 +112,7 @@ public class QuanliController implements Initializable {
                 stageSearch.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
                 stageSearch.showAndWait();
-                lettersObservableListSearch=controller.getList();
+                lettersObservableListSearch=FXCollections.observableList(controller.getList());
                 System.out.println("tra ve list "+lettersObservableListSearch.toString());
                 if(lettersObservableListSearch.get(0)==null){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -53,7 +53,17 @@ public class LetterServiceIMPL implements LetterService {
 
     @Override
     public List<Letter> findByApplyDate(Date date) throws SQLException {
-        return letterDao.findByApplyDate(date);
+        return null;
+    }
+
+    @Override
+    public List<Letter> findByApplyDate(Date date1, Date date2) throws SQLException {
+        return letterDao.findByApplyDate(date1, date2);
+    }
+
+    @Override
+    public List<Letter> findByApplicantName(String name) throws SQLException {
+        return letterDao.findByApplicantName(name);
     }
 
     @Override
@@ -95,7 +105,7 @@ public class LetterServiceIMPL implements LetterService {
     }
 
     @Override
-    public List<Letter> searchBy(String id, String category, String problem, int idApplicant, String content, String organization, Date applyDate, int statusLetter) throws SQLException {
+    public List<Letter> searchBy(String id, String category, String problem, int idApplicant, String content, String organization, java.sql.Date applyDate1, java.sql.Date applyDate2, int statusLetter) throws SQLException {
         if (id == null) id = "";
         if (category == null) category = "";
         if (problem == null) problem = "";
@@ -103,8 +113,8 @@ public class LetterServiceIMPL implements LetterService {
         if (organization == null) organization = "";
         if (idApplicant < 0) idApplicant = -1;
         if (statusLetter < 0) statusLetter = -1;
-//        if (applyDate == null) applyDate
-        return letterDao.searchBy(id, category, problem, idApplicant, content, organization, applyDate, statusLetter);
+//        if (applyDate1 == null) applyDate1 = (Date)(0000-00-00);
+        return letterDao.searchBy(id, category, problem, idApplicant, content, organization, applyDate1, applyDate2, statusLetter);
     }
 }
 
