@@ -85,6 +85,7 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
     @Override
     public ArrayList<Letter> detailGroup(GroupLetter groupLetter) throws SQLException {
         int id = groupLetter.getId();
+        System.out.println(id);
         List<GroupHasLetter> groupHasLetterList = groupHasLetterDao.findByIds(id);
         ArrayList<Letter> listLetter = new ArrayList<>();
         for (GroupHasLetter ghl: groupHasLetterList) {

@@ -72,6 +72,18 @@ public class Quanli_nhomdonController implements Initializable {
             groupLettersObservableListSearch=null;
             initTable();
         });
+        butXoaNhom.setOnAction(actionEvent -> {
+            ObservableList<GroupLetter> groupLettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
+            if (groupLettersSelected.get(0) != null) {
+                try {
+                    groupLetterService.delete(groupLettersSelected.get(0).getId());
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+            initTable();
+        });
+
 
 
         butXemChiTietNhom.setOnAction(actionEvent -> {  //chưa sửa sang group
@@ -108,13 +120,14 @@ public class Quanli_nhomdonController implements Initializable {
 
 
         butCapnhatTrangThaiNhom.setOnAction(actionEvent -> {   //chưa sửa sang group
-            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (lettersSelected.get(0) != null) {
+            ObservableList<GroupLetter> groupLettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
+            if (groupLettersSelected.get(0) != null) {
                 try {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli/collect.fxml"));
+                    loader.setLocation(getClass().getResource("/view/home/quanli_nhomdon/response_nhomdon.fxml"));
                     Response_nhomdonControler controller =new Response_nhomdonControler();
-                    controller.setLetter(lettersSelected.get(0));
+                    controller.setGroupLetter(groupLettersSelected.get(0));
+                    loader.setController(controller);
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();

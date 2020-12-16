@@ -37,7 +37,7 @@ public class GroupHasLetterDaoIMPL implements GroupHasLetterDao {
 
     @Override
     public List<GroupHasLetter> findByIds(int id) throws SQLException {
-        String sql= "SELECT * FROM GroupHasLetter WHERE id=?";
+        String sql= "SELECT * FROM GroupHasLetter WHERE id_group=?";
         List<GroupHasLetter> results = new ArrayList<>();
 
         try {

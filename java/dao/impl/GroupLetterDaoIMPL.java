@@ -107,7 +107,7 @@ public class GroupLetterDaoIMPL implements GroupLetterDao {
 
     @Override
     public boolean update(GroupLetter groupLetter) throws SQLException {
-        String sql = "UPDATE Letter set name=?,status=?,quantity=? WHERE id=?";
+        String sql = "UPDATE GroupLetter set name=?,status=?,quantity=? WHERE id=?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         // sẽ thêm phần là nếu là null thì sẽ truyền vào giá trị default
         statement.setString(1, groupLetter.getName());
