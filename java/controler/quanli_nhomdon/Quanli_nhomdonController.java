@@ -76,7 +76,7 @@ public class Quanli_nhomdonController implements Initializable {
             ObservableList<GroupLetter> groupLettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
             if (groupLettersSelected.get(0) != null) {
                 try {
-                    groupLetterService.delete(groupLettersSelected.get(0).getId());
+                    groupLetterService.delete(groupLettersSelected.get(0));
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
