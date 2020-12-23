@@ -1,5 +1,6 @@
 package model;
 
+import constance.AppConfig;
 import javafx.scene.control.CheckBox;
 
 import java.sql.Date;
@@ -15,7 +16,17 @@ public class Letter {
     private String organization;
     private Date applyDate;
     private int statusLetter;
+    private String statusString;
     private boolean deleted;
+
+    // khong co cai get set nay thi thang fx no cx khong lay duoc thong tin gi ##
+    public String getStatusString() {
+        return statusString;
+    }
+
+    public void setStatusString(String statusString) {
+        this.statusString = statusString;
+    }
 
     // phai co cai nay moi dc check box
     private CheckBox checkBox;
@@ -48,6 +59,7 @@ public class Letter {
         this.applyDate = applyDate;
         this.statusLetter = statusLetter;
         this.deleted = deleted;
+        statusString= AppConfig.STATUS[statusLetter];
         checkBox=new CheckBox();
     }
 

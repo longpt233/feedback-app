@@ -115,7 +115,7 @@ public class GroupHasLetterDaoIMPL implements GroupHasLetterDao {
 
     @Override
     public boolean delete(int id) throws SQLException {
-        String sql = "delete from GroupHasLetter where id = ?";
+        String sql = "delete from GroupHasLetter where id_group = ?";
         PreparedStatement statement = initConnection.prepareUpdate(sql);
         statement.setInt(1, id);
         int isDone = statement.executeUpdate();

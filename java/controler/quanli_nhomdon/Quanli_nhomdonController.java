@@ -1,6 +1,7 @@
 package controler.quanli_nhomdon;
 
 import controler.quanli.SearchController;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -131,7 +133,7 @@ public class Quanli_nhomdonController implements Initializable {
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("cap nhat trong thai don  ");
+                    stageChinhSua.setTitle("cập nhật trạng thái cho cả nhóm đơn");
                     stageChinhSua.setScene(scene);
                     stageChinhSua.initModality(Modality.WINDOW_MODAL);
                     stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -142,21 +144,20 @@ public class Quanli_nhomdonController implements Initializable {
                 }
             }
         });
-
-        butXoaNhom.setOnAction(actionEvent -> {  // chưa sửa sang group
-            ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (lettersSelected.get(0) != null) {
-                // del xong hien thi thon bao cho nguoi duing
-            }
-        });
     }
 
     private void initTable() {
 
-        tableColumnSTT.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("id"));
+        tableColumnSTT.setCellFactory(col -> {
+            TableCell<Letter, Void> cell = new TableCell<>();
+            cell.textProperty().bind(Bindings.when(cell.emptyProperty())
+                    .then("")
+                    .otherwise(cell.indexProperty().asString()));
+            return cell ;
+        });
         tableColumnTenNhom.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("name"));
         tableColumnSoLuong.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("quantity"));
-        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("status"));
+        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<GroupLetter, String>("statusString"));
 
         try {
             refreshTable();
@@ -174,9 +175,11 @@ public class Quanli_nhomdonController implements Initializable {
 
         }else {
             groupLetters.removeAll(groupLetters);
-            groupLetters.addAll(groupLetterService.findAll());//chua co service
-            groupLettersObservableList = FXCollections.observableList(groupLetters);
-            tableViewLetter.setItems(groupLettersObservableList);
+            if (groupLetterService.findAll()!=null) {
+                groupLetters.addAll(groupLetterService.findAll());
+                groupLettersObservableList = FXCollections.observableList(groupLetters);
+                tableViewLetter.setItems(groupLettersObservableList);
+            }
         }
     }
 

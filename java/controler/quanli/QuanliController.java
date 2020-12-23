@@ -1,5 +1,6 @@
 package controler.quanli;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -258,12 +259,19 @@ public class QuanliController implements Initializable {
         //chon duoc nhieu dong
         tableViewLetter.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+        tableColumnSTT.setCellFactory(col -> {
+            TableCell<Letter, Void> cell = new TableCell<>();
+            cell.textProperty().bind(Bindings.when(cell.emptyProperty())
+                    .then("")
+                    .otherwise(cell.indexProperty().asString()));
+            return cell ;
+        });
         // nhung truong nay bat buoc phai tuong ung thuoc tinh cua model thi moi hien thi dc
-        tableColumnSTT.setCellValueFactory(new PropertyValueFactory<Letter, String>("id"));
+//        tableColumnSTT.setCellValueFactory(new PropertyValueFactory<Letter, String>("id"));
         tableColumnLoaiDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("category"));
         tableColumnNgayVietDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("applyDate"));
         tableColumnNoiDung.setCellValueFactory(new PropertyValueFactory<Letter, String>("content"));
-        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusLetter"));
+        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusString"));
         tableColumnAction.setCellValueFactory(new PropertyValueFactory<Letter,String>("checkBox"));
 
 

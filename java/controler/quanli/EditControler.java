@@ -88,8 +88,10 @@ public class EditControler implements Initializable {
 
     public void setLetter(Letter letter){
         this.letter=letter;
+
         try{
             this.applicant=applicantService.findByIdentityCard(letter.getIdApplicant());
+//            System.out.println("applicant trong edit"+applicant.toString());
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -124,7 +126,7 @@ public class EditControler implements Initializable {
 
 
         // init su kien cho viec check nguoi
-        applicantID.setText(letter.getIdApplicant());
+        applicantID.setText(applicant.getIdentityCard());
         applicantID.textProperty().addListener((observable, oldVal, newVal) -> {
             try{
                 Applicant thisapplicant = applicantService.findByIdentityCard(String.valueOf(newVal));
@@ -132,12 +134,12 @@ public class EditControler implements Initializable {
                 if(thisapplicant!=null){
                     applicantName.setText(thisapplicant.getName());
                     checkCMND.setVisible(true);
-                    checkCMND.setText("CCCD hop le");
+                    checkCMND.setText("CCCD hợp lệ ");
                 }
                 // neu khong thay
                 else {
                     checkCMND.setVisible(true);
-                    checkCMND.setText("khong co id nay trong db");
+                    checkCMND.setText("CCCD không tồn tại ");
                 }
             }
             catch (SQLException e){
@@ -150,7 +152,7 @@ public class EditControler implements Initializable {
         letterID1.setText(String.valueOf(letter.getId()));
         //        khong cho sua id vi phuong thuc update khon gho tro
         letterID1.setEditable(false);
-        applicantID.setText(String.valueOf(applicant.getId()));
+//        applicantID.setText(String.valueOf(applicant.getId()));
         applicantName.setText(applicant.getName());
         organizationName1.setText(letter.getOrganization());
 
@@ -164,8 +166,12 @@ public class EditControler implements Initializable {
         update.setOnAction(actionEvent -> {
         try {
             LetterServiceIMPL letterServiceIMPL = new LetterServiceIMPL();
-            letterServiceIMPL.update(getLetter());
-
+            if(letterServiceIMPL.update(getLetter())) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("infor");
+                alert.setContentText("sửa thành công ");
+                alert.show();
+            }
         }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

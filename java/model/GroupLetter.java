@@ -1,9 +1,21 @@
 package model;
+
+import constance.AppConfig;
+
 public class GroupLetter {
     private int id;
     private String name;
     private int status;
     private int quantity;
+    private String statusString;
+
+    public String getStatusString() {
+        return statusString;
+    }
+
+    public void setStatusString(String statusString) {
+        this.statusString = statusString;
+    }
 
     public GroupLetter() {
     }
@@ -13,6 +25,7 @@ public class GroupLetter {
         this.name = name;
         this.status = status;
         this.quantity = quantity;
+        this.statusString= AppConfig.STATUS[status];
     }
 
     @Override

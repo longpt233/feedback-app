@@ -12,6 +12,6 @@ public class AppConfig {
     public static final String PASSWORD = "root"; // mật khẩu của mysql
 
     public  static  final String CATE_LIST[]={"phananh","kiennghi"};
-//    public static  final Dictionary<Integer,String> STATUS=
+    public static  final String STATUS[]={"chua xu li ","khong thuoc tham quyen"};
 
 }

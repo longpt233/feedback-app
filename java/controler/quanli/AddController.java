@@ -83,7 +83,7 @@ public class AddController implements Initializable {
                 if (input.isPresent()){
                     prblemSelected=input.get();
                     newProblem.setVisible(true);
-                    newProblem.setText("*ban da chon vấn đề mới: "+prblemSelected);
+                    newProblem.setText("*Bạn đã chọn vấn đề mới: "+prblemSelected);
                 }
             }else {
                 newProblem.setVisible(false);
@@ -98,12 +98,12 @@ public class AddController implements Initializable {
                 if(thisapplicant!=null){
                     applicantName.setText(thisapplicant.getName());
                     checkCMND.setVisible(true);
-                    checkCMND.setText("CCCD hop le");
+                    checkCMND.setText("CCCD hợp lệ ");
                 }
                 // neu khong thay
                 else {
                     checkCMND.setVisible(true);
-                    checkCMND.setText("khong co id nay trong db");
+                    checkCMND.setText("CCCD không tồn tại");
                 }
             }
             catch (SQLException e){
@@ -130,7 +130,7 @@ public class AddController implements Initializable {
                     if(letterServiceIMPL.insert(newLetter)){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("infor");
-                        alert.setContentText("them don thanh cong");
+                        alert.setContentText("Thêm đơn thành công");
                         alert.showAndWait();
                     }
                 Stage thisStage = (Stage) addLetter.getScene().getWindow();

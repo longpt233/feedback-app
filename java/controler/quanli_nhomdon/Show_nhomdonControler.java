@@ -1,5 +1,6 @@
 package controler.quanli_nhomdon;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,15 +72,16 @@ public class Show_nhomdonControler implements Initializable {
         try {
             listLetter = groupLetterService.detailGroup(groupLetter);
             System.out.println(listLetter);
-            System.out.println("tim duoc roi");
+//            System.out.println("tim duoc roi");
         }
         catch (SQLException e) {
-            System.out.println("chua tim duoc");
+//            System.out.println("chua tim duoc");
+            e.printStackTrace();
         }
 
     }
-    public int statusLetter=1;
-    ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
+//    public int statusLetter=1;
+//    ObservableList<String> list = FXCollections.observableArrayList("Tố Cáo", "Khiếu Nại", "Kiến Nghị Phản Ánh");
 
 
     @Override
@@ -118,11 +120,17 @@ public class Show_nhomdonControler implements Initializable {
         tableViewLetter.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         // nhung truong nay bat buoc phai tuong ung thuoc tinh cua model thi moi hien thi dc
-        tableColumnSTT.setCellValueFactory(new PropertyValueFactory<Letter, String>("id"));
+        tableColumnSTT.setCellFactory(col -> {
+            TableCell<Letter, Void> cell = new TableCell<>();
+            cell.textProperty().bind(Bindings.when(cell.emptyProperty())
+                    .then("")
+                    .otherwise(cell.indexProperty().asString()));
+            return cell ;
+        });
         tableColumnLoaiDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("category"));
         tableColumnNgayVietDon.setCellValueFactory(new PropertyValueFactory<Letter, String>("applyDate"));
         tableColumnNoiDung.setCellValueFactory(new PropertyValueFactory<Letter, String>("content"));
-        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusLetter"));
+        tableColumnTrangThai.setCellValueFactory(new PropertyValueFactory<Letter, String>("statusString"));
 
 
 

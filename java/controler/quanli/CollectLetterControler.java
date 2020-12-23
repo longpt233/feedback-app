@@ -3,6 +3,7 @@ package controler.quanli;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -64,12 +65,25 @@ public class CollectLetterControler implements Initializable {
         createGroup.setOnAction(actionEvent->{
             try{
                 System.out.println(groupName.getText());
-                groupLetterService.addNewGroup(listLetter, groupName.getText());
+
                 System.out.println(listId);
+                if(groupLetterService.addNewGroup(listLetter, groupName.getText())){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Infor");
+                    alert.setContentText("thành công");
+                    alert.showAndWait();
+                }
+                Stage thisStage = (Stage) createGroup.getScene().getWindow();
+                thisStage.close();
             }
             catch (SQLException e){
-
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Infor");
+                alert.setContentText("có lỗi khi gộp đơn");
+                alert.showAndWait();
             }
+
         });
         butCancel.setOnAction(actionEvent -> {
             try {

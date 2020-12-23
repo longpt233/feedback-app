@@ -206,7 +206,7 @@ public class LetterDaoIMPL implements LetterDao {
 
     @Override
     public List<Letter> searchBy(String id, String category, String problem, int idApplicant, String content,String organization, java.sql.Date applyDate1, java.sql.Date applyDate2, int statusLetter) throws SQLException {
-        String sql = "select * from letter where deleted = false and " +
+        String sql = "select * from Letter where deleted = false and " +
                 "id like ? and " +
                 "category like ? and " +
                 "problem like ? and " +
