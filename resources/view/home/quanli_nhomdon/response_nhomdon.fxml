@@ -35,12 +35,12 @@
                   <ToggleGroup fx:id="statusLT" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="cannotRB" layoutX="47.0" layoutY="174.0" mnemonicParsing="false" text="Không Thuộc Thẩm Quyền " toggleGroup="$statusLT">
+            <RadioButton fx:id="cannotRB" layoutX="47.0" layoutY="247.0" mnemonicParsing="false" text="Không Thuộc Thẩm Quyền " toggleGroup="$statusLT">
                <font>
                   <Font size="15.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="waitRB" layoutX="47.0" layoutY="228.0" mnemonicParsing="false" text=" Xem Xét Thêm" toggleGroup="$statusLT">
+            <RadioButton fx:id="waitRB" layoutX="47.0" layoutY="192.0" mnemonicParsing="false" text="Chưa xử lí " toggleGroup="$statusLT">
                <font>
                   <Font size="15.0" />
                </font>
