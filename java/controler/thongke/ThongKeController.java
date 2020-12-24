@@ -22,9 +22,11 @@ import service.impl.GroupLetterServiceIMPL;
 import service.impl.LetterServiceIMPL;
 import service.impl.ProblemServiceIMPL;
 
+import javax.sound.midi.Soundbank;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class ThongKeController implements Initializable {
@@ -68,8 +70,6 @@ public class ThongKeController implements Initializable {
         }
         System.out.println(dicProblem);
 
-        chartView.getChildren().clear();
-
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Vấn Đề");
 
@@ -103,7 +103,7 @@ public class ThongKeController implements Initializable {
     }
 
     private PieChart createPieChart(List<Letter> listLetter){
-        Integer soLuongTT1 = new Integer(0);
+        int soLuongTT1 = 0;
         Integer soLuongTT2 = new Integer(0);
         Integer soLuongTT3 = new Integer(0);
 
@@ -114,7 +114,6 @@ public class ThongKeController implements Initializable {
 
 
         }
-        chartView.getChildren().clear();
 
         PieChart pieChart = new PieChart();
 
@@ -160,11 +159,12 @@ public class ThongKeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        List<Letter> a = new ArrayList<Letter>();
         butProb.setOnAction(ActionEvent->{
-            chartView.toFront();
+            chartView.getChildren().clear();
 
             try{
                 String quy = ButtonQuy.getText();
                 String nam = ButtonNam.getText();
+                System.out.println(quy+nam);
                 String dayAndMonth1=new String();
                 String dayAndMonth2=new String();
 
@@ -185,6 +185,20 @@ public class ThongKeController implements Initializable {
                     dayAndMonth1="-10-01";
                     dayAndMonth2="-12-31";
                 }
+                if((quy+nam).equals("2000")){
+                    System.out.println("tìm cả năm");
+                    Date x = Date.valueOf(nam+"-01-01");
+                    Date y = Date.valueOf(nam+"-12-31");
+                    try{
+                        List<Letter> a  = letterService.findByApplyDate(x, y);
+                        createBarChart(a);
+                    }
+                    catch (SQLException e2){
+
+                    }
+
+                }
+                System.out.println(dayAndMonth1+dayAndMonth2);
 
                 Date x = Date.valueOf(nam+dayAndMonth1);
                 Date y = Date.valueOf(nam+dayAndMonth2);
@@ -193,23 +207,13 @@ public class ThongKeController implements Initializable {
 
             }
             catch (Exception e){
-                String nam = ButtonNam.getText();
-
-                Date x = Date.valueOf(nam+"-01-01");
-                Date y = Date.valueOf(nam+"-12-31");
-                try{
-                    List<Letter> a  = letterService.findByApplyDate(x, y);
-                    createBarChart(a);
-                }
-                catch (SQLException e2){
-
-                }
 
             }
         });
 
 
         butStat.setOnAction(ActionEvent->{
+            chartView.getChildren().clear();
 
             try{
                 String quy = ButtonQuy.getText();
@@ -233,6 +237,19 @@ public class ThongKeController implements Initializable {
                 if(quy.equals("4")){
                     dayAndMonth1="-10-01";
                     dayAndMonth2="-12-31";
+                }
+                if((quy+nam).equals("2000")){
+                    System.out.println("tìm cả năm");
+                    Date x = Date.valueOf(nam+"-01-01");
+                    Date y = Date.valueOf(nam+"-12-31");
+                    try{
+                        List<Letter> a  = letterService.findByApplyDate(x, y);
+                        createPieChart(a);
+                    }
+                    catch (SQLException e2){
+
+                    }
+
                 }
 
                 Date x = Date.valueOf(nam+dayAndMonth1);
@@ -242,17 +259,6 @@ public class ThongKeController implements Initializable {
 
             }
             catch (Exception e){
-                String nam = ButtonNam.getText();
-
-                Date x = Date.valueOf(nam+"-01-01");
-                Date y = Date.valueOf(nam+"-12-31");
-                try{
-                    List<Letter> a  = letterService.findByApplyDate(x, y);
-                    createPieChart(a);
-                }
-                catch (SQLException e2){
-
-                }
 
             }
 
