@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -76,73 +73,101 @@ public class Quanli_nhomdonController implements Initializable {
         });
         butXoaNhom.setOnAction(actionEvent -> {
             ObservableList<GroupLetter> groupLettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (groupLettersSelected.get(0) != null) {
-                try {
-                    groupLetterService.delete(groupLettersSelected.get(0));
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+            try{
+
+                if (groupLettersSelected.get(0) != null) {
+                    try {
+                        groupLetterService.delete(groupLettersSelected.get(0));
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
                 }
+                initTable();
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("bat duoc loi khong chon 1 don ");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Infor");
+                alert.setContentText("hãy chọn một nhóm đơn!");
+                alert.showAndWait();
             }
-            initTable();
+
         });
 
 
 
         butXemChiTietNhom.setOnAction(actionEvent -> {  //chưa sửa sang group
             ObservableList<GroupLetter> groupLettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (groupLettersSelected.get(0) != null) {
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli_nhomdon/show_nhomdon.fxml"));
+            try{
+                if (groupLettersSelected.get(0) != null) {
+                    try {
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/view/home/quanli_nhomdon/show_nhomdon.fxml"));
 
-                    // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    Show_nhomdonControler controllerChiTietNhomDon =new Show_nhomdonControler();
-                    //-------------------------
-                    // neu dao vi tri 2 dong nay cho nhau se bi loi
-                    controllerChiTietNhomDon.setGroupLetter(groupLettersSelected.get(0));
+                        // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
+                        Show_nhomdonControler controllerChiTietNhomDon =new Show_nhomdonControler();
+                        //-------------------------
+                        // neu dao vi tri 2 dong nay cho nhau se bi loi
+                        controllerChiTietNhomDon.setGroupLetter(groupLettersSelected.get(0));
 //                    controllerChiTietDon =loader.getController();
-                    loader.setController(controllerChiTietNhomDon);
-                    //------------------------
+                        loader.setController(controllerChiTietNhomDon);
+                        //------------------------
 
-                    // phai load cai parent nay sau khi new controler neu khong no se goi ham init ma khong co du lieu
-                    Parent parent=loader.load();
-                    Scene scene = new Scene(parent);
-                    Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("Chi tiet nhom don ");
-                    stageChinhSua.setScene(scene);
-                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+                        // phai load cai parent nay sau khi new controler neu khong no se goi ham init ma khong co du lieu
+                        Parent parent=loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageChinhSua = new Stage();
+                        stageChinhSua.setTitle("Chi tiet nhom don ");
+                        stageChinhSua.setScene(scene);
+                        stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                        stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
-                     stageChinhSua.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        stageChinhSua.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("bat duoc loi khong chon 1 don ");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Infor");
+                alert.setContentText("hãy chọn một nhóm đơn!");
+                alert.showAndWait();
             }
+
         });
 
 
         butCapnhatTrangThaiNhom.setOnAction(actionEvent -> {   //chưa sửa sang group
             ObservableList<GroupLetter> groupLettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (groupLettersSelected.get(0) != null) {
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli_nhomdon/response_nhomdon.fxml"));
-                    Response_nhomdonControler controller =new Response_nhomdonControler();
-                    controller.setGroupLetter(groupLettersSelected.get(0));
-                    loader.setController(controller);
-                    Parent parent=loader.load();
-                    Scene scene = new Scene(parent);
-                    Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("cập nhật trạng thái cho cả nhóm đơn");
-                    stageChinhSua.setScene(scene);
-                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+            try{
+                if (groupLettersSelected.get(0) != null) {
+                    try {
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/view/home/quanli_nhomdon/response_nhomdon.fxml"));
+                        Response_nhomdonControler controller =new Response_nhomdonControler();
+                        controller.setGroupLetter(groupLettersSelected.get(0));
+                        loader.setController(controller);
+                        Parent parent=loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageChinhSua = new Stage();
+                        stageChinhSua.setTitle("cập nhật trạng thái cho cả nhóm đơn");
+                        stageChinhSua.setScene(scene);
+                        stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                        stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
-                    stageChinhSua.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        stageChinhSua.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("bat duoc loi khong chon 1 don ");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Infor");
+                alert.setContentText("hãy chọn một nhóm đơn!");
+                alert.showAndWait();
             }
+
         });
     }
 

@@ -24,22 +24,22 @@
             <Font size="20.0" />
          </font>
       </TextArea>
-      <Button fx:id="update" layoutX="278.0" layoutY="605.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Sửa">
+      <Button fx:id="update" layoutX="226.0" layoutY="615.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Sửa">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <TextField fx:id="letterID1" layoutX="483.0" layoutY="527.0" prefHeight="37.0" prefWidth="161.0" promptText="Mã Đơn">
+      <TextField fx:id="letterID1" layoutX="386.0" layoutY="527.0" prefHeight="37.0" prefWidth="161.0" promptText="Mã Đơn">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button fx:id="butCancel" layoutX="544.0" layoutY="605.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Hủy">
+      <Button fx:id="butCancel" layoutX="502.0" layoutY="615.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Hủy">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="22.0" layoutY="21.0" prefHeight="20.0" prefWidth="133.0" text="sua nguoi viet">
+      <Label layoutX="22.0" layoutY="21.0" prefHeight="20.0" prefWidth="170.0" text="Sửa người tạo đơn ">
          <font>
             <Font size="16.0" />
          </font>
@@ -49,41 +49,41 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="70.0" prefHeight="25.0" prefWidth="106.0" text="nhap id moi">
+      <Label layoutX="30.0" layoutY="70.0" prefHeight="25.0" prefWidth="106.0" text="CCCD mới">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="applicantName" layoutX="439.0" layoutY="67.0" prefHeight="32.0" prefWidth="195.0" promptText="Họ Tên Người Viết">
+      <TextField fx:id="applicantName" layoutX="439.0" layoutY="62.0" prefHeight="37.0" prefWidth="195.0" promptText="Họ Tên Người Viết">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="category" layoutX="122.0" layoutY="145.0" prefHeight="37.0" prefWidth="207.0" promptText="category" />
+      <ComboBox fx:id="category" layoutX="122.0" layoutY="145.0" prefHeight="37.0" prefWidth="207.0" promptText="Loại đơn " />
       <TextField fx:id="applicantID" layoutX="155.0" layoutY="64.0" prefHeight="37.0" prefWidth="207.0" promptText="CMND/CCCD">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
       <DatePicker fx:id="applyDate" layoutX="121.0" layoutY="281.0" prefHeight="38.0" prefWidth="161.0" promptText="Ngày Viết Đơn" />
-      <TextField fx:id="organizationName1" alignment="CENTER" layoutX="323.0" layoutY="281.0" prefHeight="38.0" prefWidth="207.0" promptText="Cơ Quan Xử Lí Đơn">
+      <TextField fx:id="organizationName1" alignment="CENTER" layoutX="323.0" layoutY="281.0" prefHeight="38.0" prefWidth="404.0" promptText="Cơ Quan Xử Lí Đơn">
          <font>
             <Font size="17.0" />
          </font>
       </TextField>
-      <TextField fx:id="problemAddNew" layoutX="520.0" layoutY="211.0" prefHeight="38.0" prefWidth="207.0" promptText="problem moi">
+      <TextField fx:id="problemAddNew" layoutX="520.0" layoutY="211.0" prefHeight="38.0" prefWidth="207.0" promptText="vấn đề mới ">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <Label layoutX="163.0" layoutY="535.0" prefHeight="21.0" prefWidth="320.0" text="ban co chac chan muon sua don co ma:">
+      <Label layoutX="163.0" layoutY="535.0" prefHeight="21.0" prefWidth="320.0" text="Bạn có muốn sửa đơn :">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <Line endX="600.6000366210938" endY="400.0" layoutX="136.0" layoutY="93.0" startX="-100.0" startY="400.0" />
       <ComboBox fx:id="problem" layoutX="121.0" layoutY="211.0" prefHeight="37.0" prefWidth="161.0" promptText="Vấn Đề" />
-      <Label layoutX="320.0" layoutY="221.0" prefHeight="18.0" prefWidth="184.0" text="hoac them van de moi" underline="true">
+      <Label layoutX="320.0" layoutY="221.0" prefHeight="18.0" prefWidth="184.0" text="Hoặc thêm vấn đề mới" underline="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -93,12 +93,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="220.0" prefHeight="21.0" prefWidth="83.0" text="Van de">
+      <Label layoutX="22.0" layoutY="220.0" prefHeight="21.0" prefWidth="83.0" text="Vấn đề ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="153.0" prefHeight="21.0" prefWidth="83.0" text="loai don">
+      <Label layoutX="22.0" layoutY="153.0" prefHeight="21.0" prefWidth="83.0" text="Loại đơn ">
          <font>
             <Font size="15.0" />
          </font>

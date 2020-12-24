@@ -24,7 +24,7 @@
                <font>
                   <Font size="17.0" />
                </font></TextField>
-            <TextField fx:id="applicantName" layoutX="335.0" layoutY="35.0" prefHeight="37.0" prefWidth="316.0" promptText="Họ Tên (auto gen)">
+            <TextField fx:id="applicantName" layoutX="335.0" layoutY="35.0" prefHeight="37.0" prefWidth="316.0" promptText="Họ Tên (tự sinh)">
                <font>
                   <Font size="16.0" />
                </font></TextField>
@@ -53,7 +53,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <ComboBox fx:id="problem" layoutX="51.0" layoutY="224.0" prefHeight="37.0" prefWidth="188.0" promptText="Van De" />
+            <ComboBox fx:id="problem" layoutX="51.0" layoutY="224.0" prefHeight="37.0" prefWidth="188.0" promptText="Vấn đề " />
             <Label fx:id="checkCMND" layoutX="33.0" layoutY="88.0" prefHeight="17.0" prefWidth="240.0" text="* Người này chưa được quản lí " textFill="#dd0909" textOverrun="CLIP" underline="true" />
             <Label fx:id="newProblem" layoutX="316.0" layoutY="234.0" prefHeight="29.0" prefWidth="393.0" text="Label" textFill="#090661">
                <font>

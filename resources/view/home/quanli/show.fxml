@@ -80,7 +80,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <RadioButton fx:id="canRB" layoutX="473.0" layoutY="664.0" mnemonicParsing="false" text="Thuộc Thẩm Quyền Giải Quyết">
+      <RadioButton fx:id="canRB" layoutX="33.0" layoutY="623.0" mnemonicParsing="false" text="Đã giải quyết ">
          <font>
             <Font size="15.0" />
          </font>
@@ -88,12 +88,12 @@
             <ToggleGroup fx:id="statusLT" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="cannotRB" layoutX="473.0" layoutY="633.0" mnemonicParsing="false" text="Không Thuộc Thẩm Quyền " toggleGroup="$statusLT">
+      <RadioButton fx:id="cannotRB" layoutX="484.0" layoutY="623.0" mnemonicParsing="false" text="Không Thuộc Thẩm Quyền " toggleGroup="$statusLT">
          <font>
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="waitRB" layoutX="473.0" layoutY="595.0" mnemonicParsing="false" text=" Xem Xét Thêm" toggleGroup="$statusLT">
+      <RadioButton fx:id="waitRB" layoutX="256.0" layoutY="623.0" mnemonicParsing="false" text=" Xem Xét Thêm" toggleGroup="$statusLT">
          <font>
             <Font size="15.0" />
          </font>

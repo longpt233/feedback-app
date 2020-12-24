@@ -1,5 +1,6 @@
 package controler.quanli;
 
+import exception.NullChosseException;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,7 +58,13 @@ public class QuanliController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initTable();
-        initBut();
+        try {
+            initBut();
+        }catch (IndexOutOfBoundsException e) {
+
+
+        }
+
 
     }
 
@@ -138,34 +145,51 @@ public class QuanliController implements Initializable {
         // khong the thao tac voi cua so cha
         butXemChiTiet.setOnAction(actionEvent -> {
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (lettersSelected.get(0) != null) {
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli/show.fxml"));
+//            if (lettersSelected.get(0) == null) {
+//                System.out.println("bat duoc loi khong chon 1 don ");
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                alert.setTitle("Infor");
+//                alert.setContentText("hãy chọn một đơn!");
+//                alert.showAndWait();
+//            };
+            try{
+                if (lettersSelected.get(0) != null) {
+                    try {
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/view/home/quanli/show.fxml"));
 
-                    // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
-                    ShowControler controllerChiTietDon =new ShowControler();
-                    //-------------------------
-                    // neu dao vi tri 2 dong nay cho nhau se bi loi
-                    controllerChiTietDon.setLetter(lettersSelected.get(0));
+                        // set quyen conntroler cho cai stage (<=> tuong duong viec fx:conntroller trong fxml)
+                        ShowControler controllerChiTietDon =new ShowControler();
+                        //-------------------------
+                        // neu dao vi tri 2 dong nay cho nhau se bi loi
+                        controllerChiTietDon.setLetter(lettersSelected.get(0));
 //                    controllerChiTietDon =loader.getController();
-                    loader.setController(controllerChiTietDon);
-                    //------------------------
+                        loader.setController(controllerChiTietDon);
+                        //------------------------
 
-                    // phai load cai parent nay sau khi new controler neu khong no se goi ham init ma khong co du lieu
-                    Parent parent=loader.load();
-                    Scene scene = new Scene(parent);
-                    Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("Chi tiet don ");
-                    stageChinhSua.setScene(scene);
-                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+                        // phai load cai parent nay sau khi new controler neu khong no se goi ham init ma khong co du lieu
+                        Parent parent=loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageChinhSua = new Stage();
+                        stageChinhSua.setTitle("Chi tiet don ");
+                        stageChinhSua.setScene(scene);
+                        stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                        stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
-                     stageChinhSua.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        stageChinhSua.show();
+
+                    }  catch (IOException e){
+                        e.printStackTrace();
+                    }
                 }
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("bat duoc loi khong chon 1 don ");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Infor");
+                alert.setContentText("hãy chọn một đơn!");
+                alert.showAndWait();
             }
+
         });
 
 
@@ -208,31 +232,41 @@ public class QuanliController implements Initializable {
         });
         butChinhsua.setOnAction(actionEvent -> {
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (lettersSelected.get(0) != null) {
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/view/home/quanli/edit.fxml"));
-                    EditControler controller =new EditControler();
-                    controller.setLetter(lettersSelected.get(0));
-                    loader.setController(controller);
-                    Parent parent=loader.load();
-                    Scene scene = new Scene(parent);
-                    Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("chinh sua don ");
-                    stageChinhSua.setScene(scene);
-                    stageChinhSua.initModality(Modality.WINDOW_MODAL);
-                    stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+            try{
+                if (lettersSelected.get(0) != null) {
+                    try {
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/view/home/quanli/edit.fxml"));
+                        EditControler controller =new EditControler();
+                        controller.setLetter(lettersSelected.get(0));
+                        loader.setController(controller);
+                        Parent parent=loader.load();
+                        Scene scene = new Scene(parent);
+                        Stage stageChinhSua = new Stage();
+                        stageChinhSua.setTitle("chinh sua don ");
+                        stageChinhSua.setScene(scene);
+                        stageChinhSua.initModality(Modality.WINDOW_MODAL);
+                        stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
 
-                    stageChinhSua.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        stageChinhSua.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("bat duoc loi khong chon 1 don ");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Infor");
+                alert.setContentText("hãy chọn một đơn!");
+                alert.showAndWait();
             }
+
         });
         butXoa.setOnAction(actionEvent -> {
             ObservableList<Letter> lettersSelected = tableViewLetter.getSelectionModel().getSelectedItems();
-            if (lettersSelected.get(0) != null) {
-                // del xong hien thi thon bao cho nguoi duing
+            try{
+                if (lettersSelected.get(0) != null) {
+                    // del xong hien thi thon bao cho nguoi duing
 
                     try {
 
@@ -251,7 +285,15 @@ public class QuanliController implements Initializable {
                     }
 
 
+                }
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("bat duoc loi khong chon 1 don ");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Infor");
+                alert.setContentText("hãy chọn một đơn!");
+                alert.showAndWait();
             }
+
         });
     }
 

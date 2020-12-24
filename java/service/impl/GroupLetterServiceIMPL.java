@@ -55,6 +55,7 @@ public class GroupLetterServiceIMPL implements GroupLetterService {
             listLetter.add(letterDao.findById(ghl.getId_letter()));
         }
         for (Letter l: listLetter) {
+            System.out.println("debug "+l.getStatusLetter()+" "+status);
             l.setStatusLetter(status);
             letterDao.update(l);
         }

@@ -27,7 +27,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <RadioButton fx:id="canRB" layoutX="47.0" layoutY="230.0" mnemonicParsing="false" text="Thuộc Thẩm Quyền Giải Quyết">
+            <RadioButton fx:id="canRB" layoutX="47.0" layoutY="123.0" mnemonicParsing="false" text="Đã giải quyết ">
                <font>
                   <Font size="15.0" />
                </font>
@@ -40,12 +40,12 @@
                   <Font size="15.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="waitRB" layoutX="47.0" layoutY="122.0" mnemonicParsing="false" text=" Xem Xét Thêm" toggleGroup="$statusLT">
+            <RadioButton fx:id="waitRB" layoutX="47.0" layoutY="228.0" mnemonicParsing="false" text=" Xem Xét Thêm" toggleGroup="$statusLT">
                <font>
                   <Font size="15.0" />
                </font>
             </RadioButton>
-            <Label layoutX="36.0" layoutY="51.0" prefHeight="21.0" prefWidth="83.0" text="giai quyet">
+            <Label layoutX="36.0" layoutY="51.0" prefHeight="21.0" prefWidth="301.0" text="Cập nhật trạng thái cho nhóm đơn :">
                <font>
                   <Font size="15.0" />
                </font>

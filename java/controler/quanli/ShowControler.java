@@ -124,9 +124,9 @@ public class ShowControler implements Initializable {
         category1.setText(letter.getCategory());
         organizationName1.setText(letter.getOrganization());
 
-        if(letter.getStatusLetter()==1) canRB.setSelected(true);
+        if(letter.getStatusLetter()==0) canRB.setSelected(true);
+        if(letter.getStatusLetter()==1) waitRB.setSelected(true);
         if(letter.getStatusLetter()==2) cannotRB.setSelected(true);
-        if(letter.getStatusLetter()==3) waitRB.setSelected(true);
 
 
 

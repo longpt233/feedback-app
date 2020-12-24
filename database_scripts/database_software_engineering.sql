@@ -79,9 +79,9 @@ INSERT INTO Problem VALUES (1,"tainan");
 INSERT INTO Problem VALUES (2,"vacham");
 INSERT INTO Problem VALUES (3,"onhiemmoitruong");
 
-INSERT INTO Letter VALUES ("ND1564","kiennghi","tainan","11111","contetn1","cong ti A","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HN1111","phananh","vacham","11111","contetn2","bo truong bo quoc phong","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HN1112","phananh","onhiemmoitruong","55555","contetn3","bo truong bo kinh te","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("KM2134","kiennghi","tainan","66666","contetn4","bo truong bo ngoaigiao ","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HN1233","phananh","vacham","44444","contetn5","bo truong ","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HD1233","phananh","vacham","33333","contetn6","truong dai hoc bach khoa","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("ND1564","kiến nghị ","tainan","11111","contetn1","cong ti A","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("HN1111","phản ánh","vacham","11111","contetn2","bo truong bo quoc phong","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("HN1112","phản ánh","onhiemmoitruong","55555","contetn3","bo truong bo kinh te","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("KM2134","kiến nghị","tainan","66666","contetn4","bo truong bo ngoaigiao ","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("HN1233","phản ánh","vacham","44444","contetn5","bo truong ","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("HD1233","phản ánh","vacham","33333","contetn6","truong dai hoc bach khoa","2000-1-1",1,false);
