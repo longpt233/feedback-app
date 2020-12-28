@@ -94,7 +94,7 @@ public class QuanliController implements Initializable {
                 Parent parent=loader.load();
                 Scene scene = new Scene(parent);
                 Stage stageAdd = new Stage();
-                stageAdd.setTitle("Add new letter");
+                stageAdd.setTitle("Tạo đơn mới");
                 stageAdd.setScene(scene);
                 stageAdd.initModality(Modality.WINDOW_MODAL);
                 stageAdd.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -114,7 +114,7 @@ public class QuanliController implements Initializable {
                 Parent parent=loader.load();
                 Scene scene = new Scene(parent);
                 Stage stageSearch = new Stage();
-                stageSearch.setTitle("find letter ");
+                stageSearch.setTitle("Tìm đơn");
                 stageSearch.setScene(scene);
                 stageSearch.initModality(Modality.WINDOW_MODAL);
                 stageSearch.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());

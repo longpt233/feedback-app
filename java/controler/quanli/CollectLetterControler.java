@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Applicant;
+import model.GroupLetter;
 import model.Letter;
 import service.ApplicantService;
 import service.GroupLetterService;
@@ -30,6 +31,7 @@ public class CollectLetterControler implements Initializable {
 
 
     private ApplicantService applicantService = new ApplicantServiceIMPL();
+    private List<GroupLetter> groupLetterList = new ArrayList<>();
     private Letter letter;
     private Applicant applicant;
 
@@ -65,22 +67,43 @@ public class CollectLetterControler implements Initializable {
         createGroup.setOnAction(actionEvent->{
             try{
                 System.out.println(groupName.getText());
+                try{
+                    groupLetterList=groupLetterService.findAll();
+                    for(GroupLetter g : groupLetterList){
+                        if(g.getName().toLowerCase().equals(groupName.getText().toLowerCase())){
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Infor");
+                            alert.setContentText("Nhóm đã tồn tại");
+                            alert.showAndWait();
+                            throw new IndexOutOfBoundsException("Nhóm đã tồn tại");
+
+                        }
+                    }
+                }
+                catch (SQLException e){
+
+                }
 
                 System.out.println(listId);
                 if(groupLetterService.addNewGroup(listLetter, groupName.getText())){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Infor");
-                    alert.setContentText("thành công");
+                    alert.setContentText("Thành công");
                     alert.showAndWait();
                 }
                 Stage thisStage = (Stage) createGroup.getScene().getWindow();
                 thisStage.close();
+
+            }
+            catch (IndexOutOfBoundsException e2){
+                System.out.println(e2.toString());
             }
             catch (SQLException e){
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Infor");
-                alert.setContentText("có lỗi khi gộp đơn");
+                alert.setContentText("Có lỗi khi gộp đơn");
                 alert.showAndWait();
             }
 
