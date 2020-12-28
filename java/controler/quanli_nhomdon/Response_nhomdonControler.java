@@ -66,7 +66,7 @@ public class Response_nhomdonControler implements Initializable {
                     if(new GroupLetterServiceIMPL().updateStatusGroup(groupLetter,status)){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Infor");
-                        alert.setContentText("thành công");
+                        alert.setContentText("Thành công");
                         alert.showAndWait();
                     }
                     Stage thisStage = (Stage)update.getScene().getWindow();

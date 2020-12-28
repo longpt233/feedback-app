@@ -19,6 +19,7 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         try {
             Pane login = FXMLLoader.load(getClass().getResource("/view/home/hello.fxml"));
             borderPane.setCenter(login);

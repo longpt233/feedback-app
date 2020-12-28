@@ -44,6 +44,7 @@ public class LoginController implements Initializable {
                     Scene scene = new Scene(blad);
                     Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     appStage.setScene(scene);
+                    appStage.centerOnScreen();
                     appStage.show();
                 } catch (IOException e) {
                     e.printStackTrace();

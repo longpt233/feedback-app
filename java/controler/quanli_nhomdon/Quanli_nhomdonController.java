@@ -87,7 +87,7 @@ public class Quanli_nhomdonController implements Initializable {
                 System.out.println("bat duoc loi khong chon 1 don ");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Infor");
-                alert.setContentText("hãy chọn một nhóm đơn!");
+                alert.setContentText("Hãy chọn một nhóm đơn!");
                 alert.showAndWait();
             }
 
@@ -116,7 +116,7 @@ public class Quanli_nhomdonController implements Initializable {
                         Parent parent=loader.load();
                         Scene scene = new Scene(parent);
                         Stage stageChinhSua = new Stage();
-                        stageChinhSua.setTitle("Chi tiet nhom don ");
+                        stageChinhSua.setTitle("Chi Tiết Nhóm Đơn ");
                         stageChinhSua.setScene(scene);
                         stageChinhSua.initModality(Modality.WINDOW_MODAL);
                         stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -130,7 +130,7 @@ public class Quanli_nhomdonController implements Initializable {
                 System.out.println("bat duoc loi khong chon 1 don ");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Infor");
-                alert.setContentText("hãy chọn một nhóm đơn!");
+                alert.setContentText("Hãy chọn một nhóm đơn!");
                 alert.showAndWait();
             }
 
@@ -150,7 +150,7 @@ public class Quanli_nhomdonController implements Initializable {
                         Parent parent=loader.load();
                         Scene scene = new Scene(parent);
                         Stage stageChinhSua = new Stage();
-                        stageChinhSua.setTitle("cập nhật trạng thái cho cả nhóm đơn");
+                        stageChinhSua.setTitle("Cập nhật trạng thái cho cả nhóm đơn");
                         stageChinhSua.setScene(scene);
                         stageChinhSua.initModality(Modality.WINDOW_MODAL);
                         stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -164,7 +164,7 @@ public class Quanli_nhomdonController implements Initializable {
                 System.out.println("bat duoc loi khong chon 1 don ");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Infor");
-                alert.setContentText("hãy chọn một nhóm đơn!");
+                alert.setContentText("Hãy chọn một nhóm đơn!");
                 alert.showAndWait();
             }
 

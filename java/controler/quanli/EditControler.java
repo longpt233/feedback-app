@@ -169,7 +169,7 @@ public class EditControler implements Initializable {
             if(letterServiceIMPL.update(getLetter())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("infor");
-                alert.setContentText("sửa thành công ");
+                alert.setContentText("Sửa thành công ");
                 alert.show();
             }
         }

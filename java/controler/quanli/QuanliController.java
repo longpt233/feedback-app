@@ -125,13 +125,13 @@ public class QuanliController implements Initializable {
                 if(lettersObservableListSearch.get(0)==null){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("infor");
-                    alert.setContentText("khong tim thay don ");
+                    alert.setContentText("Không Tìm Thấy Đơn ");
                     alert.show();
 
                 }else{
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("infor");
-                    alert.setContentText("tim thay don ");
+                    alert.setContentText("Đã Tìm Đơn ");
                     alert.show();
                 }
                 initTable();
@@ -171,7 +171,7 @@ public class QuanliController implements Initializable {
                         Parent parent=loader.load();
                         Scene scene = new Scene(parent);
                         Stage stageChinhSua = new Stage();
-                        stageChinhSua.setTitle("Chi tiet don ");
+                        stageChinhSua.setTitle("Chi Tiết Đơn ");
                         stageChinhSua.setScene(scene);
                         stageChinhSua.initModality(Modality.WINDOW_MODAL);
                         stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -186,7 +186,7 @@ public class QuanliController implements Initializable {
                 System.out.println("bat duoc loi khong chon 1 don ");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Infor");
-                alert.setContentText("hãy chọn một đơn!");
+                alert.setContentText("Hãy chọn một đơn!");
                 alert.showAndWait();
             }
 
@@ -219,7 +219,7 @@ public class QuanliController implements Initializable {
                     Parent parent=loader.load();
                     Scene scene = new Scene(parent);
                     Stage stageChinhSua = new Stage();
-                    stageChinhSua.setTitle("gop nhom");
+                    stageChinhSua.setTitle("Gộp Nhóm");
                     stageChinhSua.setScene(scene);
                     stageChinhSua.initModality(Modality.WINDOW_MODAL);
                     stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -243,7 +243,7 @@ public class QuanliController implements Initializable {
                         Parent parent=loader.load();
                         Scene scene = new Scene(parent);
                         Stage stageChinhSua = new Stage();
-                        stageChinhSua.setTitle("chinh sua don ");
+                        stageChinhSua.setTitle("Sửa Đơn ");
                         stageChinhSua.setScene(scene);
                         stageChinhSua.initModality(Modality.WINDOW_MODAL);
                         stageChinhSua.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
@@ -257,7 +257,7 @@ public class QuanliController implements Initializable {
                 System.out.println("bat duoc loi khong chon 1 don ");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Infor");
-                alert.setContentText("hãy chọn một đơn!");
+                alert.setContentText("Hãy chọn một đơn!");
                 alert.showAndWait();
             }
 
@@ -273,14 +273,14 @@ public class QuanliController implements Initializable {
                         if(letterService.delete(lettersSelected.get(0).getId())){
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("infor");
-                            alert.setContentText("xoa don thanh cong");
+                            alert.setContentText("Xóa Đơn Thành Công ! ");
                             alert.showAndWait();
                         }
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("infor");
-                        alert.setContentText("xoa don khong thanh cong");
+                        alert.setContentText("Xóa Đơn Không Thành Công ! ");
                         alert.showAndWait();
                     }
 
@@ -290,7 +290,7 @@ public class QuanliController implements Initializable {
                 System.out.println("bat duoc loi khong chon 1 don ");
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Infor");
-                alert.setContentText("hãy chọn một đơn!");
+                alert.setContentText("Hãy chọn một đơn!");
                 alert.showAndWait();
             }
 

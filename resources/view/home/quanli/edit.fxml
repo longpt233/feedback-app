@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pan1" prefHeight="717.0" prefWidth="800.0" style="-fx-background-color: #f7f93f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="pan1" prefHeight="717.0" prefWidth="800.0" style="-fx-background-color: e9ecec;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Line endX="600.0" endY="40.79998779296875" layoutX="126.0" layoutY="83.0" startX="-100.0" startY="40.79998016357422" />
       <TextArea fx:id="content" layoutX="27.0" layoutY="341.0" prefHeight="133.0" prefWidth="747.0" promptText="Nội Dung">
@@ -24,7 +18,7 @@
             <Font size="20.0" />
          </font>
       </TextArea>
-      <Button fx:id="update" layoutX="226.0" layoutY="615.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Sửa">
+      <Button fx:id="update" layoutX="226.0" layoutY="615.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Sửa" textFill="#f0eded">
          <font>
             <Font size="16.0" />
          </font>
@@ -34,12 +28,12 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button fx:id="butCancel" layoutX="502.0" layoutY="615.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Hủy">
+      <Button fx:id="butCancel" layoutX="502.0" layoutY="615.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: ed0000;" text="Hủy" textFill="#f0e5e5">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Label layoutX="22.0" layoutY="21.0" prefHeight="20.0" prefWidth="170.0" text="Sửa người tạo đơn ">
+      <Label layoutX="22.0" layoutY="21.0" prefHeight="25.0" prefWidth="142.0" text="Sửa người tạo đơn ">
          <font>
             <Font size="16.0" />
          </font>
@@ -54,24 +48,24 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="applicantName" layoutX="439.0" layoutY="62.0" prefHeight="37.0" prefWidth="195.0" promptText="Họ Tên Người Viết">
+      <TextField fx:id="applicantName" layoutX="449.0" layoutY="64.0" prefHeight="37.0" prefWidth="195.0" promptText="Họ Tên Người Viết">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="category" layoutX="122.0" layoutY="145.0" prefHeight="37.0" prefWidth="207.0" promptText="Loại đơn " />
-      <TextField fx:id="applicantID" layoutX="155.0" layoutY="64.0" prefHeight="37.0" prefWidth="207.0" promptText="CMND/CCCD">
+      <ComboBox fx:id="category" layoutX="122.0" layoutY="145.0" prefHeight="37.0" prefWidth="161.0" promptText="Loại đơn " />
+      <TextField fx:id="applicantID" layoutX="122.0" layoutY="64.0" prefHeight="37.0" prefWidth="161.0" promptText="CMND/CCCD">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
       <DatePicker fx:id="applyDate" layoutX="121.0" layoutY="281.0" prefHeight="38.0" prefWidth="161.0" promptText="Ngày Viết Đơn" />
-      <TextField fx:id="organizationName1" alignment="CENTER" layoutX="323.0" layoutY="281.0" prefHeight="38.0" prefWidth="404.0" promptText="Cơ Quan Xử Lí Đơn">
+      <TextField fx:id="organizationName1" alignment="CENTER" layoutX="449.0" layoutY="281.0" prefHeight="38.0" prefWidth="320.0" promptText="Cơ Quan Xử Lí Đơn">
          <font>
             <Font size="17.0" />
          </font>
       </TextField>
-      <TextField fx:id="problemAddNew" layoutX="520.0" layoutY="211.0" prefHeight="38.0" prefWidth="207.0" promptText="vấn đề mới ">
+      <TextField fx:id="problemAddNew" layoutX="450.0" layoutY="211.0" prefHeight="38.0" prefWidth="207.0" promptText="vấn đề mới ">
          <font>
             <Font size="16.0" />
          </font>
@@ -83,7 +77,7 @@
       </Label>
       <Line endX="600.6000366210938" endY="400.0" layoutX="136.0" layoutY="93.0" startX="-100.0" startY="400.0" />
       <ComboBox fx:id="problem" layoutX="121.0" layoutY="211.0" prefHeight="37.0" prefWidth="161.0" promptText="Vấn Đề" />
-      <Label layoutX="320.0" layoutY="221.0" prefHeight="18.0" prefWidth="184.0" text="Hoặc thêm vấn đề mới" underline="true">
+      <Label layoutX="295.0" layoutY="221.0" prefHeight="20.0" prefWidth="161.0" text="Hoặc thêm vấn đề mới" underline="true">
          <font>
             <Font size="14.0" />
          </font>

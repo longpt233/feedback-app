@@ -30,7 +30,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bntQuanli" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Quản Lí Đơn">
+                  <Button fx:id="bntQuanli" alignment="CENTER" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Quản Lí Đơn">
                      <font>
                         <Font size="14.0" />
                      </font>

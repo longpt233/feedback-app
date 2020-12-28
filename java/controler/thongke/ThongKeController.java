@@ -108,18 +108,18 @@ public class ThongKeController implements Initializable {
         Integer soLuongTT3 = new Integer(0);
 
         for(Letter letter : listLetter){
-            if(letter.getStatusLetter()==1) soLuongTT1+=1;
-            if(letter.getStatusLetter()==2) soLuongTT2=soLuongTT2+1;
-            if(letter.getStatusLetter()==3) soLuongTT3=soLuongTT3+1;
+            if(letter.getStatusLetter()==2) soLuongTT1+=1;
+            if(letter.getStatusLetter()==1) soLuongTT2=soLuongTT2+1;
+            if(letter.getStatusLetter()==0) soLuongTT3=soLuongTT3+1;
 
 
         }
 
         PieChart pieChart = new PieChart();
 
-        PieChart.Data slice1 = new PieChart.Data("Có Thế Giải Quyết", soLuongTT1);
-        PieChart.Data slice2 = new PieChart.Data("không Thế Giải Quyết", soLuongTT2);
-        PieChart.Data slice3 = new PieChart.Data("Chờ Xem Xét", soLuongTT3);
+        PieChart.Data slice1 = new PieChart.Data("Không Thuộc Thẩm Quyền", soLuongTT1);
+        PieChart.Data slice2 = new PieChart.Data("Chưa Xử Lí", soLuongTT2);
+        PieChart.Data slice3 = new PieChart.Data("Đã Xử Lí", soLuongTT3);
 
         pieChart.getData().add(slice1);
         pieChart.getData().add(slice2);
@@ -185,7 +185,7 @@ public class ThongKeController implements Initializable {
                     dayAndMonth1="-10-01";
                     dayAndMonth2="-12-31";
                 }
-                if((quy+nam).equals("2000")){
+                if((quy+nam).equals(nam)){
                     System.out.println("tìm cả năm");
                     Date x = Date.valueOf(nam+"-01-01");
                     Date y = Date.valueOf(nam+"-12-31");
@@ -238,7 +238,7 @@ public class ThongKeController implements Initializable {
                     dayAndMonth1="-10-01";
                     dayAndMonth2="-12-31";
                 }
-                if((quy+nam).equals("2000")){
+                if((quy+nam).equals(nam)){
                     System.out.println("tìm cả năm");
                     Date x = Date.valueOf(nam+"-01-01");
                     Date y = Date.valueOf(nam+"-12-31");

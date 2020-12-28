@@ -67,21 +67,21 @@ CREATE TABLE User(
     FOREIGN KEY (id_applicant) REFERENCES Applicant(id)
 );
 
-INSERT INTO Applicant VALUES(1,"11111","phan thanh long ","1234567879","2000-3-23",1,"hai duong",1);
-INSERT INTO Applicant VALUES(2,"22222","Tran Thanh Duyen","1234567879","2000-9-13",1,"nam dinh",1);
-INSERT INTO Applicant VALUES(3,"33333","Bui Thi Ha","1234567879","2003-3-17",0,"hai duong",1);
-INSERT INTO Applicant VALUES(4,"44444","Nguyen Tra My","1234567879","1999-1-24",0,"thanh hoa",1);
-INSERT INTO Applicant VALUES(5,"55555","Nguyen Minh Quan","1234567879","1994-5-23",1,"khanh hoa",1);
-INSERT INTO Applicant VALUES(6,"66666","Vu My Linh","1234567879","2001-3-27",0,"hai phong",1);
+INSERT INTO Applicant VALUES(1,"11111","Phan Thanh Long","1234567879","2000-3-23",1,"Hải Dương",1);
+INSERT INTO Applicant VALUES(2,"22222","Trần Thanh Duyên","1234567879","2000-9-13",1,"Nam Định",1);
+INSERT INTO Applicant VALUES(3,"33333","Bùi Thị Hà","1234567879","2003-3-17",0,"Hải Dương",1);
+INSERT INTO Applicant VALUES(4,"44444","Nguyễn Trà My","1234567879","1999-1-24",0,"Thanh Hóa",1);
+INSERT INTO Applicant VALUES(5,"55555","Nguyễn Minh Quân","1234567879","1994-5-23",1,"Khánh Hòa",1);
+INSERT INTO Applicant VALUES(6,"66666","Vũ Mĩ Linh","1234567879","2001-3-27",0,"Hải Phòng",1);
 
 
-INSERT INTO Problem VALUES (1,"tainan");
-INSERT INTO Problem VALUES (2,"vacham");
-INSERT INTO Problem VALUES (3,"onhiemmoitruong");
+INSERT INTO Problem VALUES (1,"Tai Nạn");
+INSERT INTO Problem VALUES (2,"Va Chạm");
+INSERT INTO Problem VALUES (3,"Ô Nhiễm Môi Trường");
 
-INSERT INTO Letter VALUES ("ND1564","kiến nghị ","tainan","11111","contetn1","cong ti A","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HN1111","phản ánh","vacham","11111","contetn2","bo truong bo quoc phong","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HN1112","phản ánh","onhiemmoitruong","55555","contetn3","bo truong bo kinh te","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("KM2134","kiến nghị","tainan","66666","contetn4","bo truong bo ngoaigiao ","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HN1233","phản ánh","vacham","44444","contetn5","bo truong ","2000-1-1",1,false);
-INSERT INTO Letter VALUES ("HD1233","phản ánh","vacham","33333","contetn6","truong dai hoc bach khoa","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("ND1564","Phản Ánh","Ô Nhiễm Môi Trường","11111","Sông có người đổ rác trộm","Tổ Dân Phố","2020-04-10",1,false);
+INSERT INTO Letter VALUES ("HN1111","Phản Ánh","Va Chạm","11111","Ngày 27/12/2020 trên đường Trần Đại Nghĩa có người gây tai nạn rồi bỏ chạy ","Công An Hà Nội","2020-12-07",1,false);
+INSERT INTO Letter VALUES ("HN1112","Phản Ánh","Ô Nhiễm Môi Trường","55555","Cổng nhà tôi bị trở thành nơi đổ rác trộm","Tổ Dân Phố","2020-05-17",1,false);
+INSERT INTO Letter VALUES ("KM2134","Kiến Nghị","Tai Nạn","66666","Yêu cầu giải quyết vụ tai nạn","Tòa Án tỉnh Hà Nội","2020-09-01",1,false);
+INSERT INTO Letter VALUES ("HN1233","Phản Ánh","Tai Nạn","44444","Đoạn đường thường xuyên xảy ra tai nạn","Công An Hà Nội","2000-1-1",1,false);
+INSERT INTO Letter VALUES ("HD1233","Phản Ánh","Va Chạm","33333","Ngày 27/12/2020 trên đường Trần Đại Nghĩa có người gây tai nạn rồi bỏ chạy ","Công An Hà Nội","2020-12-08",1,false);
